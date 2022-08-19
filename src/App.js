@@ -1,8 +1,9 @@
 import React from "react";
 import Router from "./shared/Router";
+import styled from "styled-components";
+import axios from "axios";
 
 //컴포넌트
-import Header from "./view/Header";
 
 function App() {
   return (
