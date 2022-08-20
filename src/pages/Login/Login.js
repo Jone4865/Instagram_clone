@@ -8,7 +8,7 @@ function Login() {
         <div></div>
         <main class="wG4fl  UDpcu " role="main">
           <article class="_4_yKc">
-            <div class="UYrFC _80tAB">
+            <div style={{"background-image":"url(https://www.instagram.com/static/images/homepage/phones/home-phones.png/1dc085cdb87d.png)"}} class="UYrFC _80tAB">
               <div class="nLFdg">
                 <img
                   alt=""
@@ -152,7 +152,7 @@ function Login() {
                       alt="App Store에서 다운로드"
                       class="Rt8TI "
                       src="https://www.instagram.com/static/images/appstore-install-badges/badge_ios_korean-ko.png/4a5c9d62d51b.png"
-                      style={{ display: "inline", width: "150px" }}
+                      style={{margin:"auto", display: "inline", width: "150px" }}
                     />
                     <div
                       mcafee_wa_ann='{"rep":0,"cat":[112,129],"ufg":2,"url":"https://itunes.apple.com/app/instagram/id389801252?pt=428156&amp;ct=igweb.loginpage.badge&amp;mt=8&amp;vt=lo","dossierUrl":"https://itunes.apple.com/app/instagram/id389801252?pt=428156&amp;ct=igweb.loginpage.badge&amp;mt=8&amp;vt=lo"}'
