@@ -4,7 +4,7 @@ import "./Login.css";
 
 function Login() {
   return (
-    <All id="react-root">
+    <div id="react-root">
       <section class="_9eogI E3X2T">
         <div></div>
         <main class="wG4fl  UDpcu " role="main">
@@ -40,9 +40,10 @@ function Login() {
                     aria-disabled="false"
                     role="button"
                     tabindex="0"
-                    style={{"cursor": "pointer"}}
+                    style={{ cursor: "pointer" }}
                   >
                     <img
+                      style={{ margin: "34px" }}
                       alt="Instagram"
                       class="s4Iyt"
                       src="https://www.instagram.com/static/images/web/logged_out_wordmark.png/7a252de00b20.png"
@@ -56,11 +57,8 @@ function Login() {
                       <div class="-MzZI">
                         <div class="_9GP1n   ">
                           <label class="f0n8F ">
-                            <span class="_9nyy2">
-                              전화번호, 사용자 이름 또는 이메일
-                            </span>
                             <input
-                              aria-label="전화번호, 사용자 이름 또는 이메일"
+                              placeholder="전화번호, 사용자 이름 또는 이메일"
                               aria-required="true"
                               autocapitalize="off"
                               autocorrect="off"
@@ -68,7 +66,6 @@ function Login() {
                               name="username"
                               type="text"
                               class="_2hvTZ pexuQ zyHYP"
-                              value=""
                             />
                           </label>
                           <div class="i24fI"></div>
@@ -77,23 +74,22 @@ function Login() {
                       <div class="-MzZI">
                         <div class="_9GP1n   ">
                           <label class="f0n8F ">
-                            <span class="_9nyy2">비밀번호</span>
                             <input
-                              aria-label="비밀번호"
+                              placeholder="비밀번호"
                               aria-required="true"
                               autocapitalize="off"
                               autocorrect="off"
                               name="password"
                               type="password"
                               class="_2hvTZ pexuQ zyHYP"
-                              value=""
                             />
                           </label>
                           <div class="i24fI"></div>
                         </div>
                       </div>
-                      <div class="             qF0y9          Igw0E     IwRSH      eGOV_       acqo5   _4EzTm    bkEs3                          CovQj                  jKUp7          DhRcB                                                    ">
+                      <div style={{margin:"auto"}} class="             qF0y9          Igw0E     IwRSH      eGOV_       acqo5   _4EzTm    bkEs3                          CovQj                  jKUp7          DhRcB                                                    ">
                         <button
+                          style={{ margin: "10px", width: "150px", border: "1px solid white", borderRadius: "7px", height: "30px", backgroundColor: "#00AFF" }}
                           class="sqdOP  L3NKy   y3zKF     "
                           disabled=""
                           type="submit"
@@ -108,8 +104,8 @@ function Login() {
                         <div class="_0tv-g">또는</div>
                         <div class="s311c t7mNY "></div>
                       </div>
-                      <div class="             qF0y9          Igw0E     IwRSH      eGOV_       acqo5   _4EzTm    bkEs3                          CovQj                  jKUp7          DhRcB                                                    ">
-                        <button class="sqdOP yWX7d    y3zKF     " type="button">
+                      <div style={{"margin": "auto"}} class="             qF0y9          Igw0E     IwRSH      eGOV_       acqo5   _4EzTm    bkEs3                          CovQj                  jKUp7          DhRcB                                                    ">
+                        <button style={{ margin: "10px", width: "160px", border: "1px solid white", borderRadius: "7px", height: "30px", backgroundColor: "#00AFF" }} class="sqdOP yWX7d    y3zKF     " type="button">
                           <span class=" coreSpriteFacebookIcon AeB99"></span>
                           <span class="KPnG0">Facebook으로 로그인</span>
                         </button>
@@ -157,12 +153,20 @@ function Login() {
                       alt="App Store에서 다운로드"
                       class="Rt8TI "
                       src="https://www.instagram.com/static/images/appstore-install-badges/badge_ios_korean-ko.png/4a5c9d62d51b.png"
-                      style={{"display": "inline"}}
+                      style={{ display: "inline", width: "150px" }}
                     />
                     <div
                       mcafee_wa_ann='{"rep":0,"cat":[112,129],"ufg":2,"url":"https://itunes.apple.com/app/instagram/id389801252?pt=428156&amp;ct=igweb.loginpage.badge&amp;mt=8&amp;vt=lo","dossierUrl":"https://itunes.apple.com/app/instagram/id389801252?pt=428156&amp;ct=igweb.loginpage.badge&amp;mt=8&amp;vt=lo"}'
                       waprocessedid="gve4si"
-                      style={{"cursor":"default", "display": "inline-block", "float": "none", "padding": "0px 0px 0px 4px", "position": "relative", "top": "2px", "z-index": "1"}}
+                      style={{
+                        cursor: "default",
+                        display: "inline-block",
+                        float: "none",
+                        padding: "0px 0px 0px 4px",
+                        position: "relative",
+                        top: "2px",
+                        "z-index": "1",
+                      }}
                     >
                       <div
                         id="0DE9E47C-871A-4F90-8440-B190C216800A_1"
@@ -170,7 +174,7 @@ function Login() {
                         onselectstart="return false;"
                         oncontextmenu="return false;"
                         tabindex="0"
-                        style={{"outline": "none"}}
+                        style={{ outline: "none" }}
                       ></div>
                     </div>
                   </a>
@@ -182,17 +186,26 @@ function Login() {
                     original_target="https://play.google.com/store/apps/details?id=com.instagram.android&amp;referrer=utm_source%3dinstagramweb%26utm_campaign%3dloginpage%26ig_mid%3da3bbd5c2-82c2-4378-ae0a-60dbfac1878d%26utm_content%3dlo%26utm_medium%3dbadge"
                     waprocessedid="57718a"
                     waprocessedanchor="true"
+                    style={{"width":"100px"}}
                   >
                     <img
                       alt="Google Play에서 다운로드"
                       class="Rt8TI "
                       src="https://www.instagram.com/static/images/appstore-install-badges/badge_android_korean-ko.png/f155b664a93b.png"
-                      style={{"display": "inline"}}
+                      style={{ display: "inline", width: "150px" }}
                     />
                     <div
                       mcafee_wa_ann='{"rep":0,"cat":[148],"ufg":8,"url":"https://play.google.com/store/apps/details?id=com.instagram.android&amp;referrer=utm_source%3dinstagramweb%26utm_campaign%3dloginpage%26ig_mid%3da3bbd5c2-82c2-4378-ae0a-60dbfac1878d%26utm_content%3dlo%26utm_medium%3dbadge","dossierUrl":"https://play.google.com/store/apps/details?id=com.instagram.android&amp;referrer=utm_source%3dinstagramweb%26utm_campaign%3dloginpage%26ig_mid%3da3bbd5c2-82c2-4378-ae0a-60dbfac1878d%26utm_content%3dlo%26utm_medium%3dbadge"}'
                       waprocessedid="57718a"
-                      style={{"cursor": "default", "display": "inline-block", "float": "none", "padding": "0px 0px 0px 4px", "position": "relative", "top": "2px", "z-index": "1"}}
+                      style={{
+                        cursor: "default",
+                        display: "inline-block",
+                        float: "none",
+                        padding: "0px 0px 0px 4px",
+                        position: "relative",
+                        top: "2px",
+                        "z-index": "1",
+                      }}
                     >
                       <div
                         id="0DE9E47C-871A-4F90-8440-B190C216800A_2"
@@ -200,7 +213,7 @@ function Login() {
                         onselectstart="return false;"
                         oncontextmenu="return false;"
                         tabindex="0"
-                        style={{"outline": "none"}}
+                        style={{ outline: "none" }}
                       ></div>
                     </div>
                   </a>
@@ -378,7 +391,12 @@ function Login() {
                   <div class="TQUPK">
                     <span>한국어</span>
                     <div class="             qF0y9          Igw0E     IwRSH      eGOV_       acqo5   _4EzTm                     WKY0a                                                                                         ">
-                      <span style={{"display": "inline-block", "transform": "rotate(180deg)"}}>
+                      <span
+                        style={{
+                          display: "inline-block",
+                          transform: "rotate(180deg)",
+                        }}
+                      >
                         <svg
                           aria-label="아래쪽 V자형 아이콘"
                           class="_8-yf5 "
@@ -456,13 +474,17 @@ function Login() {
           </div>
         </footer>
       </section>
-    </All>
+      <Aa>
+        
+    </Aa>
+    </div>
+    
   );
 }
 
 export default Login;
 
-const All = styled.div`
-  height: 900px;
-  width: 1200px;
-`;
+
+const Aa = styled.div`
+    background-color: red;
+`
