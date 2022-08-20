@@ -13,6 +13,33 @@
       "content": "게시물내용222",
       "profileImg": "유저가 설장한 사진들어감222",
       "img":"이미지 들어갈곳222"
+    },
+    {
+      "id": 3,
+      "nickname": "죽죽죽죽죽죽ㄱ죽죽주국ㅈ ㅡㅡㅡ",
+      "content": "우울우루우루우우루우루우우루울우루ㅡㅡㅡ",
+      "profileImg": "이미지인ㅁ니미ㅣ미니민미니이",
+      "img":"이미지인데 이미지가 들어갈까 "
+    }
+  ],
+  "comments": [
+    {
+      "commentId":1,
+      "nickname":"댓글 닉네임111",
+      "commentProfile":"댓글 작성자 이미지111",
+      "comment":"댓글임11"
+    },
+    {
+      "commentId":2,
+      "nickname":"댓글 닉네임222",
+      "commentProfile":"댓글 작성자 이미지222",
+      "comment":"댓글임22"
+    },
+    {
+      "commentId":3,
+      "nickname":"댓글 닉네임333",
+      "commentProfile":"댓글 작성자 이미지333",
+      "comment":"댓글임33"
     }
   ]
 }
