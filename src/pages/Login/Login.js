@@ -1,5 +1,4 @@
 import React from "react";
-import styled from "styled-components";
 import "./Login.css";
 
 function Login() {
@@ -89,7 +88,7 @@ function Login() {
                       </div>
                       <div style={{ margin: "auto" }} class="             qF0y9          Igw0E     IwRSH      eGOV_       acqo5   _4EzTm    bkEs3                          CovQj                  jKUp7          DhRcB                                                    ">
                         <button
-                          style={{ margin: "10px", width: "150px", border: "1px solid white", borderRadius: "7px", height: "30px", backgroundColor: "#00AFF", color: "white" }}
+                          style={{ margin: "10px", width: "150px", border: "1px solid white", borderRadius: "7px", height: "30px", backgroundColor: "#00AFFF", color: "white" }}
                           class="sqdOP  L3NKy   y3zKF     "
                           disabled=""
                           type="submit"
@@ -127,7 +126,7 @@ function Login() {
                     계정이 없으신가요?
                     <a
                       data-testid="sign-up-link"
-                      href="/accounts/emailsignup/"
+                      href="/signup"
                       tabindex="0"
                     >
                       <span class="_7UhW9   xLCgt        qyrsm      gtFbE       se6yk        ">
@@ -468,10 +467,3 @@ function Login() {
 }
 
 export default Login;
-
-
-const Aa = styled.div`
- background-color: #00AFFF;
- height: 300px;
- width: 200px;
-`
