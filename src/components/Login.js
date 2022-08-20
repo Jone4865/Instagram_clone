@@ -87,9 +87,9 @@ function Login() {
                           <div class="i24fI"></div>
                         </div>
                       </div>
-                      <div style={{margin:"auto"}} class="             qF0y9          Igw0E     IwRSH      eGOV_       acqo5   _4EzTm    bkEs3                          CovQj                  jKUp7          DhRcB                                                    ">
+                      <div style={{ margin: "auto" }} class="             qF0y9          Igw0E     IwRSH      eGOV_       acqo5   _4EzTm    bkEs3                          CovQj                  jKUp7          DhRcB                                                    ">
                         <button
-                          style={{ margin: "10px", width: "150px", border: "1px solid white", borderRadius: "7px", height: "30px", backgroundColor: "#00AFF" }}
+                          style={{ margin: "10px", width: "150px", border: "1px solid white", borderRadius: "7px", height: "30px", backgroundColor: "#00AFF", color: "white" }}
                           class="sqdOP  L3NKy   y3zKF     "
                           disabled=""
                           type="submit"
@@ -104,8 +104,8 @@ function Login() {
                         <div class="_0tv-g">또는</div>
                         <div class="s311c t7mNY "></div>
                       </div>
-                      <div style={{"margin": "auto"}} class="             qF0y9          Igw0E     IwRSH      eGOV_       acqo5   _4EzTm    bkEs3                          CovQj                  jKUp7          DhRcB                                                    ">
-                        <button style={{ margin: "10px", width: "160px", border: "1px solid white", borderRadius: "7px", height: "30px", backgroundColor: "#00AFF" }} class="sqdOP yWX7d    y3zKF     " type="button">
+                      <div style={{ "margin": "auto" }} class="             qF0y9          Igw0E     IwRSH      eGOV_       acqo5   _4EzTm    bkEs3                          CovQj                  jKUp7          DhRcB                                                    ">
+                        <button style={{ margin: "10px", width: "160px", border: "1px solid white", borderRadius: "7px", height: "30px" }} class="sqdOP yWX7d    y3zKF     " type="button">
                           <span class=" coreSpriteFacebookIcon AeB99"></span>
                           <span class="KPnG0">Facebook으로 로그인</span>
                         </button>
@@ -186,7 +186,7 @@ function Login() {
                     original_target="https://play.google.com/store/apps/details?id=com.instagram.android&amp;referrer=utm_source%3dinstagramweb%26utm_campaign%3dloginpage%26ig_mid%3da3bbd5c2-82c2-4378-ae0a-60dbfac1878d%26utm_content%3dlo%26utm_medium%3dbadge"
                     waprocessedid="57718a"
                     waprocessedanchor="true"
-                    style={{"width":"100px"}}
+                    style={{ "width": "100px" }}
                   >
                     <img
                       alt="Google Play에서 다운로드"
@@ -223,11 +223,11 @@ function Login() {
           </article>
         </main>
 
-        <footer class="Zx5PI  burfB vfoLd " role="contentinfo">
+        <footer class="Zx5PI  burfB vfoLd " role="contentinfo" style={{ "margin": "auto", "display": "flex", "justify-content": "center", "align-items": "center", "fontSize": "12px" }}>
           <div class="             qF0y9          Igw0E     IwRSH      eGOV_       acqo5   _4EzTm               KokQV                                                                                               ">
-            <div class="             qF0y9          Igw0E     IwRSH      eGOV_       acqo5   _4EzTm                                                              kEKum                                                ">
-              <div class="             qF0y9          Igw0E     IwRSH        YBx95   ybXk5     _4EzTm  YlhBV                                                                                                            ">
-                <div class="             qF0y9          Igw0E     IwRSH      eGOV_       acqo5   _4EzTm     _22l1                 soMvl                  JI_ht                                                                      ">
+            <div style={{ "margin": "auto", "color": "gray", "display": "flex", "flex-direction": "row", "justify-content": "center", "align-items": "center" }} class="             qF0y9          Igw0E     IwRSH      eGOV_       acqo5   _4EzTm                                                              kEKum                                                ">
+              <div style={{ "margin": "auto", "color": "gray", "display": "flex", "flex-direction": "row", "justify-content": "center", "align-items": "center" }} class="             qF0y9          Igw0E     IwRSH        YBx95   ybXk5     _4EzTm  YlhBV                                                                                                            ">
+                <div style={{"margin":"10px"}} class="             qF0y9          Igw0E     IwRSH      eGOV_       acqo5   _4EzTm     _22l1                 soMvl                  JI_ht                                                                      ">
                   <a
                     href="https://about.facebook.com/meta"
                     rel="nofollow noopener noreferrer"
@@ -239,38 +239,38 @@ function Login() {
                     </div>
                   </a>
                 </div>
-                <div class="             qF0y9          Igw0E     IwRSH      eGOV_       acqo5   _4EzTm     _22l1                 soMvl                  JI_ht                                                                      ">
+                <div style={{"margin":"5px"}} class="             qF0y9          Igw0E     IwRSH      eGOV_       acqo5   _4EzTm     _22l1                 soMvl                  JI_ht                                                                      ">
                   <a
                     href="https://about.instagram.com/"
                     rel="nofollow noopener noreferrer"
                     target="_blank"
                     waprocessedanchor="true"
                   >
-                    <div class="_7UhW9  PIoXz       MMzan    _0PwGv          uL8Hv         ">
+                    <div  style={{"margin":"5px"}}  class="_7UhW9  PIoXz       MMzan    _0PwGv          uL8Hv         ">
                       소개
                     </div>
                   </a>
                 </div>
-                <div class="             qF0y9          Igw0E     IwRSH      eGOV_       acqo5   _4EzTm     _22l1                 soMvl                  JI_ht                                                                      ">
+                <div style={{"margin":"5px"}} class="             qF0y9          Igw0E     IwRSH      eGOV_       acqo5   _4EzTm     _22l1                 soMvl                  JI_ht                                                                      ">
                   <a
                     href="https://about.instagram.com/blog/"
                     rel="nofollow noopener noreferrer"
                     target="_blank"
                     waprocessedanchor="true"
                   >
-                    <div class="_7UhW9  PIoXz       MMzan    _0PwGv          uL8Hv         ">
+                    <div  style={{"margin":"5px"}}  class="_7UhW9  PIoXz       MMzan    _0PwGv          uL8Hv         ">
                       블로그
                     </div>
                   </a>
                 </div>
-                <div class="             qF0y9          Igw0E     IwRSH      eGOV_       acqo5   _4EzTm     _22l1                 soMvl                  JI_ht                                                                      ">
+                <div style={{"margin":"5px"}} class="             qF0y9          Igw0E     IwRSH      eGOV_       acqo5   _4EzTm     _22l1                 soMvl                  JI_ht                                                                      ">
                   <a href="/about/jobs/">
                     <div class="_7UhW9  PIoXz       MMzan    _0PwGv          uL8Hv         ">
                       채용 정보
                     </div>
                   </a>
                 </div>
-                <div class="             qF0y9          Igw0E     IwRSH      eGOV_       acqo5   _4EzTm     _22l1                 soMvl                  JI_ht                                                                      ">
+                <div style={{"margin":"5px"}} class="             qF0y9          Igw0E     IwRSH      eGOV_       acqo5   _4EzTm     _22l1                 soMvl                  JI_ht                                                                      ">
                   <a
                     href="https://help.instagram.com/"
                     rel="nofollow noopener noreferrer"
@@ -282,7 +282,7 @@ function Login() {
                     </div>
                   </a>
                 </div>
-                <div class="             qF0y9          Igw0E     IwRSH      eGOV_       acqo5   _4EzTm     _22l1                 soMvl                  JI_ht                                                                      ">
+                <div style={{"margin":"5px"}} class="             qF0y9          Igw0E     IwRSH      eGOV_       acqo5   _4EzTm     _22l1                 soMvl                  JI_ht                                                                      ">
                   <a
                     href="https://developers.facebook.com/docs/instagram"
                     rel="nofollow noopener noreferrer"
@@ -294,49 +294,49 @@ function Login() {
                     </div>
                   </a>
                 </div>
-                <div class="             qF0y9          Igw0E     IwRSH      eGOV_       acqo5   _4EzTm     _22l1                 soMvl                  JI_ht                                                                      ">
+                <div style={{"margin":"5px"}} class="             qF0y9          Igw0E     IwRSH      eGOV_       acqo5   _4EzTm     _22l1                 soMvl                  JI_ht                                                                      ">
                   <a href="/legal/privacy/">
                     <div class="_7UhW9  PIoXz       MMzan    _0PwGv          uL8Hv         ">
                       개인정보처리방침
                     </div>
                   </a>
                 </div>
-                <div class="             qF0y9          Igw0E     IwRSH      eGOV_       acqo5   _4EzTm     _22l1                 soMvl                  JI_ht                                                                      ">
+                <div style={{"margin":"5px"}} class="             qF0y9          Igw0E     IwRSH      eGOV_       acqo5   _4EzTm     _22l1                 soMvl                  JI_ht                                                                      ">
                   <a href="/legal/terms/">
                     <div class="_7UhW9  PIoXz       MMzan    _0PwGv          uL8Hv         ">
                       약관
                     </div>
                   </a>
                 </div>
-                <div class="             qF0y9          Igw0E     IwRSH      eGOV_       acqo5   _4EzTm     _22l1                 soMvl                  JI_ht                                                                      ">
+                <div style={{"margin":"5px"}} class="             qF0y9          Igw0E     IwRSH      eGOV_       acqo5   _4EzTm     _22l1                 soMvl                  JI_ht                                                                      ">
                   <a href="/directory/profiles/">
                     <div class="_7UhW9  PIoXz       MMzan    _0PwGv          uL8Hv         ">
                       인기 계정
                     </div>
                   </a>
                 </div>
-                <div class="             qF0y9          Igw0E     IwRSH      eGOV_       acqo5   _4EzTm     _22l1                 soMvl                  JI_ht                                                                      ">
+                <div style={{"margin":"5px"}} class="             qF0y9          Igw0E     IwRSH      eGOV_       acqo5   _4EzTm     _22l1                 soMvl                  JI_ht                                                                      ">
                   <a href="/directory/hashtags/">
                     <div class="_7UhW9  PIoXz       MMzan    _0PwGv          uL8Hv         ">
                       해시태그
                     </div>
                   </a>
                 </div>
-                <div class="             qF0y9          Igw0E     IwRSH      eGOV_       acqo5   _4EzTm     _22l1                 soMvl                  JI_ht                                                                      ">
+                <div style={{"margin":"5px"}} class="             qF0y9          Igw0E     IwRSH      eGOV_       acqo5   _4EzTm     _22l1                 soMvl                  JI_ht                                                                      ">
                   <a href="/explore/locations/">
                     <div class="_7UhW9  PIoXz       MMzan    _0PwGv          uL8Hv         ">
                       위치
                     </div>
                   </a>
                 </div>
-                <div class="             qF0y9          Igw0E     IwRSH      eGOV_       acqo5   _4EzTm     _22l1                 soMvl                  JI_ht                                                                      ">
+                <div style={{"margin":"5px"}} class="             qF0y9          Igw0E     IwRSH      eGOV_       acqo5   _4EzTm     _22l1                 soMvl                  JI_ht                                                                      ">
                   <a href="/web/lite/">
                     <div class="_7UhW9  PIoXz       MMzan    _0PwGv          uL8Hv         ">
                       Instagram Lite
                     </div>
                   </a>
                 </div>
-                <div class="             qF0y9          Igw0E     IwRSH      eGOV_       acqo5   _4EzTm     _22l1                 soMvl                  JI_ht                                                                      ">
+                <div style={{"margin":"5px"}} class="             qF0y9          Igw0E     IwRSH      eGOV_       acqo5   _4EzTm     _22l1                 soMvl                  JI_ht                                                                      ">
                   <a
                     href="https://www.facebook.com/help/instagram/261704639352628"
                     waprocessedanchor="true"
@@ -347,49 +347,49 @@ function Login() {
                   </a>
                 </div>
               </div>
-              <div class="             qF0y9          Igw0E     IwRSH        YBx95   ybXk5     _4EzTm  YlhBV                                                                                                            ">
-                <div class="             qF0y9          Igw0E     IwRSH      eGOV_       acqo5   _4EzTm     _22l1                 soMvl                  JI_ht                                                                      ">
+              <div  style={{ "margin": "auto", "display": "flex", "flex-direction": "row", "justify-content": "center", "align-items": "center" }} class="             qF0y9          Igw0E     IwRSH        YBx95   ybXk5     _4EzTm  YlhBV                                                                                                            ">
+                <div style={{"margin":"10px"}} class="             qF0y9          Igw0E     IwRSH      eGOV_       acqo5   _4EzTm     _22l1                 soMvl                  JI_ht                                                                      ">
                   <a href="/topics/dance-and-performance/">
-                    <div class="_7UhW9  PIoXz       MMzan    _0PwGv          uL8Hv         ">
+                    <div style={{"margin":"5px"}} class="_7UhW9  PIoXz       MMzan    _0PwGv          uL8Hv         ">
                       댄스
                     </div>
                   </a>
                 </div>
                 <div class="             qF0y9          Igw0E     IwRSH      eGOV_       acqo5   _4EzTm     _22l1                 soMvl                  JI_ht                                                                      ">
                   <a href="/topics/food-and-drink/">
-                    <div class="_7UhW9  PIoXz       MMzan    _0PwGv          uL8Hv         ">
+                    <div style={{"margin":"5px"}} class="_7UhW9  PIoXz       MMzan    _0PwGv          uL8Hv         ">
                       식음료
                     </div>
                   </a>
                 </div>
                 <div class="             qF0y9          Igw0E     IwRSH      eGOV_       acqo5   _4EzTm     _22l1                 soMvl                  JI_ht                                                                      ">
                   <a href="/topics/home-and-garden/">
-                    <div class="_7UhW9  PIoXz       MMzan    _0PwGv          uL8Hv         ">
+                    <div style={{"margin":"5px"}} class="_7UhW9  PIoXz       MMzan    _0PwGv          uL8Hv         ">
                       집 및 정원
                     </div>
                   </a>
                 </div>
                 <div class="             qF0y9          Igw0E     IwRSH      eGOV_       acqo5   _4EzTm     _22l1                 soMvl                  JI_ht                                                                      ">
                   <a href="/topics/music/">
-                    <div class="_7UhW9  PIoXz       MMzan    _0PwGv          uL8Hv         ">
+                    <div style={{"margin":"5px"}} class="_7UhW9  PIoXz       MMzan    _0PwGv          uL8Hv         ">
                       음악
                     </div>
                   </a>
                 </div>
                 <div class="             qF0y9          Igw0E     IwRSH      eGOV_       acqo5   _4EzTm     _22l1                 soMvl                  JI_ht                                                                      ">
                   <a href="/topics/visual-arts/">
-                    <div class="_7UhW9  PIoXz       MMzan    _0PwGv          uL8Hv         ">
+                    <div style={{"margin":"5px"}} class="_7UhW9  PIoXz       MMzan    _0PwGv          uL8Hv         ">
                       시각 예술
                     </div>
                   </a>
                 </div>
               </div>
             </div>
-            <div class="             qF0y9          Igw0E     IwRSH        YBx95   ybXk5     _4EzTm     _22l1                                                      _49XvD                                                   ">
-              <div class="_7UhW9  PIoXz       MMzan   KV-D4           uL8Hv         ">
-                <span class="_3G4x7   RFk-t bwz9f ">
+            <div style={{ "margin": "auto", "display": "flex", "flex-direction": "row", "justify-content": "center", "align-items": "center" }} class="             qF0y9          Igw0E     IwRSH        YBx95   ybXk5     _4EzTm     _22l1                                                      _49XvD                                                   ">
+              <div style={{ "margin": "auto", "display": "flex", "flex-direction": "row", "justify-content": "center", "align-items": "center" }} class="_7UhW9  PIoXz       MMzan   KV-D4           uL8Hv         ">
+                <span style={{ "margin": "auto", "display": "flex", "flex-direction": "row", "justify-content": "center", "align-items": "center" }} class="_3G4x7   RFk-t bwz9f ">
                   <div class="TQUPK">
-                    <span>한국어</span>
+                    <span style={{ "margin-right": "20px" }}>한국어</span>
                     <div class="             qF0y9          Igw0E     IwRSH      eGOV_       acqo5   _4EzTm                     WKY0a                                                                                         ">
                       <span
                         style={{
@@ -397,22 +397,11 @@ function Login() {
                           transform: "rotate(180deg)",
                         }}
                       >
-                        <svg
-                          aria-label="아래쪽 V자형 아이콘"
-                          class="_8-yf5 "
-                          color="#8e8e8e"
-                          fill="#8e8e8e"
-                          height="12"
-                          role="img"
-                          viewBox="0 0 24 24"
-                          width="12"
-                        >
-                          <path d="M21 17.502a.997.997 0 01-.707-.293L12 8.913l-8.293 8.296a1 1 0 11-1.414-1.414l9-9.004a1.03 1.03 0 011.414 0l9 9.004A1 1 0 0121 17.502z"></path>
-                        </svg>
                       </span>
                     </div>
                   </div>
                   <select aria-label="표시 언어 변경" class="hztqj">
+                    <option value="ko">한국어</option>
                     <option value="af">Afrikaans</option>
                     <option value="cs">Čeština</option>
                     <option value="da">Dansk</option>
@@ -427,7 +416,6 @@ function Login() {
                     <option value="id">Bahasa Indonesia</option>
                     <option value="it">Italiano</option>
                     <option value="ja">日本語</option>
-                    <option value="ko">한국어</option>
                     <option value="ms">Bahasa Melayu</option>
                     <option value="nb">Norsk</option>
                     <option value="nl">Nederlands</option>
@@ -466,7 +454,7 @@ function Login() {
                 </span>
               </div>
               <div class="             qF0y9          Igw0E     IwRSH      eGOV_       acqo5   _4EzTm                        _5VUwz                                                                                      ">
-                <div class="_7UhW9  PIoXz       MMzan    _0PwGv          uL8Hv         ">
+                <div style={{"margin-left": "10px"}} class="_7UhW9  PIoXz       MMzan    _0PwGv          uL8Hv         ">
                   © 2022 Instagram from Meta
                 </div>
               </div>
@@ -474,11 +462,8 @@ function Login() {
           </div>
         </footer>
       </section>
-      <Aa>
-        
-    </Aa>
     </div>
-    
+
   );
 }
 
@@ -486,5 +471,7 @@ export default Login;
 
 
 const Aa = styled.div`
-    background-color: red;
+ background-color: #00AFFF;
+ height: 300px;
+ width: 200px;
 `
