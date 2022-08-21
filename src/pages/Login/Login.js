@@ -1,15 +1,19 @@
 import React, { useState } from "react";
+import { useDispatch } from "react-redux";
+import { __PostLogin } from "../../redux/modules/PostLogin";
 import "./Login.css";
 
 function Login() {
   const [nickname, setNickname] = useState("")
   const [password, setPassword] = useState("")
 
+  const dispatch = useDispatch();
+
   const onsubmit = (e) => {
     if (regNick.test(nickname) === true || regNick2.test(nickname) === true) {
       if(regPass.test(password) === true) {
-        alert("로그인 성공")
         e.preventDefault();
+        dispatch(__PostLogin({nickname, password}))
       } else {
         alert("비밀번호를 확인해주세요")
         e.preventDefault();

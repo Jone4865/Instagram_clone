@@ -1,4 +1,6 @@
 import React, { useState } from "react";
+import { useDispatch } from "react-redux";
+import { __PostSignup } from "../../redux/modules/PostSignup";
 import "./Signup.css";
 
 function Signup() {
@@ -7,11 +9,12 @@ function Signup() {
     const [password, setPassword] = useState("")
     const [password2, setPassword2] = useState("")
     
+    const dispatch = useDispatch();
     const onsubmit = (e) => {
         if (regNick.test(nickname) === true || regNick2.test(nickname) === true) {
             if (name?.length >=2 && name?.length <=9 ) {
                 if (regPass.test(password) === true && password === password2) {
-                    alert("회원가입을 성공했습니다")
+                    dispatch(__PostSignup({nickname, name, password}))
                     e.preventDefault();
                 } else {
                     alert("비밀번호를 확인해주세요")
@@ -22,7 +25,7 @@ function Signup() {
                 e.preventDefault();
             }
         } else {
-            alert("닉네임을 확인해주세요")
+            alert("휴대폰 번호 또는 이메일 주소를 확인해주세요")
             e.preventDefault();
         }
     }
@@ -32,7 +35,7 @@ function Signup() {
     const regPass = /^[0-9a-zA-Z!@#$%^&*]{8,20}$/;
 
     return (
-        <body className="">
+        <div className="">
             <div id="react-root">
                 <section className="_9eogI E3X2T">
                     <div>
@@ -73,7 +76,7 @@ function Signup() {
                                             <div className="WZdjL">
                                                 <div className="_9GP1n   ">
                                                     <label className="f0n8F ">
-                                                        <input onChange={(e) => setName(e.target.value)} placeholder="성명" aria-required="false" autoCapitalize="sentences" autoCorrect="off" name="fullName" type="text" className="_2hvTZ pexuQ zyHYP"/>
+                                                        <input onChange={(e) => setName(e.target.value)} placeholder="성명 (2~9자)" aria-required="false" autoCapitalize="sentences" autoCorrect="off" name="fullName" type="text" className="_2hvTZ pexuQ zyHYP"/>
                                                     </label>
                                                     <div className="i24fI">
                                                     </div>
@@ -366,7 +369,7 @@ function Signup() {
                 </section></div>
 
 
-        </body>
+        </div>
     );
 }
 
