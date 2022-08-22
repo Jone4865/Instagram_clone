@@ -21,7 +21,6 @@ export const __PostLogin = createAsyncThunk(
           window.location.replace("/");
         } else alert("아이디가 존재하지 않습니다.");
       })
-      return api.fulfillWithValue(data.data.result);
     } catch (e) {
     //   if (e.response.data === "BAD_REQUEST") {
     //     alert("입력값을 확인해주세요.");

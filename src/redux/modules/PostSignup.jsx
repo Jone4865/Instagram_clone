@@ -21,7 +21,6 @@ export const __PostSignup = createAsyncThunk(
           alert("이미 있는 계정입니다")
         }
       })
-      return api.fulfillWithValue(data.data.result);
     } catch (e) {
       console.log(e)
       //   if (e.response.data === "BAD_REQUEST") {

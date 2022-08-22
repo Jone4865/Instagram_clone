@@ -1,5 +1,4 @@
 import React from "react";
-import "./Mypage.css";
 
 function Mypage() {
 
@@ -36,9 +35,7 @@ function Mypage() {
                                                                     <div className="_aa_j">
                                                                         <div className="_aa_k">
                                                                             <div className="_aadm">
-                                                                                <button className="_aadn" title="프로필 사진 바꾸기">
-                                                                                    <img alt="프로필 사진 바꾸기" className="_aadp" src="https://tse1.mm.bing.net/th?id=OIP._ZMxhOqO1O0RuE9lotq0HgHaK9&pid=Api&P=0" />
-                                                                                </button>
+                                                                                
                                                                                 <div>
                                                                                     <form encType="multipart/form-data" method="POST" role="presentation">
                                                                                         <input accept="image/jpeg,image/png" className="_ac69" type="file" />
@@ -75,7 +72,7 @@ function Mypage() {
                                                                     </section>
                                                                 </header>
 
-                                                                <div className="_aa-g _ac_s" role="tablist" style={{ "display": "flex", "margin": "auto" }}>
+                                                                <div className="_aa-g _ac_s" role="tablist" style={{ "display": "flex", "margin":"30px 0px 30px 48%" }}>
                                                                     <a aria-selected="true" className="qi72231t nu7423ey n3hqoq4p r86q59rh b3qcqh3k fq87ekyn bdao358l fsf7x5fv rse6dlih s5oniofx m8h3af8h l7ghb35v kjdc1dyq kmwttqpk srn514ro oxkhqvkx rl78xhln nch0832m cr00lzj9 rn8ck1ys s3jn8y49 icdlwmnq _aa-z _aa-- _ac_u _a6hd" href="/bel1__94/" role="link" tabIndex="0">
                                                                         <div className="_ab8w  _ab94 _ab97 _ab9f _ab9k _ab9p _abcm">
                                                                             <svg aria-label="" className="_ab6-" color="#262626" fill="#262626" height="12" role="img" viewBox="0 0 24 24" width="12">
@@ -488,9 +485,8 @@ function Mypage() {
                     </div>
                     <div style={{ "margin": "auto", "display": "flex", "flexDirection": "row", "justifyContent": "center", "alignItems": "center" }} className="             qF0y9          Igw0E     IwRSH        YBx95   ybXk5     _4EzTm     _22l1                                                      _49XvD                                                   ">
                         <div style={{ "margin": "auto", "display": "flex", "flexDirection": "row", "justifyContent": "center", "alignItems": "center" }} className="_7UhW9  PIoXz       MMzan   KV-D4           uL8Hv         ">
-                            <span style={{ "margin": "auto", "display": "flex", "flexDirection": "row", "justifyContent": "center", "alignItems": "center" }} className="_3G4x7   RFk-t bwz9f ">
+                            <span style={{ "margin": "auto", "display": "flex", "flexDirection": "row" }} className="_3G4x7   RFk-t bwz9f ">
                                 <div className="TQUPK">
-                                    <span style={{ "marginRight": "20px" }}>한국어</span>
                                     <div className="             qF0y9          Igw0E     IwRSH      eGOV_       acqo5   _4EzTm                     WKY0a                                                                                         ">
                                         <span
                                             style={{
@@ -554,11 +550,9 @@ function Mypage() {
                                 </select>
                             </span>
                         </div>
-                        <div className="             qF0y9          Igw0E     IwRSH      eGOV_       acqo5   _4EzTm                        _5VUwz                                                                                      ">
-                            <div style={{ "marginLeft": "10px" }} className="_7UhW9  PIoXz       MMzan    _0PwGv          uL8Hv         ">
+                        <div style={{ "marginRight": "30%" }} className="_7UhW9  PIoXz       MMzan    _0PwGv          uL8Hv         ">
                                 © 2022 Instagram from Meta
                             </div>
-                        </div>
                     </div>
                 </div>
             </footer>
