@@ -10,20 +10,26 @@ function Detail() {
     const navigate = useNavigate();
     const { postId } = useParams();
     const [detailList, setDetailList] = useState({});
-    const [comments, setComments] = useState({})
+
+    const [inputs ,setInputs] = useState({
+        postImg:"",
+        content:"",
+    });
 
     //상세보기 모달
     const [detailModal, setDetailModal] = useState(true);
 
-    //상세게시물 가져오기
-    // const getAxiosDetailData = async () => {
-    //     const axiosData = await axios.get(`http://localhost:3001/posts/${postId}`)
+    // 상세게시물 가져오기
+    const getAxiosDetailData = async () => {
+        const axiosData = await axios.get(`http://localhost:3001/posts?postId=1`)
+        setDetailList(axiosData.data)
+        console.log(axiosData.data)
+    }
+    useEffect(() => {
+        getAxiosDetailData();
+    }, [])
 
-    //     setDetailList(axiosData.data)
-    // }
-    // useEffect(() => {
-    //     getAxiosDetailData();
-    // }, [])
+
 
 
     //삭제 핸들러
@@ -32,24 +38,15 @@ function Detail() {
         await axios.delete(`http://localhost:3001/posts/${postId}`)
     }
 
-    // 댓글리스트 가제요기
-    const getCommentList = async () => {
-        const axiosComment = await axios.get(`http://localhost:3001/comments`)
-        setComments(axios.data)
-        console.log(axiosComment.data)
-    }
-    useEffect(() => {
-        getCommentList();
-    }, [])
 
     return (
-        <div>
+        <All_box>
             <Header />
             {
                 detailModal === true ? (<>
                     <DatailModalBackground onClick={() => {navigate('/')}}>
                         <DatailModalBox onClick={(event) => { event.stopPropagation()}}>
-                            <div>
+                            <All_box>
                                 <Left src="https://clone-img-upload.s3.ap-northeast-2.amazonaws.com/아이유 메인 이밎.jpg">
                                 </Left>
                                 <Right>
@@ -71,17 +68,25 @@ function Detail() {
 
                                     </Lastbox>
                                 </Right>
-                            </div>
+                            </All_box>
 
                         </DatailModalBox>
                     </DatailModalBackground>
                 </>) : null
             }
-        </div>
+        </All_box>
     )
 }
 
 export default Detail
+
+
+const All_box = styled.div`
+  max-width: 2000px;
+  min-width: 100px;
+  display: flex;
+  flex-direction: row;
+`
 
 ///상세 보기 모달
 const DatailModalBackground = styled.div`
@@ -100,9 +105,10 @@ const DatailModalBackground = styled.div`
 const DatailModalBox = styled.div`
     background-color: white;
     width: 1500px;
-    height: 880px;
+    height: 800px;
     max-width: 2000px;
     min-width: 200px;
+    margin-top: 50px;
 `;
 /////
 
@@ -111,7 +117,7 @@ const Left = styled.img`
     float: left;
     padding-top: 10px;
     padding-left: 10px;
-    height: 860px;
+    height: 780px;
 `
 const Right = styled.div`
     width: 505px;
