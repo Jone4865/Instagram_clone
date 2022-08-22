@@ -1,0 +1,26 @@
+{
+  "posts": [
+    {
+      "user": {
+        "id": 4,
+        "name": "taesik",
+        "nickname": "root55",
+        "image": null
+      },
+      "posts": [
+        {
+          "id": 4,
+          "content": "taesik-test",
+          "image": "taesik-test",
+          "createdAt": "2022-08-22T16:14:46.000Z"
+        },
+        {
+          "id": 7,
+          "content": "포스트",
+          "image": "fdasfasdfasdfa",
+          "createdAt": "2022-08-22T07:24:59.000Z"
+        }
+      ]
+    }
+  ]
+}
