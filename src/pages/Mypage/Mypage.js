@@ -32,7 +32,7 @@ function Mypage() {
                                                         </div>
                                                         <main className="_a993 _a995" role="main">
                                                             <div className="_aa_y _aa_z _aa_-">
-                                                                <header className="_aa_h">
+                                                                <header className="_aa_h" style={{ "width": "70%", "display": "flex", "margin": "auto", "padding": "20px", "marginLeft":"250px" }}>
                                                                     <div className="_aa_j">
                                                                         <div className="_aa_k">
                                                                             <div className="_aadm">
@@ -47,18 +47,19 @@ function Mypage() {
                                                                             </div>
                                                                         </div>
                                                                     </div>
-                                                                    <section className="_aa_l">
-                                                                        <div className="_aa_m">
-                                                                            <h2 className="_aacl _aacs _aact _aacx _aada" tabIndex="-1">
+                                                                    <section className="_aa_l" style={{ "display": "flex", "marginLeft": "100px" }}>
+                                                                        <div className="_aa_m" style={{ "display": "flex", "flexDirection": "row", }}>
+                                                                            <img src="https://tse1.mm.bing.net/th?id=OIP._ZMxhOqO1O0RuE9lotq0HgHaK9&pid=Api&P=0" style={{ "width": "150px", "height": "150px", "borderRadius": "100%" }} />
+                                                                            <h2 className="_aacl _aacs _aact _aacx _aada" tabIndex="-1" style={{ "fontSize": "23px", "marginLeft": "100px", "marginTop": "20px", "fontWeight": "unset" }}>
                                                                                 bel1__94</h2>
                                                                             <div className="_ab8w  _ab94 _ab99 _ab9f _ab9k _ab9q  _abb3 _abcm">
-                                                                                <div className="_ab8w  _ab94 _ab99 _ab9f _ab9m _ab9o _abcm">
+                                                                                <div className="_ab8w  _ab94 _ab99 _ab9f _ab9m _ab9o _abcm" style={{ "marginTop": "20px", "marginLeft": "20px", "borderRadius": "5px", "border": "1px solid gray", "height": "30px" }}>
                                                                                     <a className="qi72231t nu7423ey n3hqoq4p r86q59rh b3qcqh3k fq87ekyn bdao358l fsf7x5fv rse6dlih s5oniofx m8h3af8h l7ghb35v kjdc1dyq kmwttqpk srn514ro oxkhqvkx rl78xhln nch0832m cr00lzj9 rn8ck1ys s3jn8y49 icdlwmnq _acan _acap _acat _acaw _a6hd" href="/accounts/edit/" role="link" tabIndex="0">
                                                                                         프로필 편집</a>
                                                                                 </div>
                                                                             </div>
                                                                             <div className="_aa_n">
-                                                                                <button className="_abl-" type="button">
+                                                                                <button className="_abl-" type="button" style={{ "marginTop": "15px" }}>
                                                                                     <div className="_abm0">
                                                                                         <svg aria-label="옵션" className="_ab6-" color="#262626" fill="#262626" height="24" role="img" viewBox="0 0 24 24" width="24">
                                                                                             <circle cx="12" cy="12" fill="none" r="8.635" stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2">
@@ -70,23 +71,19 @@ function Mypage() {
                                                                                 </button>
                                                                             </div>
                                                                         </div>
-                                                                        <div className="_acvn">
-                                                                            <div>
-                                                                            </div>
-                                                                        </div>
-                                                                        <ul className="_aa_7">
+                                                                        {/* <ul className="_aa_7">
                                                                             <li className="_aa_5">
-                                                                                <div className="_aacl _aacp _aacu _aacx _aad6 _aade">
+                                                                                <p className="_aacl _aacp _aacu _aacx _aad6 _aade">
                                                                                     게시물 <span className="_ac2a">
                                                                                         17</span>
-                                                                                </div>
+                                                                                </p>
                                                                             </li>
                                                                         </ul>
                                                                         <div className="_aa_c">
-                                                                            <span className="_aacl _aacp _aacw _adda _aacx _aad7 _aade">
+                                                                            <span className="_aacl _aacp _aacw _adda _aacx _aad7 _aade" style={{ "fontWeight": "bold" }}>
                                                                                 채종원</span>
                                                                             <br />
-                                                                        </div>
+                                                                        </div> */}
                                                                     </section>
                                                                 </header>
 
@@ -114,9 +111,10 @@ function Mypage() {
                                                                 <div className="_ab8w  _ab94 _ab99 _ab9f _ab9m _ab9o _abcm">
                                                                     <article className="_aayp">
                                                                         <div>
-                                                                            <div style={{ "position": "relative", "display": "flex", "flexDirection": "column", "paddingBottom": "0px", "paddingTop": "0px", "width": "70%", "margin":"auto"}}>
-                                                                                <div className="_ac7v _aang">
-                                                                                    <div className="_aabd _aa8k _aanf">
+                                                                            <div style={{ "position": "relative", "display": "flex", "flexDirection": "column", "paddingBottom": "0px", "paddingTop": "0px" }}>
+                                                                                <div className="_ac7v _aang" style={{ "display": "flex", "width": "70%", "margin": "auto" }}>
+                                                                                    {/* //포스팅구역 */}
+                                                                                    <div className="_aabd _aa8k _aanf" style={{ "maxWidth": "33%" }}>
                                                                                         <a className="qi72231t nu7423ey n3hqoq4p r86q59rh b3qcqh3k fq87ekyn bdao358l fsf7x5fv rse6dlih s5oniofx m8h3af8h l7ghb35v kjdc1dyq kmwttqpk srn514ro oxkhqvkx rl78xhln nch0832m cr00lzj9 rn8ck1ys s3jn8y49 icdlwmnq _a6hd" href="/p/CeXzwCor-K8/" role="link" tabIndex="0">
                                                                                             <div className="_aagu">
                                                                                                 <div className="_aagv">
@@ -135,11 +133,12 @@ function Mypage() {
                                                                                             </div>
                                                                                         </a>
                                                                                     </div>
-                                                                                    <div className="_aabd _aa8k _aanf">
-                                                                                        <a className="qi72231t nu7423ey n3hqoq4p r86q59rh b3qcqh3k fq87ekyn bdao358l fsf7x5fv rse6dlih s5oniofx m8h3af8h l7ghb35v kjdc1dyq kmwttqpk srn514ro oxkhqvkx rl78xhln nch0832m cr00lzj9 rn8ck1ys s3jn8y49 icdlwmnq _a6hd" href="/p/CeI-mSYLU0a/" role="link" tabIndex="0">
+
+                                                                                    <div className="_aabd _aa8k _aanf" style={{ "maxWidth": "33%" }}>
+                                                                                        <a className="qi72231t nu7423ey n3hqoq4p r86q59rh b3qcqh3k fq87ekyn bdao358l fsf7x5fv rse6dlih s5oniofx m8h3af8h l7ghb35v kjdc1dyq kmwttqpk srn514ro oxkhqvkx rl78xhln nch0832m cr00lzj9 rn8ck1ys s3jn8y49 icdlwmnq _a6hd" href="/p/CX3wpRQPW-l/" role="link" tabIndex="0">
                                                                                             <div className="_aagu">
                                                                                                 <div className="_aagv">
-                                                                                                    <img alt="Photo by 채종원 on May 29, 2022. May be an image of outdoors." crossOrigin="anonymous" className="_aagt" src="https://tse1.mm.bing.net/th?id=OIP._ZMxhOqO1O0RuE9lotq0HgHaK9&pid=Api&P=0" style={{ "objectFit": "cover" }} />
+                                                                                                    <img alt="Photo by 채종원 on December 24, 2021. May be an image of indoor." crossOrigin="anonymous" className="_aagt" src="https://tse1.mm.bing.net/th?id=OIP._ZMxhOqO1O0RuE9lotq0HgHaK9&pid=Api&P=0" style={{ "objectFit": "cover" }} />
                                                                                                 </div>
                                                                                                 <div className="_aagw">
                                                                                                 </div>
@@ -154,7 +153,8 @@ function Mypage() {
                                                                                             </div>
                                                                                         </a>
                                                                                     </div>
-                                                                                    <div className="_aabd _aa8k _aanf">
+
+                                                                                    <div className="_aabd _aa8k _aanf" style={{ "maxWidth": "33%" }}>
                                                                                         <a className="qi72231t nu7423ey n3hqoq4p r86q59rh b3qcqh3k fq87ekyn bdao358l fsf7x5fv rse6dlih s5oniofx m8h3af8h l7ghb35v kjdc1dyq kmwttqpk srn514ro oxkhqvkx rl78xhln nch0832m cr00lzj9 rn8ck1ys s3jn8y49 icdlwmnq _a6hd" href="/p/CX3wpRQPW-l/" role="link" tabIndex="0">
                                                                                             <div className="_aagu">
                                                                                                 <div className="_aagv">
@@ -174,276 +174,6 @@ function Mypage() {
                                                                                         </a>
                                                                                     </div>
                                                                                 </div>
-                                                                                <div className="_ac7v _aang">
-                                                                                    <div className="_aabd _aa8k _aanf">
-                                                                                        <a className="qi72231t nu7423ey n3hqoq4p r86q59rh b3qcqh3k fq87ekyn bdao358l fsf7x5fv rse6dlih s5oniofx m8h3af8h l7ghb35v kjdc1dyq kmwttqpk srn514ro oxkhqvkx rl78xhln nch0832m cr00lzj9 rn8ck1ys s3jn8y49 icdlwmnq _a6hd" href="/p/CNmequjHho4/" role="link" tabIndex="0">
-                                                                                            <div className="_aagu">
-                                                                                                <div className="_aagv">
-                                                                                                    <img alt="Photo by 채종원 on April 13, 2021." crossOrigin="anonymous" className="_aagt" src="https://tse1.mm.bing.net/th?id=OIP._ZMxhOqO1O0RuE9lotq0HgHaK9&pid=Api&P=0" style={{ "objectFit": "cover" }} />
-                                                                                                </div>
-                                                                                                <div className="_aagw">
-                                                                                                </div>
-                                                                                            </div>
-                                                                                            <div className="_aatp">
-                                                                                                <div className="_ab8w  _ab94 _ab99 _ab9f _ab9m _ab9p  _abak _abb0 _abbi _abb- _abcm">
-                                                                                                    <svg aria-label="슬라이드" className="_ab6-" color="#ffffff" fill="#ffffff" height="22" role="img" viewBox="0 0 48 48" width="22">
-                                                                                                        <path d="M34.8 29.7V11c0-2.9-2.3-5.2-5.2-5.2H11c-2.9 0-5.2 2.3-5.2 5.2v18.7c0 2.9 2.3 5.2 5.2 5.2h18.7c2.8-.1 5.1-2.4 5.1-5.2zM39.2 15v16.1c0 4.5-3.7 8.2-8.2 8.2H14.9c-.6 0-.9.7-.5 1.1 1 1.1 2.4 1.8 4.1 1.8h13.4c5.7 0 10.3-4.6 10.3-10.3V18.5c0-1.6-.7-3.1-1.8-4.1-.5-.4-1.2 0-1.2.6z">
-                                                                                                        </path>
-                                                                                                    </svg>
-                                                                                                </div>
-                                                                                            </div>
-                                                                                        </a>
-                                                                                    </div>
-                                                                                    <div className="_aabd _aa8k _aanf">
-                                                                                        <a className="qi72231t nu7423ey n3hqoq4p r86q59rh b3qcqh3k fq87ekyn bdao358l fsf7x5fv rse6dlih s5oniofx m8h3af8h l7ghb35v kjdc1dyq kmwttqpk srn514ro oxkhqvkx rl78xhln nch0832m cr00lzj9 rn8ck1ys s3jn8y49 icdlwmnq _a6hd" href="/p/CGu_CobnxZ3/" role="link" tabIndex="0">
-                                                                                            <div className="_aagu">
-                                                                                                <div className="_aagv">
-                                                                                                    <img alt="Photo by 채종원 on October 24, 2020." crossOrigin="anonymous" className="_aagt" src="https://tse1.mm.bing.net/th?id=OIP._ZMxhOqO1O0RuE9lotq0HgHaK9&pid=Api&P=0" style={{ "objectFit": "cover" }} />
-                                                                                                </div>
-                                                                                                <div className="_aagw">
-                                                                                                </div>
-                                                                                            </div>
-                                                                                            <div className="_aatp">
-                                                                                                <div className="_ab8w  _ab94 _ab99 _ab9f _ab9m _ab9p  _abak _abb0 _abbi _abb- _abcm">
-                                                                                                    <svg aria-label="슬라이드" className="_ab6-" color="#ffffff" fill="#ffffff" height="22" role="img" viewBox="0 0 48 48" width="22">
-                                                                                                        <path d="M34.8 29.7V11c0-2.9-2.3-5.2-5.2-5.2H11c-2.9 0-5.2 2.3-5.2 5.2v18.7c0 2.9 2.3 5.2 5.2 5.2h18.7c2.8-.1 5.1-2.4 5.1-5.2zM39.2 15v16.1c0 4.5-3.7 8.2-8.2 8.2H14.9c-.6 0-.9.7-.5 1.1 1 1.1 2.4 1.8 4.1 1.8h13.4c5.7 0 10.3-4.6 10.3-10.3V18.5c0-1.6-.7-3.1-1.8-4.1-.5-.4-1.2 0-1.2.6z">
-                                                                                                        </path>
-                                                                                                    </svg>
-                                                                                                </div>
-                                                                                            </div>
-                                                                                        </a>
-                                                                                    </div>
-                                                                                    <div className="_aabd _aa8k _aanf">
-                                                                                        <a className="qi72231t nu7423ey n3hqoq4p r86q59rh b3qcqh3k fq87ekyn bdao358l fsf7x5fv rse6dlih s5oniofx m8h3af8h l7ghb35v kjdc1dyq kmwttqpk srn514ro oxkhqvkx rl78xhln nch0832m cr00lzj9 rn8ck1ys s3jn8y49 icdlwmnq _a6hd" href="/p/CCVtPzjnJAw/" role="link" tabIndex="0">
-                                                                                            <div className="_aagu">
-                                                                                                <div className="_aagv">
-                                                                                                    <img alt="Photo by 채종원 on July 07, 2020." className="_aagt" crossOrigin="anonymous" decoding="auto" style={{ "objectFit": "cover" }} sizes="269.0625px" srcSet="https://tse1.mm.bing.net/th?id=OIP._ZMxhOqO1O0RuE9lotq0HgHaK9&pid=Api&P=0" src="https://tse1.mm.bing.net/th?id=OIP._ZMxhOqO1O0RuE9lotq0HgHaK9&pid=Api&P=0" />
-                                                                                                </div>
-                                                                                                <div className="_aagw">
-                                                                                                </div>
-                                                                                            </div>
-                                                                                        </a>
-                                                                                    </div>
-                                                                                </div>
-                                                                                <div className="_ac7v _aang">
-                                                                                    <div className="_aabd _aa8k _aanf">
-                                                                                        <a className="qi72231t nu7423ey n3hqoq4p r86q59rh b3qcqh3k fq87ekyn bdao358l fsf7x5fv rse6dlih s5oniofx m8h3af8h l7ghb35v kjdc1dyq kmwttqpk srn514ro oxkhqvkx rl78xhln nch0832m cr00lzj9 rn8ck1ys s3jn8y49 icdlwmnq _a6hd" href="/p/B_0PJHPHdDt/" role="link" tabIndex="0">
-                                                                                            <div className="_aagu">
-                                                                                                <div className="_aagv">
-                                                                                                    <img alt="Photo by 채종원 on May 05, 2020." crossOrigin="anonymous" className="_aagt" src="https://tse1.mm.bing.net/th?id=OIP._ZMxhOqO1O0RuE9lotq0HgHaK9&pid=Api&P=0" style={{ "objectFit": "cover" }} />
-                                                                                                </div>
-                                                                                                <div className="_aagw">
-                                                                                                </div>
-                                                                                            </div>
-                                                                                            <div className="_aatp">
-                                                                                                <div className="_ab8w  _ab94 _ab99 _ab9f _ab9m _ab9p  _abak _abb0 _abbi _abb- _abcm">
-                                                                                                    <svg aria-label="슬라이드" className="_ab6-" color="#ffffff" fill="#ffffff" height="22" role="img" viewBox="0 0 48 48" width="22">
-                                                                                                        <path d="M34.8 29.7V11c0-2.9-2.3-5.2-5.2-5.2H11c-2.9 0-5.2 2.3-5.2 5.2v18.7c0 2.9 2.3 5.2 5.2 5.2h18.7c2.8-.1 5.1-2.4 5.1-5.2zM39.2 15v16.1c0 4.5-3.7 8.2-8.2 8.2H14.9c-.6 0-.9.7-.5 1.1 1 1.1 2.4 1.8 4.1 1.8h13.4c5.7 0 10.3-4.6 10.3-10.3V18.5c0-1.6-.7-3.1-1.8-4.1-.5-.4-1.2 0-1.2.6z">
-                                                                                                        </path>
-                                                                                                    </svg>
-                                                                                                </div>
-                                                                                            </div>
-                                                                                        </a>
-                                                                                    </div>
-                                                                                    <div className="_aabd _aa8k _aanf">
-                                                                                        <a className="qi72231t nu7423ey n3hqoq4p r86q59rh b3qcqh3k fq87ekyn bdao358l fsf7x5fv rse6dlih s5oniofx m8h3af8h l7ghb35v kjdc1dyq kmwttqpk srn514ro oxkhqvkx rl78xhln nch0832m cr00lzj9 rn8ck1ys s3jn8y49 icdlwmnq _a6hd" href="/p/B3my75cH4e2/" role="link" tabIndex="0">
-                                                                                            <div className="_aagu">
-                                                                                                <div className="_aagv">
-                                                                                                    <img alt="Photo by 채종원 on October 14, 2019." crossOrigin="anonymous" className="_aagt" src="https://tse1.mm.bing.net/th?id=OIP._ZMxhOqO1O0RuE9lotq0HgHaK9&pid=Api&P=0" style={{ "objectFit": "cover" }} />
-                                                                                                </div>
-                                                                                                <div className="_aagw">
-                                                                                                </div>
-                                                                                            </div>
-                                                                                            <div className="_aatp">
-                                                                                                <div className="_ab8w  _ab94 _ab99 _ab9f _ab9m _ab9p  _abak _abb0 _abbi _abb- _abcm">
-                                                                                                    <svg aria-label="슬라이드" className="_ab6-" color="#ffffff" fill="#ffffff" height="22" role="img" viewBox="0 0 48 48" width="22">
-                                                                                                        <path d="M34.8 29.7V11c0-2.9-2.3-5.2-5.2-5.2H11c-2.9 0-5.2 2.3-5.2 5.2v18.7c0 2.9 2.3 5.2 5.2 5.2h18.7c2.8-.1 5.1-2.4 5.1-5.2zM39.2 15v16.1c0 4.5-3.7 8.2-8.2 8.2H14.9c-.6 0-.9.7-.5 1.1 1 1.1 2.4 1.8 4.1 1.8h13.4c5.7 0 10.3-4.6 10.3-10.3V18.5c0-1.6-.7-3.1-1.8-4.1-.5-.4-1.2 0-1.2.6z">
-                                                                                                        </path>
-                                                                                                    </svg>
-                                                                                                </div>
-                                                                                            </div>
-                                                                                        </a>
-                                                                                    </div>
-                                                                                    <div className="_aabd _aa8k _aanf">
-                                                                                        <a className="qi72231t nu7423ey n3hqoq4p r86q59rh b3qcqh3k fq87ekyn bdao358l fsf7x5fv rse6dlih s5oniofx m8h3af8h l7ghb35v kjdc1dyq kmwttqpk srn514ro oxkhqvkx rl78xhln nch0832m cr00lzj9 rn8ck1ys s3jn8y49 icdlwmnq _a6hd" href="/p/B28pciynljW/" role="link" tabIndex="0">
-                                                                                            <div className="_aagu">
-                                                                                                <div className="_aagv">
-                                                                                                    <img alt="Photo shared by 채종원 on September 28, 2019 tagging @seoyouthh." crossOrigin="anonymous" className="_aagt" src="https://tse1.mm.bing.net/th?id=OIP._ZMxhOqO1O0RuE9lotq0HgHaK9&pid=Api&P=0" style={{ "objectFit": "cover" }} />
-                                                                                                </div>
-                                                                                                <div className="_aagw">
-                                                                                                </div>
-                                                                                            </div>
-                                                                                            <div className="_aatp">
-                                                                                                <div className="_ab8w  _ab94 _ab99 _ab9f _ab9m _ab9p  _abak _abb0 _abbi _abb- _abcm">
-                                                                                                    <svg aria-label="슬라이드" className="_ab6-" color="#ffffff" fill="#ffffff" height="22" role="img" viewBox="0 0 48 48" width="22">
-                                                                                                        <path d="M34.8 29.7V11c0-2.9-2.3-5.2-5.2-5.2H11c-2.9 0-5.2 2.3-5.2 5.2v18.7c0 2.9 2.3 5.2 5.2 5.2h18.7c2.8-.1 5.1-2.4 5.1-5.2zM39.2 15v16.1c0 4.5-3.7 8.2-8.2 8.2H14.9c-.6 0-.9.7-.5 1.1 1 1.1 2.4 1.8 4.1 1.8h13.4c5.7 0 10.3-4.6 10.3-10.3V18.5c0-1.6-.7-3.1-1.8-4.1-.5-.4-1.2 0-1.2.6z">
-                                                                                                        </path>
-                                                                                                    </svg>
-                                                                                                </div>
-                                                                                            </div>
-                                                                                        </a>
-                                                                                    </div>
-                                                                                </div>
-                                                                                <div className="_ac7v _aang">
-                                                                                    <div className="_aabd _aa8k _aanf">
-                                                                                        <a className="qi72231t nu7423ey n3hqoq4p r86q59rh b3qcqh3k fq87ekyn bdao358l fsf7x5fv rse6dlih s5oniofx m8h3af8h l7ghb35v kjdc1dyq kmwttqpk srn514ro oxkhqvkx rl78xhln nch0832m cr00lzj9 rn8ck1ys s3jn8y49 icdlwmnq _a6hd" href="/p/BxXG6xUn9wZ/" role="link" tabIndex="0">
-                                                                                            <div className="_aagu">
-                                                                                                <div className="_aagv">
-                                                                                                    <img alt="Photo shared by 채종원 on May 12, 2019 tagging @2woo_0, and @ping_ma_p." crossOrigin="anonymous" className="_aagt" src="https://tse1.mm.bing.net/th?id=OIP._ZMxhOqO1O0RuE9lotq0HgHaK9&pid=Api&P=0" style={{ "objectFit": "cover" }} />
-                                                                                                </div>
-                                                                                                <div className="_aagw">
-                                                                                                </div>
-                                                                                            </div>
-                                                                                            <div className="_aatp">
-                                                                                                <div className="_ab8w  _ab94 _ab99 _ab9f _ab9m _ab9p  _abak _abb0 _abbi _abb- _abcm">
-                                                                                                    <svg aria-label="슬라이드" className="_ab6-" color="#ffffff" fill="#ffffff" height="22" role="img" viewBox="0 0 48 48" width="22">
-                                                                                                        <path d="M34.8 29.7V11c0-2.9-2.3-5.2-5.2-5.2H11c-2.9 0-5.2 2.3-5.2 5.2v18.7c0 2.9 2.3 5.2 5.2 5.2h18.7c2.8-.1 5.1-2.4 5.1-5.2zM39.2 15v16.1c0 4.5-3.7 8.2-8.2 8.2H14.9c-.6 0-.9.7-.5 1.1 1 1.1 2.4 1.8 4.1 1.8h13.4c5.7 0 10.3-4.6 10.3-10.3V18.5c0-1.6-.7-3.1-1.8-4.1-.5-.4-1.2 0-1.2.6z">
-                                                                                                        </path>
-                                                                                                    </svg>
-                                                                                                </div>
-                                                                                            </div>
-                                                                                        </a>
-                                                                                    </div>
-                                                                                    <div className="_aabd _aa8k _aanf">
-                                                                                        <a className="qi72231t nu7423ey n3hqoq4p r86q59rh b3qcqh3k fq87ekyn bdao358l fsf7x5fv rse6dlih s5oniofx m8h3af8h l7ghb35v kjdc1dyq kmwttqpk srn514ro oxkhqvkx rl78xhln nch0832m cr00lzj9 rn8ck1ys s3jn8y49 icdlwmnq _a6hd" href="/p/Bwj-NwPHBjl/" role="link" tabIndex="0">
-                                                                                            <div className="_aagu">
-                                                                                                <div className="_aagv">
-                                                                                                    <img alt="Photo by 채종원 on April 22, 2019." crossOrigin="anonymous" className="_aagt" src="https://tse1.mm.bing.net/th?id=OIP._ZMxhOqO1O0RuE9lotq0HgHaK9&pid=Api&P=0" style={{ "objectFit": "cover" }} />
-                                                                                                </div>
-                                                                                                <div className="_aagw">
-                                                                                                </div>
-                                                                                            </div>
-                                                                                            <div className="_aatp">
-                                                                                                <div className="_ab8w  _ab94 _ab99 _ab9f _ab9m _ab9p  _abak _abb0 _abbi _abb- _abcm">
-                                                                                                    <svg aria-label="슬라이드" className="_ab6-" color="#ffffff" fill="#ffffff" height="22" role="img" viewBox="0 0 48 48" width="22">
-                                                                                                        <path d="M34.8 29.7V11c0-2.9-2.3-5.2-5.2-5.2H11c-2.9 0-5.2 2.3-5.2 5.2v18.7c0 2.9 2.3 5.2 5.2 5.2h18.7c2.8-.1 5.1-2.4 5.1-5.2zM39.2 15v16.1c0 4.5-3.7 8.2-8.2 8.2H14.9c-.6 0-.9.7-.5 1.1 1 1.1 2.4 1.8 4.1 1.8h13.4c5.7 0 10.3-4.6 10.3-10.3V18.5c0-1.6-.7-3.1-1.8-4.1-.5-.4-1.2 0-1.2.6z">
-                                                                                                        </path>
-                                                                                                    </svg>
-                                                                                                </div>
-                                                                                            </div>
-                                                                                        </a>
-                                                                                    </div>
-                                                                                    <div className="_aabd _aa8k _aanf">
-                                                                                        <a className="qi72231t nu7423ey n3hqoq4p r86q59rh b3qcqh3k fq87ekyn bdao358l fsf7x5fv rse6dlih s5oniofx m8h3af8h l7ghb35v kjdc1dyq kmwttqpk srn514ro oxkhqvkx rl78xhln nch0832m cr00lzj9 rn8ck1ys s3jn8y49 icdlwmnq _a6hd" href="/p/Bu8ov0rHLua/" role="link" tabIndex="0">
-                                                                                            <div className="_aagu">
-                                                                                                <div className="_aagv">
-                                                                                                    <img alt="Photo by 채종원 on March 13, 2019." crossOrigin="anonymous" className="_aagt" src="https://tse1.mm.bing.net/th?id=OIP._ZMxhOqO1O0RuE9lotq0HgHaK9&pid=Api&P=0" style={{ "objectFit": "cover" }} />
-                                                                                                </div>
-                                                                                                <div className="_aagw">
-                                                                                                </div>
-                                                                                            </div>
-                                                                                            <div className="_aatp">
-                                                                                                <div className="_ab8w  _ab94 _ab99 _ab9f _ab9m _ab9p  _abak _abb0 _abbi _abb- _abcm">
-                                                                                                    <svg aria-label="슬라이드" className="_ab6-" color="#ffffff" fill="#ffffff" height="22" role="img" viewBox="0 0 48 48" width="22">
-                                                                                                        <path d="M34.8 29.7V11c0-2.9-2.3-5.2-5.2-5.2H11c-2.9 0-5.2 2.3-5.2 5.2v18.7c0 2.9 2.3 5.2 5.2 5.2h18.7c2.8-.1 5.1-2.4 5.1-5.2zM39.2 15v16.1c0 4.5-3.7 8.2-8.2 8.2H14.9c-.6 0-.9.7-.5 1.1 1 1.1 2.4 1.8 4.1 1.8h13.4c5.7 0 10.3-4.6 10.3-10.3V18.5c0-1.6-.7-3.1-1.8-4.1-.5-.4-1.2 0-1.2.6z">
-                                                                                                        </path>
-                                                                                                    </svg>
-                                                                                                </div>
-                                                                                            </div>
-                                                                                        </a>
-                                                                                    </div>
-                                                                                </div>
-                                                                                <div className="_ac7v _aang">
-                                                                                    <div className="_aabd _aa8k _aanf">
-                                                                                        <a className="qi72231t nu7423ey n3hqoq4p r86q59rh b3qcqh3k fq87ekyn bdao358l fsf7x5fv rse6dlih s5oniofx m8h3af8h l7ghb35v kjdc1dyq kmwttqpk srn514ro oxkhqvkx rl78xhln nch0832m cr00lzj9 rn8ck1ys s3jn8y49 icdlwmnq _a6hd" href="/p/BueEd9snncf/" role="link" tabIndex="0">
-                                                                                            <div className="_aagu">
-                                                                                                <div className="_aagv">
-                                                                                                    <img alt="Photo by 채종원 on March 01, 2019. May be an image of food and indoor." crossOrigin="anonymous" className="_aagt" src="https://tse1.mm.bing.net/th?id=OIP._ZMxhOqO1O0RuE9lotq0HgHaK9&pid=Api&P=0" style={{ "objectFit": "cover" }} />
-                                                                                                </div>
-                                                                                                <div className="_aagw">
-                                                                                                </div>
-                                                                                            </div>
-                                                                                            <div className="_aatp">
-                                                                                                <div className="_ab8w  _ab94 _ab99 _ab9f _ab9m _ab9p  _abak _abb0 _abbi _abb- _abcm">
-                                                                                                    <svg aria-label="슬라이드" className="_ab6-" color="#ffffff" fill="#ffffff" height="22" role="img" viewBox="0 0 48 48" width="22">
-                                                                                                        <path d="M34.8 29.7V11c0-2.9-2.3-5.2-5.2-5.2H11c-2.9 0-5.2 2.3-5.2 5.2v18.7c0 2.9 2.3 5.2 5.2 5.2h18.7c2.8-.1 5.1-2.4 5.1-5.2zM39.2 15v16.1c0 4.5-3.7 8.2-8.2 8.2H14.9c-.6 0-.9.7-.5 1.1 1 1.1 2.4 1.8 4.1 1.8h13.4c5.7 0 10.3-4.6 10.3-10.3V18.5c0-1.6-.7-3.1-1.8-4.1-.5-.4-1.2 0-1.2.6z">
-                                                                                                        </path>
-                                                                                                    </svg>
-                                                                                                </div>
-                                                                                            </div>
-                                                                                        </a>
-                                                                                    </div>
-                                                                                    <div className="_aabd _aa8k _aanf">
-                                                                                        <a className="qi72231t nu7423ey n3hqoq4p r86q59rh b3qcqh3k fq87ekyn bdao358l fsf7x5fv rse6dlih s5oniofx m8h3af8h l7ghb35v kjdc1dyq kmwttqpk srn514ro oxkhqvkx rl78xhln nch0832m cr00lzj9 rn8ck1ys s3jn8y49 icdlwmnq _a6hd" href="/p/BueDupSnnoA/" role="link" tabIndex="0">
-                                                                                            <div className="_aagu">
-                                                                                                <div className="_aagv">
-                                                                                                    <img alt="Photo by 채종원 on March 01, 2019." crossOrigin="anonymous" className="_aagt" src="https://tse1.mm.bing.net/th?id=OIP._ZMxhOqO1O0RuE9lotq0HgHaK9&pid=Api&P=0" style={{ "objectFit": "cover" }} />
-                                                                                                </div>
-                                                                                                <div className="_aagw">
-                                                                                                </div>
-                                                                                            </div>
-                                                                                            <div className="_aatp">
-                                                                                                <div className="_ab8w  _ab94 _ab99 _ab9f _ab9m _ab9p  _abak _abb0 _abbi _abb- _abcm">
-                                                                                                    <svg aria-label="슬라이드" className="_ab6-" color="#ffffff" fill="#ffffff" height="22" role="img" viewBox="0 0 48 48" width="22">
-                                                                                                        <path d="M34.8 29.7V11c0-2.9-2.3-5.2-5.2-5.2H11c-2.9 0-5.2 2.3-5.2 5.2v18.7c0 2.9 2.3 5.2 5.2 5.2h18.7c2.8-.1 5.1-2.4 5.1-5.2zM39.2 15v16.1c0 4.5-3.7 8.2-8.2 8.2H14.9c-.6 0-.9.7-.5 1.1 1 1.1 2.4 1.8 4.1 1.8h13.4c5.7 0 10.3-4.6 10.3-10.3V18.5c0-1.6-.7-3.1-1.8-4.1-.5-.4-1.2 0-1.2.6z">
-                                                                                                        </path>
-                                                                                                    </svg>
-                                                                                                </div>
-                                                                                            </div>
-                                                                                        </a>
-                                                                                    </div>
-                                                                                    <div className="_aabd _aa8k _aanf">
-                                                                                        <a className="qi72231t nu7423ey n3hqoq4p r86q59rh b3qcqh3k fq87ekyn bdao358l fsf7x5fv rse6dlih s5oniofx m8h3af8h l7ghb35v kjdc1dyq kmwttqpk srn514ro oxkhqvkx rl78xhln nch0832m cr00lzj9 rn8ck1ys s3jn8y49 icdlwmnq _a6hd" href="/p/BueCqd4nsi8/" role="link" tabIndex="0">
-                                                                                            <div className="_aagu">
-                                                                                                <div className="_aagv">
-                                                                                                    <img alt="Photo by 채종원 on March 01, 2019." crossOrigin="anonymous" className="_aagt" src="https://tse1.mm.bing.net/th?id=OIP._ZMxhOqO1O0RuE9lotq0HgHaK9&pid=Api&P=0" style={{ "objectFit": "cover" }} />
-                                                                                                </div>
-                                                                                                <div className="_aagw">
-                                                                                                </div>
-                                                                                            </div>
-                                                                                            <div className="_aatp">
-                                                                                                <div className="_ab8w  _ab94 _ab99 _ab9f _ab9m _ab9p  _abak _abb0 _abbi _abb- _abcm">
-                                                                                                    <svg aria-label="슬라이드" className="_ab6-" color="#ffffff" fill="#ffffff" height="22" role="img" viewBox="0 0 48 48" width="22">
-                                                                                                        <path d="M34.8 29.7V11c0-2.9-2.3-5.2-5.2-5.2H11c-2.9 0-5.2 2.3-5.2 5.2v18.7c0 2.9 2.3 5.2 5.2 5.2h18.7c2.8-.1 5.1-2.4 5.1-5.2zM39.2 15v16.1c0 4.5-3.7 8.2-8.2 8.2H14.9c-.6 0-.9.7-.5 1.1 1 1.1 2.4 1.8 4.1 1.8h13.4c5.7 0 10.3-4.6 10.3-10.3V18.5c0-1.6-.7-3.1-1.8-4.1-.5-.4-1.2 0-1.2.6z">
-                                                                                                        </path>
-                                                                                                    </svg>
-                                                                                                </div>
-                                                                                            </div>
-                                                                                        </a>
-                                                                                    </div>
-                                                                                </div>
-                                                                                <div className="_ac7v _aang">
-                                                                                    <div className="_aabd _aa8k _aanf">
-                                                                                        <a className="qi72231t nu7423ey n3hqoq4p r86q59rh b3qcqh3k fq87ekyn bdao358l fsf7x5fv rse6dlih s5oniofx m8h3af8h l7ghb35v kjdc1dyq kmwttqpk srn514ro oxkhqvkx rl78xhln nch0832m cr00lzj9 rn8ck1ys s3jn8y49 icdlwmnq _a6hd" href="/p/BuBuCeMnq_U/" role="link" tabIndex="0">
-                                                                                            <div className="_aagu">
-                                                                                                <div className="_aagv">
-                                                                                                    <img alt="Photo by 채종원 on February 18, 2019." crossOrigin="anonymous" className="_aagt" src="https://tse1.mm.bing.net/th?id=OIP._ZMxhOqO1O0RuE9lotq0HgHaK9&pid=Api&P=0" style={{ "objectFit": "cover" }} />
-                                                                                                </div>
-                                                                                                <div className="_aagw">
-                                                                                                </div>
-                                                                                            </div>
-                                                                                            <div className="_aatp">
-                                                                                                <div className="_ab8w  _ab94 _ab99 _ab9f _ab9m _ab9p  _abak _abb0 _abbi _abb- _abcm">
-                                                                                                    <svg aria-label="슬라이드" className="_ab6-" color="#ffffff" fill="#ffffff" height="22" role="img" viewBox="0 0 48 48" width="22">
-                                                                                                        <path d="M34.8 29.7V11c0-2.9-2.3-5.2-5.2-5.2H11c-2.9 0-5.2 2.3-5.2 5.2v18.7c0 2.9 2.3 5.2 5.2 5.2h18.7c2.8-.1 5.1-2.4 5.1-5.2zM39.2 15v16.1c0 4.5-3.7 8.2-8.2 8.2H14.9c-.6 0-.9.7-.5 1.1 1 1.1 2.4 1.8 4.1 1.8h13.4c5.7 0 10.3-4.6 10.3-10.3V18.5c0-1.6-.7-3.1-1.8-4.1-.5-.4-1.2 0-1.2.6z">
-                                                                                                        </path>
-                                                                                                    </svg>
-                                                                                                </div>
-                                                                                            </div>
-                                                                                        </a>
-                                                                                    </div>
-                                                                                    <div className="_aabd _aa8k _aanf">
-                                                                                        <a className="qi72231t nu7423ey n3hqoq4p r86q59rh b3qcqh3k fq87ekyn bdao358l fsf7x5fv rse6dlih s5oniofx m8h3af8h l7ghb35v kjdc1dyq kmwttqpk srn514ro oxkhqvkx rl78xhln nch0832m cr00lzj9 rn8ck1ys s3jn8y49 icdlwmnq _a6hd" href="/p/Bt8yJksnc7I/" role="link" tabIndex="0">
-                                                                                            <div className="_aagu">
-                                                                                                <div className="_aagv">
-                                                                                                    <img alt="Photo by 채종원 on February 16, 2019." crossOrigin="anonymous" className="_aagt" src="https://tse1.mm.bing.net/th?id=OIP._ZMxhOqO1O0RuE9lotq0HgHaK9&pid=Api&P=0" style={{ "objectFit": "cover" }} />
-                                                                                                </div>
-                                                                                                <div className="_aagw">
-                                                                                                </div>
-                                                                                            </div>
-                                                                                            <div className="_aatp">
-                                                                                                <div className="_ab8w  _ab94 _ab99 _ab9f _ab9m _ab9p  _abak _abb0 _abbi _abb- _abcm">
-                                                                                                    <svg aria-label="슬라이드" className="_ab6-" color="#ffffff" fill="#ffffff" height="22" role="img" viewBox="0 0 48 48" width="22">
-                                                                                                        <path d="M34.8 29.7V11c0-2.9-2.3-5.2-5.2-5.2H11c-2.9 0-5.2 2.3-5.2 5.2v18.7c0 2.9 2.3 5.2 5.2 5.2h18.7c2.8-.1 5.1-2.4 5.1-5.2zM39.2 15v16.1c0 4.5-3.7 8.2-8.2 8.2H14.9c-.6 0-.9.7-.5 1.1 1 1.1 2.4 1.8 4.1 1.8h13.4c5.7 0 10.3-4.6 10.3-10.3V18.5c0-1.6-.7-3.1-1.8-4.1-.5-.4-1.2 0-1.2.6z">
-                                                                                                        </path>
-                                                                                                    </svg>
-                                                                                                </div>
-                                                                                            </div>
-                                                                                        </a>
-                                                                                    </div>
-                                                                                    <div className="_aanf">
-                                                                                    </div>
-                                                                                </div>
                                                                             </div>
                                                                         </div>
                                                                     </article>
@@ -454,7 +184,7 @@ function Mypage() {
                                                             <div className=" _acbm">
                                                             </div>
                                                             <div className="_acc1 _acc3" style={{ "display": "flex" }}>
-                                                                <div className="_acum" style={{ "backgroundColor": "white", "padding":"10px", "borderBottom":"2px solid whitesmoke" }}>
+                                                                <div className="_acum" style={{ "backgroundColor": "white", "padding": "10px", "borderBottom": "2px solid whitesmoke" }}>
                                                                     <div className="_acun" >
                                                                         <div className="_acup">
                                                                             <div className="_ab8w  _ab94 _ab99 _ab9f _ab9k _ab9p _abcm">
@@ -477,7 +207,7 @@ function Mypage() {
                                                                         </div>
                                                                         <div className="_aawf _aawg _aexm">
                                                                             <div className="_abn-">
-                                                                                <input placeholder="검색" type="text" style={{"display": "flex", "marginTop":"3px", "borderRadius":"10px", "width": "260px","height":"25px", "backgroundColor":"whitesmoke", "border": "0px", "borderLadius": "3px", "padding": "5px"}} />
+                                                                                <input placeholder="검색" type="text" style={{ "display": "flex", "marginTop": "3px", "borderRadius": "10px", "width": "260px", "height": "25px", "backgroundColor": "whitesmoke", "border": "0px", "borderLadius": "3px", "padding": "5px", "paddingLeft": "20px" }} />
                                                                             </div>
                                                                         </div>
 
@@ -541,7 +271,7 @@ function Mypage() {
                                                                             </div>
                                                                         </div>
                                                                     </div>
-                                                                    
+
                                                                 </div>
                                                             </div>
                                                         </nav>
@@ -588,244 +318,244 @@ function Mypage() {
                     </div>
                 </div>
             </div>
-            <footer className="Zx5PI  burfB vfoLd " role="contentinfo" style={{ "margin": "50px", "display": "flex", "justifyContent": "center", "alignItems": "center", "fontSize": "12px","backgroundColor":"white"  }}>
-            <div className="             qF0y9          Igw0E     IwRSH      eGOV_       acqo5   _4EzTm               KokQV                                                                                               ">
-              <div style={{ "margin": "auto", "color": "gray", "display": "flex", "flexDirection": "row", "justifyContent": "center", "alignItems": "center" }} className="             qF0y9          Igw0E     IwRSH      eGOV_       acqo5   _4EzTm                                                              kEKum                                                ">
-                <div style={{ "margin": "auto", "color": "gray", "display": "flex", "flexDirection": "row", "justifyContent": "center", "alignItems": "center" }} className="             qF0y9          Igw0E     IwRSH        YBx95   ybXk5     _4EzTm  YlhBV                                                                                                            ">
-                  <div style={{ "margin": "10px" }} className="             qF0y9          Igw0E     IwRSH      eGOV_       acqo5   _4EzTm     _22l1                 soMvl                  JI_ht                                                                      ">
-                    <a
-                      href="https://about.facebook.com/meta"
-                      rel="nofollow noopener noreferrer"
-                      target="_blank"
-                      waprocessedanchor="true"
-                    >
-                      <div className="_7UhW9  PIoXz       MMzan    _0PwGv          uL8Hv         ">
-                        Meta
-                      </div>
-                    </a>
-                  </div>
-                  <div style={{ "margin": "5px" }} className="             qF0y9          Igw0E     IwRSH      eGOV_       acqo5   _4EzTm     _22l1                 soMvl                  JI_ht                                                                      ">
-                    <a
-                      href="https://about.instagram.com/"
-                      rel="nofollow noopener noreferrer"
-                      target="_blank"
-                      waprocessedanchor="true"
-                    >
-                      <div style={{ "margin": "5px" }} className="_7UhW9  PIoXz       MMzan    _0PwGv          uL8Hv         ">
-                        소개
-                      </div>
-                    </a>
-                  </div>
-                  <div style={{ "margin": "5px" }} className="             qF0y9          Igw0E     IwRSH      eGOV_       acqo5   _4EzTm     _22l1                 soMvl                  JI_ht                                                                      ">
-                    <a
-                      href="https://about.instagram.com/blog/"
-                      rel="nofollow noopener noreferrer"
-                      target="_blank"
-                      waprocessedanchor="true"
-                    >
-                      <div style={{ "margin": "5px" }} className="_7UhW9  PIoXz       MMzan    _0PwGv          uL8Hv         ">
-                        블로그
-                      </div>
-                    </a>
-                  </div>
-                  <div style={{ "margin": "5px" }} className="             qF0y9          Igw0E     IwRSH      eGOV_       acqo5   _4EzTm     _22l1                 soMvl                  JI_ht                                                                      ">
-                    <a href="/about/jobs/">
-                      <div className="_7UhW9  PIoXz       MMzan    _0PwGv          uL8Hv         ">
-                        채용 정보
-                      </div>
-                    </a>
-                  </div>
-                  <div style={{ "margin": "5px" }} className="             qF0y9          Igw0E     IwRSH      eGOV_       acqo5   _4EzTm     _22l1                 soMvl                  JI_ht                                                                      ">
-                    <a
-                      href="https://help.instagram.com/"
-                      rel="nofollow noopener noreferrer"
-                      target="_blank"
-                      waprocessedanchor="true"
-                    >
-                      <div className="_7UhW9  PIoXz       MMzan    _0PwGv          uL8Hv         ">
-                        도움말
-                      </div>
-                    </a>
-                  </div>
-                  <div style={{ "margin": "5px" }} className="             qF0y9          Igw0E     IwRSH      eGOV_       acqo5   _4EzTm     _22l1                 soMvl                  JI_ht                                                                      ">
-                    <a
-                      href="https://developers.facebook.com/docs/instagram"
-                      rel="nofollow noopener noreferrer"
-                      target="_blank"
-                      waprocessedanchor="true"
-                    >
-                      <div className="_7UhW9  PIoXz       MMzan    _0PwGv          uL8Hv         ">
-                        API
-                      </div>
-                    </a>
-                  </div>
-                  <div style={{ "margin": "5px" }} className="             qF0y9          Igw0E     IwRSH      eGOV_       acqo5   _4EzTm     _22l1                 soMvl                  JI_ht                                                                      ">
-                    <a href="/legal/privacy/">
-                      <div className="_7UhW9  PIoXz       MMzan    _0PwGv          uL8Hv         ">
-                        개인정보처리방침
-                      </div>
-                    </a>
-                  </div>
-                  <div style={{ "margin": "5px" }} className="             qF0y9          Igw0E     IwRSH      eGOV_       acqo5   _4EzTm     _22l1                 soMvl                  JI_ht                                                                      ">
-                    <a href="/legal/terms/">
-                      <div className="_7UhW9  PIoXz       MMzan    _0PwGv          uL8Hv         ">
-                        약관
-                      </div>
-                    </a>
-                  </div>
-                  <div style={{ "margin": "5px" }} className="             qF0y9          Igw0E     IwRSH      eGOV_       acqo5   _4EzTm     _22l1                 soMvl                  JI_ht                                                                      ">
-                    <a href="/directory/profiles/">
-                      <div className="_7UhW9  PIoXz       MMzan    _0PwGv          uL8Hv         ">
-                        인기 계정
-                      </div>
-                    </a>
-                  </div>
-                  <div style={{ "margin": "5px" }} className="             qF0y9          Igw0E     IwRSH      eGOV_       acqo5   _4EzTm     _22l1                 soMvl                  JI_ht                                                                      ">
-                    <a href="/directory/hashtags/">
-                      <div className="_7UhW9  PIoXz       MMzan    _0PwGv          uL8Hv         ">
-                        해시태그
-                      </div>
-                    </a>
-                  </div>
-                  <div style={{ "margin": "5px" }} className="             qF0y9          Igw0E     IwRSH      eGOV_       acqo5   _4EzTm     _22l1                 soMvl                  JI_ht                                                                      ">
-                    <a href="/explore/locations/">
-                      <div className="_7UhW9  PIoXz       MMzan    _0PwGv          uL8Hv         ">
-                        위치
-                      </div>
-                    </a>
-                  </div>
-                  <div style={{ "margin": "5px" }} className="             qF0y9          Igw0E     IwRSH      eGOV_       acqo5   _4EzTm     _22l1                 soMvl                  JI_ht                                                                      ">
-                    <a href="/web/lite/">
-                      <div className="_7UhW9  PIoXz       MMzan    _0PwGv          uL8Hv         ">
-                        Instagram Lite
-                      </div>
-                    </a>
-                  </div>
-                  <div style={{ "margin": "5px" }} className="             qF0y9          Igw0E     IwRSH      eGOV_       acqo5   _4EzTm     _22l1                 soMvl                  JI_ht                                                                      ">
-                    <a
-                      href="https://www.facebook.com/help/instagram/261704639352628"
-                      waprocessedanchor="true"
-                    >
-                      <div className="_7UhW9  PIoXz       MMzan    _0PwGv          uL8Hv         ">
-                        연락처 업로드 &amp; 비사용자
-                      </div>
-                    </a>
-                  </div>
-                </div>
-                <div style={{ "margin": "auto", "display": "flex", "flexDirection": "row", "justifyContent": "center", "alignItems": "center" }} className="             qF0y9          Igw0E     IwRSH        YBx95   ybXk5     _4EzTm  YlhBV                                                                                                            ">
-                  <div style={{ "margin": "10px" }} className="             qF0y9          Igw0E     IwRSH      eGOV_       acqo5   _4EzTm     _22l1                 soMvl                  JI_ht                                                                      ">
-                    <a href="/topics/dance-and-performance/">
-                      <div style={{ "margin": "5px" }} className="_7UhW9  PIoXz       MMzan    _0PwGv          uL8Hv         ">
-                        댄스
-                      </div>
-                    </a>
-                  </div>
-                  <div className="             qF0y9          Igw0E     IwRSH      eGOV_       acqo5   _4EzTm     _22l1                 soMvl                  JI_ht                                                                      ">
-                    <a href="/topics/food-and-drink/">
-                      <div style={{ "margin": "5px" }} className="_7UhW9  PIoXz       MMzan    _0PwGv          uL8Hv         ">
-                        식음료
-                      </div>
-                    </a>
-                  </div>
-                  <div className="             qF0y9          Igw0E     IwRSH      eGOV_       acqo5   _4EzTm     _22l1                 soMvl                  JI_ht                                                                      ">
-                    <a href="/topics/home-and-garden/">
-                      <div style={{ "margin": "5px" }} className="_7UhW9  PIoXz       MMzan    _0PwGv          uL8Hv         ">
-                        집 및 정원
-                      </div>
-                    </a>
-                  </div>
-                  <div className="             qF0y9          Igw0E     IwRSH      eGOV_       acqo5   _4EzTm     _22l1                 soMvl                  JI_ht                                                                      ">
-                    <a href="/topics/music/">
-                      <div style={{ "margin": "5px" }} className="_7UhW9  PIoXz       MMzan    _0PwGv          uL8Hv         ">
-                        음악
-                      </div>
-                    </a>
-                  </div>
-                  <div className="             qF0y9          Igw0E     IwRSH      eGOV_       acqo5   _4EzTm     _22l1                 soMvl                  JI_ht                                                                      ">
-                    <a href="/topics/visual-arts/">
-                      <div style={{ "margin": "5px" }} className="_7UhW9  PIoXz       MMzan    _0PwGv          uL8Hv         ">
-                        시각 예술
-                      </div>
-                    </a>
-                  </div>
-                </div>
-              </div>
-              <div style={{ "margin": "auto", "display": "flex", "flexDirection": "row", "justifyContent": "center", "alignItems": "center" }} className="             qF0y9          Igw0E     IwRSH        YBx95   ybXk5     _4EzTm     _22l1                                                      _49XvD                                                   ">
-                <div style={{ "margin": "auto", "display": "flex", "flexDirection": "row", "justifyContent": "center", "alignItems": "center" }} className="_7UhW9  PIoXz       MMzan   KV-D4           uL8Hv         ">
-                  <span style={{ "margin": "auto", "display": "flex", "flexDirection": "row", "justifyContent": "center", "alignItems": "center" }} className="_3G4x7   RFk-t bwz9f ">
-                    <div className="TQUPK">
-                      <span style={{ "marginRight": "20px" }}>한국어</span>
-                      <div className="             qF0y9          Igw0E     IwRSH      eGOV_       acqo5   _4EzTm                     WKY0a                                                                                         ">
-                        <span
-                          style={{
-                            display: "inline-block",
-                            transform: "rotate(180deg)",
-                          }}
-                        >
-                        </span>
-                      </div>
+            <footer className="Zx5PI  burfB vfoLd " role="contentinfo" style={{ "margin": "50px", "display": "flex", "justifyContent": "center", "alignItems": "center", "fontSize": "12px", "backgroundColor": "white" }}>
+                <div className="             qF0y9          Igw0E     IwRSH      eGOV_       acqo5   _4EzTm               KokQV                                                                                               ">
+                    <div style={{ "margin": "auto", "color": "gray", "display": "flex", "flexDirection": "row", "justifyContent": "center", "alignItems": "center" }} className="             qF0y9          Igw0E     IwRSH      eGOV_       acqo5   _4EzTm                                                              kEKum                                                ">
+                        <div style={{ "margin": "auto", "color": "gray", "display": "flex", "flexDirection": "row", "justifyContent": "center", "alignItems": "center" }} className="             qF0y9          Igw0E     IwRSH        YBx95   ybXk5     _4EzTm  YlhBV                                                                                                            ">
+                            <div style={{ "margin": "10px" }} className="             qF0y9          Igw0E     IwRSH      eGOV_       acqo5   _4EzTm     _22l1                 soMvl                  JI_ht                                                                      ">
+                                <a
+                                    href="https://about.facebook.com/meta"
+                                    rel="nofollow noopener noreferrer"
+                                    target="_blank"
+                                    waprocessedanchor="true"
+                                >
+                                    <div className="_7UhW9  PIoXz       MMzan    _0PwGv          uL8Hv         ">
+                                        Meta
+                                    </div>
+                                </a>
+                            </div>
+                            <div style={{ "margin": "5px" }} className="             qF0y9          Igw0E     IwRSH      eGOV_       acqo5   _4EzTm     _22l1                 soMvl                  JI_ht                                                                      ">
+                                <a
+                                    href="https://about.instagram.com/"
+                                    rel="nofollow noopener noreferrer"
+                                    target="_blank"
+                                    waprocessedanchor="true"
+                                >
+                                    <div style={{ "margin": "5px" }} className="_7UhW9  PIoXz       MMzan    _0PwGv          uL8Hv         ">
+                                        소개
+                                    </div>
+                                </a>
+                            </div>
+                            <div style={{ "margin": "5px" }} className="             qF0y9          Igw0E     IwRSH      eGOV_       acqo5   _4EzTm     _22l1                 soMvl                  JI_ht                                                                      ">
+                                <a
+                                    href="https://about.instagram.com/blog/"
+                                    rel="nofollow noopener noreferrer"
+                                    target="_blank"
+                                    waprocessedanchor="true"
+                                >
+                                    <div style={{ "margin": "5px" }} className="_7UhW9  PIoXz       MMzan    _0PwGv          uL8Hv         ">
+                                        블로그
+                                    </div>
+                                </a>
+                            </div>
+                            <div style={{ "margin": "5px" }} className="             qF0y9          Igw0E     IwRSH      eGOV_       acqo5   _4EzTm     _22l1                 soMvl                  JI_ht                                                                      ">
+                                <a href="/about/jobs/">
+                                    <div className="_7UhW9  PIoXz       MMzan    _0PwGv          uL8Hv         ">
+                                        채용 정보
+                                    </div>
+                                </a>
+                            </div>
+                            <div style={{ "margin": "5px" }} className="             qF0y9          Igw0E     IwRSH      eGOV_       acqo5   _4EzTm     _22l1                 soMvl                  JI_ht                                                                      ">
+                                <a
+                                    href="https://help.instagram.com/"
+                                    rel="nofollow noopener noreferrer"
+                                    target="_blank"
+                                    waprocessedanchor="true"
+                                >
+                                    <div className="_7UhW9  PIoXz       MMzan    _0PwGv          uL8Hv         ">
+                                        도움말
+                                    </div>
+                                </a>
+                            </div>
+                            <div style={{ "margin": "5px" }} className="             qF0y9          Igw0E     IwRSH      eGOV_       acqo5   _4EzTm     _22l1                 soMvl                  JI_ht                                                                      ">
+                                <a
+                                    href="https://developers.facebook.com/docs/instagram"
+                                    rel="nofollow noopener noreferrer"
+                                    target="_blank"
+                                    waprocessedanchor="true"
+                                >
+                                    <div className="_7UhW9  PIoXz       MMzan    _0PwGv          uL8Hv         ">
+                                        API
+                                    </div>
+                                </a>
+                            </div>
+                            <div style={{ "margin": "5px" }} className="             qF0y9          Igw0E     IwRSH      eGOV_       acqo5   _4EzTm     _22l1                 soMvl                  JI_ht                                                                      ">
+                                <a href="/legal/privacy/">
+                                    <div className="_7UhW9  PIoXz       MMzan    _0PwGv          uL8Hv         ">
+                                        개인정보처리방침
+                                    </div>
+                                </a>
+                            </div>
+                            <div style={{ "margin": "5px" }} className="             qF0y9          Igw0E     IwRSH      eGOV_       acqo5   _4EzTm     _22l1                 soMvl                  JI_ht                                                                      ">
+                                <a href="/legal/terms/">
+                                    <div className="_7UhW9  PIoXz       MMzan    _0PwGv          uL8Hv         ">
+                                        약관
+                                    </div>
+                                </a>
+                            </div>
+                            <div style={{ "margin": "5px" }} className="             qF0y9          Igw0E     IwRSH      eGOV_       acqo5   _4EzTm     _22l1                 soMvl                  JI_ht                                                                      ">
+                                <a href="/directory/profiles/">
+                                    <div className="_7UhW9  PIoXz       MMzan    _0PwGv          uL8Hv         ">
+                                        인기 계정
+                                    </div>
+                                </a>
+                            </div>
+                            <div style={{ "margin": "5px" }} className="             qF0y9          Igw0E     IwRSH      eGOV_       acqo5   _4EzTm     _22l1                 soMvl                  JI_ht                                                                      ">
+                                <a href="/directory/hashtags/">
+                                    <div className="_7UhW9  PIoXz       MMzan    _0PwGv          uL8Hv         ">
+                                        해시태그
+                                    </div>
+                                </a>
+                            </div>
+                            <div style={{ "margin": "5px" }} className="             qF0y9          Igw0E     IwRSH      eGOV_       acqo5   _4EzTm     _22l1                 soMvl                  JI_ht                                                                      ">
+                                <a href="/explore/locations/">
+                                    <div className="_7UhW9  PIoXz       MMzan    _0PwGv          uL8Hv         ">
+                                        위치
+                                    </div>
+                                </a>
+                            </div>
+                            <div style={{ "margin": "5px" }} className="             qF0y9          Igw0E     IwRSH      eGOV_       acqo5   _4EzTm     _22l1                 soMvl                  JI_ht                                                                      ">
+                                <a href="/web/lite/">
+                                    <div className="_7UhW9  PIoXz       MMzan    _0PwGv          uL8Hv         ">
+                                        Instagram Lite
+                                    </div>
+                                </a>
+                            </div>
+                            <div style={{ "margin": "5px" }} className="             qF0y9          Igw0E     IwRSH      eGOV_       acqo5   _4EzTm     _22l1                 soMvl                  JI_ht                                                                      ">
+                                <a
+                                    href="https://www.facebook.com/help/instagram/261704639352628"
+                                    waprocessedanchor="true"
+                                >
+                                    <div className="_7UhW9  PIoXz       MMzan    _0PwGv          uL8Hv         ">
+                                        연락처 업로드 &amp; 비사용자
+                                    </div>
+                                </a>
+                            </div>
+                        </div>
+                        <div style={{ "margin": "auto", "display": "flex", "flexDirection": "row", "justifyContent": "center", "alignItems": "center" }} className="             qF0y9          Igw0E     IwRSH        YBx95   ybXk5     _4EzTm  YlhBV                                                                                                            ">
+                            <div style={{ "margin": "10px" }} className="             qF0y9          Igw0E     IwRSH      eGOV_       acqo5   _4EzTm     _22l1                 soMvl                  JI_ht                                                                      ">
+                                <a href="/topics/dance-and-performance/">
+                                    <div style={{ "margin": "5px" }} className="_7UhW9  PIoXz       MMzan    _0PwGv          uL8Hv         ">
+                                        댄스
+                                    </div>
+                                </a>
+                            </div>
+                            <div className="             qF0y9          Igw0E     IwRSH      eGOV_       acqo5   _4EzTm     _22l1                 soMvl                  JI_ht                                                                      ">
+                                <a href="/topics/food-and-drink/">
+                                    <div style={{ "margin": "5px" }} className="_7UhW9  PIoXz       MMzan    _0PwGv          uL8Hv         ">
+                                        식음료
+                                    </div>
+                                </a>
+                            </div>
+                            <div className="             qF0y9          Igw0E     IwRSH      eGOV_       acqo5   _4EzTm     _22l1                 soMvl                  JI_ht                                                                      ">
+                                <a href="/topics/home-and-garden/">
+                                    <div style={{ "margin": "5px" }} className="_7UhW9  PIoXz       MMzan    _0PwGv          uL8Hv         ">
+                                        집 및 정원
+                                    </div>
+                                </a>
+                            </div>
+                            <div className="             qF0y9          Igw0E     IwRSH      eGOV_       acqo5   _4EzTm     _22l1                 soMvl                  JI_ht                                                                      ">
+                                <a href="/topics/music/">
+                                    <div style={{ "margin": "5px" }} className="_7UhW9  PIoXz       MMzan    _0PwGv          uL8Hv         ">
+                                        음악
+                                    </div>
+                                </a>
+                            </div>
+                            <div className="             qF0y9          Igw0E     IwRSH      eGOV_       acqo5   _4EzTm     _22l1                 soMvl                  JI_ht                                                                      ">
+                                <a href="/topics/visual-arts/">
+                                    <div style={{ "margin": "5px" }} className="_7UhW9  PIoXz       MMzan    _0PwGv          uL8Hv         ">
+                                        시각 예술
+                                    </div>
+                                </a>
+                            </div>
+                        </div>
                     </div>
-                    <select aria-label="표시 언어 변경" className="hztqj">
-                      <option value="ko">한국어</option>
-                      <option value="af">Afrikaans</option>
-                      <option value="cs">Čeština</option>
-                      <option value="da">Dansk</option>
-                      <option value="de">Deutsch</option>
-                      <option value="el">Ελληνικά</option>
-                      <option value="en">English</option>
-                      <option value="en-gb">English (UK)</option>
-                      <option value="es">Español (España)</option>
-                      <option value="es-la">Español</option>
-                      <option value="fi">Suomi</option>
-                      <option value="fr">Français</option>
-                      <option value="id">Bahasa Indonesia</option>
-                      <option value="it">Italiano</option>
-                      <option value="ja">日本語</option>
-                      <option value="ms">Bahasa Melayu</option>
-                      <option value="nb">Norsk</option>
-                      <option value="nl">Nederlands</option>
-                      <option value="pl">Polski</option>
-                      <option value="pt-br">Português (Brasil)</option>
-                      <option value="pt">Português (Portugal)</option>
-                      <option value="ru">Русский</option>
-                      <option value="sv">Svenska</option>
-                      <option value="th">ภาษาไทย</option>
-                      <option value="tl">Filipino</option>
-                      <option value="tr">Türkçe</option>
-                      <option value="zh-cn">中文(简体)</option>
-                      <option value="zh-tw">中文(台灣)</option>
-                      <option value="bn">বাংলা</option>
-                      <option value="gu">ગુજરાતી</option>
-                      <option value="hi">हिन्दी</option>
-                      <option value="hr">Hrvatski</option>
-                      <option value="hu">Magyar</option>
-                      <option value="kn">ಕನ್ನಡ</option>
-                      <option value="ml">മലയാളം</option>
-                      <option value="mr">मराठी</option>
-                      <option value="ne">नेपाली</option>
-                      <option value="pa">ਪੰਜਾਬੀ</option>
-                      <option value="si">සිංහල</option>
-                      <option value="sk">Slovenčina</option>
-                      <option value="ta">தமிழ்</option>
-                      <option value="te">తెలుగు</option>
-                      <option value="vi">Tiếng Việt</option>
-                      <option value="zh-hk">中文(香港)</option>
-                      <option value="bg">Български</option>
-                      <option value="fr-ca">Français (Canada)</option>
-                      <option value="ro">Română</option>
-                      <option value="sr">Српски</option>
-                      <option value="uk">Українська</option>
-                    </select>
-                  </span>
+                    <div style={{ "margin": "auto", "display": "flex", "flexDirection": "row", "justifyContent": "center", "alignItems": "center" }} className="             qF0y9          Igw0E     IwRSH        YBx95   ybXk5     _4EzTm     _22l1                                                      _49XvD                                                   ">
+                        <div style={{ "margin": "auto", "display": "flex", "flexDirection": "row", "justifyContent": "center", "alignItems": "center" }} className="_7UhW9  PIoXz       MMzan   KV-D4           uL8Hv         ">
+                            <span style={{ "margin": "auto", "display": "flex", "flexDirection": "row", "justifyContent": "center", "alignItems": "center" }} className="_3G4x7   RFk-t bwz9f ">
+                                <div className="TQUPK">
+                                    <span style={{ "marginRight": "20px" }}>한국어</span>
+                                    <div className="             qF0y9          Igw0E     IwRSH      eGOV_       acqo5   _4EzTm                     WKY0a                                                                                         ">
+                                        <span
+                                            style={{
+                                                display: "inline-block",
+                                                transform: "rotate(180deg)",
+                                            }}
+                                        >
+                                        </span>
+                                    </div>
+                                </div>
+                                <select aria-label="표시 언어 변경" className="hztqj">
+                                    <option value="ko">한국어</option>
+                                    <option value="af">Afrikaans</option>
+                                    <option value="cs">Čeština</option>
+                                    <option value="da">Dansk</option>
+                                    <option value="de">Deutsch</option>
+                                    <option value="el">Ελληνικά</option>
+                                    <option value="en">English</option>
+                                    <option value="en-gb">English (UK)</option>
+                                    <option value="es">Español (España)</option>
+                                    <option value="es-la">Español</option>
+                                    <option value="fi">Suomi</option>
+                                    <option value="fr">Français</option>
+                                    <option value="id">Bahasa Indonesia</option>
+                                    <option value="it">Italiano</option>
+                                    <option value="ja">日本語</option>
+                                    <option value="ms">Bahasa Melayu</option>
+                                    <option value="nb">Norsk</option>
+                                    <option value="nl">Nederlands</option>
+                                    <option value="pl">Polski</option>
+                                    <option value="pt-br">Português (Brasil)</option>
+                                    <option value="pt">Português (Portugal)</option>
+                                    <option value="ru">Русский</option>
+                                    <option value="sv">Svenska</option>
+                                    <option value="th">ภาษาไทย</option>
+                                    <option value="tl">Filipino</option>
+                                    <option value="tr">Türkçe</option>
+                                    <option value="zh-cn">中文(简体)</option>
+                                    <option value="zh-tw">中文(台灣)</option>
+                                    <option value="bn">বাংলা</option>
+                                    <option value="gu">ગુજરાતી</option>
+                                    <option value="hi">हिन्दी</option>
+                                    <option value="hr">Hrvatski</option>
+                                    <option value="hu">Magyar</option>
+                                    <option value="kn">ಕನ್ನಡ</option>
+                                    <option value="ml">മലയാളം</option>
+                                    <option value="mr">मराठी</option>
+                                    <option value="ne">नेपाली</option>
+                                    <option value="pa">ਪੰਜਾਬੀ</option>
+                                    <option value="si">සිංහල</option>
+                                    <option value="sk">Slovenčina</option>
+                                    <option value="ta">தமிழ்</option>
+                                    <option value="te">తెలుగు</option>
+                                    <option value="vi">Tiếng Việt</option>
+                                    <option value="zh-hk">中文(香港)</option>
+                                    <option value="bg">Български</option>
+                                    <option value="fr-ca">Français (Canada)</option>
+                                    <option value="ro">Română</option>
+                                    <option value="sr">Српски</option>
+                                    <option value="uk">Українська</option>
+                                </select>
+                            </span>
+                        </div>
+                        <div className="             qF0y9          Igw0E     IwRSH      eGOV_       acqo5   _4EzTm                        _5VUwz                                                                                      ">
+                            <div style={{ "marginLeft": "10px" }} className="_7UhW9  PIoXz       MMzan    _0PwGv          uL8Hv         ">
+                                © 2022 Instagram from Meta
+                            </div>
+                        </div>
+                    </div>
                 </div>
-                <div className="             qF0y9          Igw0E     IwRSH      eGOV_       acqo5   _4EzTm                        _5VUwz                                                                                      ">
-                  <div style={{ "marginLeft": "10px" }} className="_7UhW9  PIoXz       MMzan    _0PwGv          uL8Hv         ">
-                    © 2022 Instagram from Meta
-                  </div>
-                </div>
-              </div>
-            </div>
-          </footer>
+            </footer>
         </div>
     );
 }
