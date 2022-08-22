@@ -12,19 +12,20 @@ const initialState = {
 export const __PostSignup = createAsyncThunk(
   "signup/Signup",
   async (payload, api) => {
-    const navigate = useNavigate();
+    console.log(payload)
     try {
-      const data = await axios.post("http://localhost:3000/api/auth/signup", payload, {
+      const data = await axios.post("http://taesik.shop/api/auth/signup", payload, {
       }).then((res) => {
+        console.log(res)
         if (res.sucess === true) {
           alert("회원가입이 완료되었습니다");
-          navigate("/main");
         } else {
           alert("이미 있는 계정입니다")
         }
       })
       return api.fulfillWithValue(data.data.result);
     } catch (e) {
+      console.log(e)
       //   if (e.response.data === "BAD_REQUEST") {
       //     alert("입력값을 확인해주세요.");
       //   }

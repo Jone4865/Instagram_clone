@@ -11,8 +11,9 @@ const initialState = {
 export const __PostLogin = createAsyncThunk(
   "login/Login",
   async (payload, api) => {
+    console.log(payload)
     try {
-      const data = await axios.post("http://localhost:3000/api/auth/signin", payload, {
+      const data = await axios.post("http://taesik.shop/api/auth/signin", payload, {
       }).then((res) => {
         if (res.data.token) {
           localStorage.setItem("token", res.data.token);

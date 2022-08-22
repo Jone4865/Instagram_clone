@@ -1,18 +1,26 @@
 {
   "posts": [
     {
-      "id": 1,
-      "nickname": "닉네임111",
-      "content": "게시물내용111",
-      "profileImg": "유저가 설장한 사진들어감111",
-      "img":"이미지 들어갈곳111"
-    },
-    {
-      "id": 2,
-      "nickname": "닉네임222",
-      "content": "게시물내용222",
-      "profileImg": "유저가 설장한 사진들어감222",
-      "img":"이미지 들어갈곳222"
+      "user": {
+        "id": 4,
+        "name": "taesik",
+        "nickname": "root55",
+        "image": null
+      },
+      "posts": [
+        {
+          "id": 4,
+          "content": "taesik-test",
+          "image": "taesik-test",
+          "createdAt": "2022-08-22T16:14:46.000Z"
+        },
+        {
+          "id": 7,
+          "content": "포스트",
+          "image": "fdasfasdfasdfa",
+          "createdAt": "2022-08-22T07:24:59.000Z"
+        }
+      ]
     }
   ]
 }

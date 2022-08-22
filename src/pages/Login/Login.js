@@ -10,7 +10,7 @@ function Login() {
   const dispatch = useDispatch();
 
   const onsubmit = (e) => {
-    if (regNick.test(nickname) === true || regNick2.test(nickname) === true) {
+    if (nickname?.length >=2 && nickname?.length <=9) {
       if(regPass.test(password) === true) {
         e.preventDefault();
         dispatch(__PostLogin({nickname, password}))
@@ -24,10 +24,7 @@ function Login() {
     }
   }
 
-  const regNick = /^[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*@[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*.[a-zA-Z]{2,3}$/i;
-  const regNick2 = /^\d{10,11}$/;
   const regPass = /^[0-9a-zA-Z!@#$%^&*]{8,20}$/;
-
 
   return (
     <div id="react-root">
@@ -84,7 +81,7 @@ function Login() {
                         <div className="_9GP1n   ">
                           <label className="f0n8F ">
                             <input
-                              placeholder="전화번호 또는 이메일"
+                              placeholder="닉네임을 입력해주세요"
                               aria-required="true"
                               maxLength="75"
                               name="username"
@@ -128,7 +125,7 @@ function Login() {
                         <div className="s311c t7mNY "></div>
                       </div>
                       <div style={{ "margin": "auto" }} className="             qF0y9          Igw0E     IwRSH      eGOV_       acqo5   _4EzTm    bkEs3                          CovQj                  jKUp7          DhRcB                                                    ">
-                        <button style={{ margin: "10px", width: "160px", border: "1px solid white", borderRadius: "7px", height: "30px" }} className="sqdOP yWX7d    y3zKF     " type="button">
+                        <button style={{ margin: "10px", width: "180px", border: "1px solid white", borderRadius: "7px", height: "30px" }} className="sqdOP yWX7d    y3zKF     " type="button">
                           <span className=" coreSpriteFacebookIcon AeB99"></span>
                           <span className="KPnG0">Facebook으로 로그인</span>
                         </button>

@@ -8,30 +8,27 @@ function Signup() {
     const [name, setName] = useState("")
     const [password, setPassword] = useState("")
     const [password2, setPassword2] = useState("")
-    
+
     const dispatch = useDispatch();
     const onsubmit = (e) => {
-        if (regNick.test(nickname) === true || regNick2.test(nickname) === true) {
-            if (name?.length >=2 && name?.length <=9 ) {
+        if (nickname?.length >=2 && nickname?.length <=9) {
+            if (name === '') {
+                alert("이름을 확인해주세요")
+            } else {
                 if (regPass.test(password) === true && password === password2) {
-                    dispatch(__PostSignup({nickname, name, password}))
+                    dispatch(__PostSignup({ nickname, name, password }))
                     e.preventDefault();
                 } else {
                     alert("비밀번호를 확인해주세요")
                     e.preventDefault();
                 }
-            } else {
-                alert("이름을 확인해주세요")
-                e.preventDefault();
             }
         } else {
-            alert("휴대폰 번호 또는 이메일 주소를 확인해주세요")
+            alert("닉네임을 확인해주세요")
             e.preventDefault();
         }
     }
 
-    const regNick = /^[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*@[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*.[a-zA-Z]{2,3}$/i;
-    const regNick2 = /^\d{10,11}$/;
     const regPass = /^[0-9a-zA-Z!@#$%^&*]{8,20}$/;
 
     return (
@@ -67,7 +64,7 @@ function Signup() {
                                             <div className="WZdjL">
                                                 <div className="_9GP1n   ">
                                                     <label className="f0n8F ">
-                                                        <input onChange={(e) => setNickname(e.target.value)} placeholder="휴대폰 번호 또는 이메일 주소" aria-required="true" autoCapitalize="off" autoComplete="tel" autoCorrect="off" name="emailOrPhone" type="text" className="_2hvTZ pexuQ zyHYP" />
+                                                        <input onChange={(e) => setNickname(e.target.value)} placeholder="닉네임을 입력해주세요" aria-required="true" autoCapitalize="off" autoComplete="tel" autoCorrect="off" name="emailOrPhone" type="text" className="_2hvTZ pexuQ zyHYP" />
                                                     </label>
                                                     <div className="i24fI">
                                                     </div>
@@ -76,7 +73,7 @@ function Signup() {
                                             <div className="WZdjL">
                                                 <div className="_9GP1n   ">
                                                     <label className="f0n8F ">
-                                                        <input onChange={(e) => setName(e.target.value)} placeholder="성명 (2~9자)" aria-required="false" autoCapitalize="sentences" autoCorrect="off" name="fullName" type="text" className="_2hvTZ pexuQ zyHYP"/>
+                                                        <input onChange={(e) => setName(e.target.value)} placeholder="성명" aria-required="false" autoCapitalize="sentences" autoCorrect="off" name="fullName" type="text" className="_2hvTZ pexuQ zyHYP" />
                                                     </label>
                                                     <div className="i24fI">
                                                     </div>
@@ -85,7 +82,7 @@ function Signup() {
                                             <div className="WZdjL">
                                                 <div className="_9GP1n   ">
                                                     <label className="f0n8F ">
-                                                        <input onChange={(e) => setPassword(e.target.value)} placeholder="비밀번호 (8~20자)" aria-required="true" autoCapitalize="off" autoComplete="new-password" autoCorrect="off" name="password" type="password" className="_2hvTZ pexuQ zyHYP"/>
+                                                        <input onChange={(e) => setPassword(e.target.value)} placeholder="비밀번호 (8~20자)" aria-required="true" autoCapitalize="off" autoComplete="new-password" autoCorrect="off" name="password" type="password" className="_2hvTZ pexuQ zyHYP" />
                                                     </label>
                                                     <div className="i24fI">
                                                     </div>
@@ -94,7 +91,7 @@ function Signup() {
                                             <div className="WZdjL">
                                                 <div className="_9GP1n   ">
                                                     <label className="f0n8F ">
-                                                        <input onChange={(e) => setPassword2(e.target.value)} placeholder="비밀번호 재입력" aria-required="true" autoCapitalize="off" autoComplete="new-password" autoCorrect="off" name="password" type="password" className="_2hvTZ pexuQ zyHYP"/>
+                                                        <input onChange={(e) => setPassword2(e.target.value)} placeholder="비밀번호 재입력" aria-required="true" autoCapitalize="off" autoComplete="new-password" autoCorrect="off" name="password" type="password" className="_2hvTZ pexuQ zyHYP" />
                                                     </label>
                                                     <div className="i24fI">
                                                     </div>
