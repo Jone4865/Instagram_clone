@@ -12,12 +12,10 @@ const initialState = {
 export const __PostSignup = createAsyncThunk(
   "signup/Signup",
   async (payload, api) => {
-    console.log(payload)
     try {
-      const data = await axios.post("http://taesik.shop/api/auth/signup", payload, {
-      }).then((res) => {
-        console.log(res)
-        if (res.sucess === true) {
+      const data = await axios.post("http://taesik.shop/api/auth/signup", payload)
+      .then((res) => {
+        if (res.data === true) {
           alert("회원가입이 완료되었습니다");
         } else {
           alert("이미 있는 계정입니다")
