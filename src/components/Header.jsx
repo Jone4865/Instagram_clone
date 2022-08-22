@@ -16,7 +16,7 @@ function Header() {
     const fileInput = useRef();
     //게시물 작성에서 입력 받을 인풋 값들
     const [inputs, setInputs] = useState({
-        postimg: "",
+        postimage: "",
         contents: ""
     });
 
@@ -36,7 +36,7 @@ function Header() {
     event.preventDefault();
 
     try{
-        await axios.post('http://gwonyeong.shop/post', inputs)
+        await axios.post('http://localhost:3001/posts', inputs)
         .then(res => {
       })
       } catch(err) {
@@ -222,30 +222,6 @@ function Header() {
     )
 }
 
-const Acum = styled.div`
-    align-items: center;
-    background-color: #eee;
-    box-sizing: border-box;
-    display: flex;
-    flex-direction: column;
-    position: fixed;
-    top: 0;
-    width: 100%;
-`
-const Box = styled.div`
-    align-items: center;
-    border-bottom: 1px solid rgb(var(--ig-elevated-separator));
-    box-sizing: border-box;
-    display: flex;
-    flex-direction: column;
-    height: var(--desktop-nav-height);
-    position: fixed;
-    top: 0;
-    transition: height var(--desktop-nav-anim-duration) ease-in-out;
-    width: 100%;
-    background-color: aliceblue;
-    height: 100px;
-`
 const ModalBackground = styled.div`
     position: fixed;
     top: 0;
@@ -272,13 +248,12 @@ const Icon = styled.div`
 `
 
 const Head = styled.div`
-    width: 100%;
     height: 55px;
     border-bottom: 1px solid red;
     display: flex;
     align-items: center;
-    gap: 465px;
-    padding-left: 5px;
+    justify-content: space-between;
+    padding-right: 10px;
 
     button {
         border-radius: 8px;

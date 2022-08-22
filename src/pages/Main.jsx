@@ -22,7 +22,11 @@ function Main() {
 
   //모든 게시물 조회
   const getAxiosData = async () => {
-    const axiosData = await axios.get('http://localhost:3001/posts')
+    const axiosData = await axios.get('http://taesik.shop/api/post', {
+      headers: {
+        Authorization: `Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwibmlja25hbWUiOiJyb290IiwiaWF0IjoxNjYxMTcxODc1LCJleHAiOjE2NjExNzM2NzUsImlzcyI6Iu2emOuCtOyEuOyalC4uLiJ9.go9_pKtiaEYVl9M9tSfxiybn_n0vrC9zqAExIDZ171s`,
+      },
+    })
 
     setList(axiosData.data)
     console.log(axiosData.data)
@@ -32,15 +36,18 @@ function Main() {
     getAxiosData();
   }, [])
 
+
+
+
   //게시물 삭제
   const deleteListhandeler = async (ev) => {
     ev.preventDefault();
     await axios.delete('http://localhost:3001/posts/${postId}')
   }
 
-  // const getModal = (id)=> {
+  const getModal = (id)=> {
 
-  // }
+  }
 
 
   // const getCommentData = async () => {
@@ -72,7 +79,7 @@ function Main() {
                             <ModalBox onClick={(event) => { event.stopPropagation() }}  >
                               <p onClick={deleteListhandeler}>삭제</p>
                               <p>수정</p>
-                              <p onClick={() => { setModal(!modal) }}>취소</p>
+                              <p onClick={() => { setModal(!modal)  }}>취소</p>
                             </ModalBox>
                           </ModalBackground>
                         </>) : null
