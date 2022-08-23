@@ -11,6 +11,7 @@ const initialState = {
 export const __PostLogin = createAsyncThunk(
   "login/Login",
   async (payload, api) => {
+    console.log(process.env.REACT_APP_SURVER)
     try {
       const data = await axios.post(process.env.REACT_APP_SURVER + "/api/auth/signin", payload, {
       }).then((res) => {
