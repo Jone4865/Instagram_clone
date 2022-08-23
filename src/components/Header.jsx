@@ -24,6 +24,32 @@ function Header() {
         content: ""
     });
 
+    // const onChange = (e) => {
+    //     const { value, name } = e.target;
+    //     setInputs({
+    //         ...inputs,
+    //         [name]: value,
+    //     });
+    // };
+
+    // const { content} = inputs
+
+    // console.log(content)
+
+
+    //게시물 create
+    // const onClickPostButtonHandler = async (event) => {
+    //     event.preventDefault();
+
+    //     try {
+    //         await axios.post('http://taesik.shop/api/post/create', inputs)
+    //             .then(res => {
+    //             })
+    //     } catch (err) {
+    //         console.log(err);
+    //     }
+    // };
+
 
     //사진 이미지
     const imageUploadButtonClickHandler = async (ev) => {
@@ -34,15 +60,27 @@ function Header() {
 
         const formData = new FormData();
         formData.append('postImg', fileInput.current.files[0])
-        formData.append('content', contents_ref.current.value)
+        formData.append('content', new Blob([JSON.stringify(contents_ref.current.value)]), { type: "application/json" })
         console.log(contents_ref.current.value)
         
+           
+        // for (let key of formData.keys()) {
+        //     console.log(key);
+        //      }
+        // // for (let value of formData.values()) {
+        // //         console.log(value);
+        // //   }
+ 
+        //   for (var pair of formData.entries()) {
+        //     console.log(pair[0]+ ', ' + pair[1]);
+        // }
+
         // console.log(fileInput.current.files[0])
         const formUp = {formData, contents_ref}
         console.log(formUp)
 
         
-        await axios.post(`http://13.209.15.22/api/post/create`, formData, {
+        await axios.post(`http://taesik.shop/api/post/create`,  {
             headers: {
                 Authorization: `Bearer ${token}`,
                 "Content-Type": `multipart/form-data`,
@@ -197,7 +235,7 @@ function Header() {
                                     </Right_first>
                                     <Right_two>
                                         <form>
-                                            <input
+                                            <textarea
                                             name="content"
                                             maxLength={200}
                                             placeholder="문구 입력 (최대 200자)" 
