@@ -13,7 +13,7 @@ export const __PostLogin = createAsyncThunk(
   async (payload, api) => {
     console.log(payload)
     try {
-      const data = await axios.post("http://taesik.shop/api/auth/signin", payload, {
+      const data = await axios.post(process.env.REACT_APP_SURVER + "/api/auth/signin", payload, {
       }).then((res) => {
         if (res.data.token) {
           localStorage.setItem("token", res.data.token);
