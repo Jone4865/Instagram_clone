@@ -1,0 +1,53 @@
+import AWS from 'aws-sdk';
+import { useState } from 'react';
+
+
+function ImageUpload() {
+
+   function onFileUpload(e) {
+
+    const ACCESS_KEY = 'AKIAVMSDWSLA75LZJKMP';
+    const SECRET_ACCESS_KEY = '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';
+    const REGION = "ap-northeast-2";
+    const S3_BUCKET = 'clone-img-upload';
+
+    // AWS ACCESS KEY를 세팅합니다.
+    AWS.config.update({
+      accessKeyId: ACCESS_KEY,
+      secretAccessKey: SECRET_ACCESS_KEY
+    });
+
+    // 버킷에 맞는 이름과 리전을 설정합니다.
+    const myBucket = new AWS.S3({
+      params: { Bucket: S3_BUCKET},
+      region: REGION,
+    });
+
+    //현재 선택된 이미지 파일
+    const file = e.target.files[0];
+
+    // 파일과 파일이름을 넘겨주면 됩니다.
+    const params = {
+      ACL: 'public-read',
+      Body: file,
+      Bucket: S3_BUCKET,
+      Key: file.name
+    };
+    
+    myBucket.putObject(params)
+      .on('httpUploadProgress', (evt) => {
+        alert("SUCCESS")
+      })
+      .send((err) => {
+        if (err) console.log(err)
+      })
+  }
+
+  return(
+    <div>
+      <input type={"file"} onChange={onFileUpload}/>
+    </div>
+  )
+}
+
+export default ImageUpload
