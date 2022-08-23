@@ -4,6 +4,9 @@ import { useState, useEffect } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import axios from "axios";
 import Header from "../components/Header";
+import { BiDotsHorizontalRounded } from 'react-icons/bi';
+import {BsSuitHeart} from 'react-icons/bs';
+import {FaRegComment} from 'react-icons/fa';
 
 function Main() {
 
@@ -64,7 +67,7 @@ function Main() {
                         <Pro src={a.User.userimage} />
                         <h4>{a.User.nickname}</h4>
                       </Setting>
-                      {/* <Icon><BiDotsHorizontalRounded style={{ marginTop: "15px", float: "right" }} onClick={() => { setModal(!modal) }} /></Icon> */}
+                      <Icon><BiDotsHorizontalRounded style={{ marginTop: "15px", float: "right" }} onClick={() => { setModal(!modal) }} /></Icon>
                       {
                         modal === true ? (<>
                           <ModalBackground onClick={() => {
@@ -84,7 +87,7 @@ function Main() {
                       <MainImg src={a.postimg}/>
                     </div>
                     <div style={{ padding:"10px"}}>
-                      {/* <Icon style={{ marginTop: "10px" }}><BsSuitHeart style={{ marginRight: "15px" }} /><FaRegComment /></Icon> */}
+                      <Icon style={{ marginTop: "10px" }}><BsSuitHeart style={{ marginRight: "15px" }} /><FaRegComment /></Icon>
                       <p style={{ margin: "5px 0px", paddingLeft: "5px" }}>좋아요 {a.postlikes}개</p>
                       <h4 style={{ margin: "5px 0px", paddingLeft: "5px" }}>{a.nickname}</h4> <p style={{ margin: "5px 0px", paddingLeft: "5px" }}>{a.content}</p>
                       <p onClick={() => { navigate(`/detail/${a.postId}`) }} style={{ margin: "5px 0px", paddingLeft: "5px" }}>댓글 {a.cntcomment}개 모두 보기</p>
