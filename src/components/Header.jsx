@@ -4,78 +4,59 @@ import { useState } from "react";
 import { FaRegHeart } from 'react-icons/fa';
 import { useNavigate } from "react-router-dom";
 import { MdOutlineArrowBack } from 'react-icons/md';
-import ImageUpload from "./ImageUpload";
 import axios from "axios";
 import "./header.css";
 
 function Header() {
+
+    const contents_ref = useRef(null);
+
     const navigate = useNavigate();
-    
+
     const [modal, setModal] = useState(false);
-    
+
     const fileInput = useRef();
-    //게시물 작성에서 입력 받을 인풋 값들
-    const [inputs, setInputs] = useState({
-        postimage: "",
-        contents: ""
-    });
-
-    const { postimg, contents} = inputs;
-
-    const onChange = (e) => {
-        const { value, name } = e.target;
-        setInputs({
-          ...inputs,
-          [name]: value,
-        });
-      };
 
 
-    //게시물 create
-    const onClickPostButtonHandler = async (event) => {
-    event.preventDefault();
+ 
 
-    try{
-        await axios.post('http://localhost:3001/posts', inputs)
-        .then(res => {
-      })
-      } catch(err) {
-        console.log(err);
-      }
-    };
 
-    
-  //사진 이미지
-  const imageUploadButtonClickHandler = async (ev) => {
-    ev.preventDefault();
+    //사진 이미지
+    const imageUploadButtonClickHandler = async (ev) => {
+        ev.preventDefault();
+        const token = localStorage.getItem("token");
 
-    const formData = new FormData();
-    formData.append('userfile', fileInput.current.files[0])
-    console.log(fileInput.current.files[0])
-    
-    await axios.post(`http://localhost:3001/posts`, formData)
-    .then(res => {
-      const data = res.data;
-      
-      if(data.success){
-        alert('이미지가 등록되었습니다.')
-        console.log(fileInput)
-        console.log(postimg)
-        
-        setInputs({
-          ...inputs,
-          imageUrl: data.imageUrl,
-        });
-        
-      } else {
-        alert('이미지가 등록에 실패하였습니다.')
-      }
-    }).catch(err => {
-        console.log(err)
-      }
-    )
+      console.log( fileInput.current.files[0])
 
-  }
+        const formData = new FormData();
+        formData.append('postImg', fileInput.current.files[0])
+        formData.append('content', contents_ref.current.value)
+
+        console.log(contents_ref.current.value)
+
+        await axios.post( process.env.REACT_APP_SURVER + `/api/post/create`, formData, {
+            headers: {
+                Authorization: `Bearer ${token}`,
+                "Content-Type": `multipart/form-data`,
+            },
+        })
+            .then(res => {
+                const data = res.data;
+
+                if (data.success) {
+                    alert('이미지가 등록되었습니다.')
+                    
+                    console.log(res)
+
+                } else {
+                    alert('이미지가 등록에 실패하였습니다.')
+                }
+            }).catch(err => {
+                console.log(err)
+            }
+            )
+
+    }
 
     return (
         <>
@@ -128,8 +109,8 @@ function Header() {
                                         <div className="_acub">
                                             <button className="_abl- _abm2" type="button">
                                                 <div className="_abm0">
-                                                    <svg onClick={() => { setModal(!modal) }} 
-                                                    aria-label="새로운 게시물" className="_ab6-" color="#262626" fill="#262626" height="24" role="img" viewBox="0 0 24 24" width="24">
+                                                    <svg onClick={() => { setModal(!modal) }}
+                                                        aria-label="새로운 게시물" className="_ab6-" color="#262626" fill="#262626" height="24" role="img" viewBox="0 0 24 24" width="24">
                                                         <path d="M2 12v3.45c0 2.849.698 4.005 1.606 4.944.94.909 2.098 1.608 4.946 1.608h6.896c2.848 0 4.006-.7 4.946-1.608C21.302 19.455 22 18.3 22 15.45V8.552c0-2.849-.698-4.006-1.606-4.945C19.454 2.7 18.296 2 15.448 2H8.552c-2.848 0-4.006.699-4.946 1.607C2.698 4.547 2 5.703 2 8.552z" fill="none" stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2">
                                                         </path>
                                                         <line fill="none" stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" x1="6.545" x2="17.455" y1="12.001" y2="12.001">
@@ -176,48 +157,54 @@ function Header() {
                 </div>
             </nav>
 
-       
-                {
-                    modal === true ? (<>
-                        <ModalBackground onClick={() => { setModal(!modal) }}>
-                            <ModalBox onClick={(event) => { event.stopPropagation() }}>
-                                <Head>
-                                    <Icon ><MdOutlineArrowBack onClick={() => { setModal(!modal) }} /></Icon>
-                                    <h4>새 게시물 생성하기</h4>
-                                    <h4 style={{ color: "blue" }}>공유하기</h4>
-                                </Head>
-                                <div style={{ display: "flex" }}>
-                                    <Left>
-                                           <form 
-                                           encType="multipart/form-data">
-                                            <input
+
+            {
+                modal === true ? (<>
+                    <ModalBackground onClick={() => { setModal(!modal) }}>
+                        <ModalBox onClick={(event) => { event.stopPropagation() }}>
+                            <Head>
+                                <Icon ><MdOutlineArrowBack onClick={() => { setModal(!modal) }} /></Icon>
+                                <h4>새 게시물 생성하기</h4>
+                                <h4  onClick={(ev) => imageUploadButtonClickHandler(ev)} style={{ color: "skyblue", cursor: "pointer" }}>공유하기</h4>
+                            </Head>
+                            <div style={{ display: "flex" }}>
+
+                                <Left>
+                                    <form encType="multipart/form-data">
+                                        <input
                                             type="file"
                                             placeholder="게시물 이미지"
-                                            name="userfile"
+                                            name="postImg"
                                             ref={fileInput}
+                                        />
+                                        </form>
+                                </Left>
+                                <Right>
+                                    <Right_first>
+                                        <Right_firstImg src={null} />
+                                        <h3>asd</h3>
+                                    </Right_first>
+                                    <Right_two>
+                                        <form>
+                                            <input
+                                            name="content"
+                                            maxLength={200}
+                                            placeholder="문구 입력 (최대 200자)" 
+                                            ref={contents_ref}
                                             />
-                                            <button onClick={(ev) => imageUploadButtonClickHandler(ev)}></button>
-                                           </form>
-                                    </Left>
-                                    <Right>
-                                        <Right_first>
-                                            <Right_firstImg src={null} />
-                                            <h3>asd</h3>
-                                        </Right_first>
-                                        <Right_two>
-                                           <textarea maxLength={200} placeholder="문구 입력 (최대 200자)"/>
-                                        </Right_two>
-                                        <Right_thr>
-                                            <div><p>위치 추가</p></div>
-                                            <div><p>접근성</p></div>
-                                            <div><p>고급 설정</p></div>
-                                        </Right_thr>
-                                    </Right>
-                                </div>
-                            </ModalBox>
-                        </ModalBackground>
-                    </>) : null
-                }
+                                        </form>
+                                    </Right_two> 
+                                    <Right_thr>
+                                        <div><p>위치 추가</p></div>
+                                        <div><p>접근성</p></div>
+                                        <div><p>고급 설정</p></div>
+                                    </Right_thr>
+                                </Right>
+                            </div>
+                        </ModalBox>
+                    </ModalBackground>
+                </>) : null
+            }
         </>
     )
 }

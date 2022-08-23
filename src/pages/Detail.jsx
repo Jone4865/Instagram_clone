@@ -1,12 +1,18 @@
 import React from "react";
 import styled from "styled-components";
 import { useState, useEffect } from "react";
+import { useDispatch } from "react-redux";
 import { useNavigate, useParams } from "react-router-dom";
 import axios from "axios";
 import Header from "../components/Header";
 import { BiDotsHorizontalRounded } from 'react-icons/bi';
+import { __PostContent } from "../redux/modules/PostContent";
+import { __DeleteContent } from "../redux/modules/DeleteContent";
+
 
 function Detail() {
+    const dispatch = useDispatch();
+    const [comment, setComment] = useState("")
 
     const navigate = useNavigate();
     const { postId } = useParams();
@@ -34,22 +40,28 @@ function Detail() {
         })
         setDetailList(axiosData.data.data)
         setUser(axiosData.data.data.PostingUser)
-        console.log(axiosData.data.data)
     }
     useEffect(() => {
         getAxiosDetailData();
     }, [])
 
+    const onsubmit = (e) => {
+        e.preventDefault();
+        dispatch(__PostContent({comment, postId}))
+        getAxiosDetailData();
+    }
+
     //게시물 삭제 성공함
     const deleteListhandeler = async (ev) => {
         ev.preventDefault();
         const token = localStorage.getItem("token");
-        await axios.delete(`http://13.209.15.22/api/post/delete/${postId}`, {
+        await axios.delete(process.env.REACT_APP_SURVER + `/api/post/delete/${postId}`, {
             headers: {
                 Authorization: `Bearer ${token}`,
             },
         })
     }
+
 
 
     return (
@@ -78,6 +90,7 @@ function Detail() {
                                         <h5 style={{ marginTop: "8px" }}>{user.nickname}</h5>
                                         <p style={{ marginTop: "10px", marginLeft: "5px" }}>ㅁㄴㅇ</p>
                                     </Twobox>
+                                    <Lastbox>
                                     {
                                         detailList.comments?.map((a) => {
                                             return (
@@ -86,15 +99,18 @@ function Detail() {
                                                         <Comment_img src={detailList.postimage} />
                                                         <h5>{a.nickname}</h5>
                                                         <p>{a.comment}</p>
+                                                        <button onClick={() => {
+                                                            dispatch(__DeleteContent(+a.commentid))
+                                                        }}>삭제</button>
                                                     </Comment_box>
                                                 </div>
                                             )
                                         })
                                     }
-
-                                    <Lastbox>
-
                                     </Lastbox>
+                                    <div style={{"margin":"170px auto auto 20px"}} >
+                                        <input onChange={(e)=> setComment(e.target.value)} placeholder="댓글 달기..." style={{"border":"2px solid #f3ebeb", "width":"400px", "padding":"5px", "borderRadius":"5px"}}></input><span><button onClick={onsubmit} style={{"marginLeft":"10px", "color":"#4891ff", "fontWeight":"bold", "backgroundColor":"white", "border":"0px"}} >작성</button></span>
+                                    </div>
                                 </Right>
                             </All_box>
 

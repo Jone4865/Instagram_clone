@@ -13,8 +13,9 @@ export const __DeleteContent = createAsyncThunk(
   "deletecontent/deleteContent",
   async (payload, api) => {
     try {
+      console.log(typeof payload)
       const data = await axios.delete(
-        process.env.REACT_APP_SURVER + `/api/comment/${payload}`, {} ,
+        process.env.REACT_APP_SURVER + `/api/comment/${payload}`,
         {
           headers: {
             authorization: `Bearer ${token}`,

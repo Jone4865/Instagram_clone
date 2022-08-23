@@ -1,16 +1,15 @@
-import Router from "../shared/Router";
-import { useState, useEffect, React } from "react";
+import React from "react";
 import styled from "styled-components";
+import { useState, useEffect } from "react";
+import { useNavigate, useParams } from "react-router-dom";
 import axios from "axios";
-import ImageUpload from "../components/ImageUpload";
-import { useParams, useNavigate } from "react-router-dom";
 import Header from "../components/Header";
-import { FaRegComment } from 'react-icons/fa';
-import { BsSuitHeart } from 'react-icons/bs';
 import { BiDotsHorizontalRounded } from 'react-icons/bi';
-
+import {BsSuitHeart} from 'react-icons/bs';
+import {FaRegComment} from 'react-icons/fa';
 
 function Main() {
+
 
   const { postId } = useParams();
 
@@ -18,16 +17,22 @@ function Main() {
 
   //삭제 및 수정 모달
   const [modal, setModal] = useState(false);
+
+  //데이터들 저장
   const [list, setList] = useState([]);
+  const [user, setUser] =useState({});
 
   //모든 게시물 조회
   const getAxiosData = async () => {
-    const axiosData = await axios.get(process.env.REACT_APP_SURVER + '/api/post', {
-
+    const token = localStorage.getItem("token");
+    const axiosData = await axios.get(process.env.REACT_APP_SURVER +`/api/post`, {
+      headers: {
+        Authorization: `Bearer ${token}`,
+      },
     })
-
-    setList(axiosData.data)
-    console.log(axiosData.data)
+    setUser(axiosData.data.data.User)
+    setList(axiosData.data.data)
+    console.log(axiosData.data.data)
 
   }
   useEffect(() => {
@@ -35,37 +40,31 @@ function Main() {
   }, [])
 
 
-
-
   //게시물 삭제
   const deleteListhandeler = async (ev) => {
     ev.preventDefault();
-    await axios.delete('http://localhost:3001/posts/${postId}')
+    const token = localStorage.getItem("token");
+    await axios.delete(process.env.REACT_APP_SURVER + `/api/post/delete/${postId}`, {
+      headers: {
+        Authorization: `Bearer ${token}`,
+      },
+    })
   }
 
-  const getModal = (id)=> {
-
-  }
-
-
-  // const getCommentData = async () => {
-  //   const commentData = await axios.get('')
-  // }
   return (
     <All_box>
       <Header/>
       <Bigbox>
         <Section>
         {
-          list.map((a) => {
+          list?.map((a) => {
             return (
-
                 <div key={a.postId}>
-                  <Outbox>
+                  <Outbox className="test">
                     <Title>
                       <Setting>
-                        <Pro src={a.userimage} />
-                        <h4>{a.nickname}</h4>
+                        <Pro src={a.User.userimage} />
+                        <h4>{a.User.nickname}</h4>
                       </Setting>
                       <Icon><BiDotsHorizontalRounded style={{ marginTop: "15px", float: "right" }} onClick={() => { setModal(!modal) }} /></Icon>
                       {
@@ -75,23 +74,23 @@ function Main() {
 
                           }}>
                             <ModalBox onClick={(event) => { event.stopPropagation() }}  >
-                              <p onClick={deleteListhandeler}>삭제</p>
-                              <p>수정</p>
-                              <p onClick={() => { setModal(!modal)  }}>취소</p>
+                              <p style={{cursor: "pointer"}} onClick={(ev)=>{deleteListhandeler(ev)}}>삭제</p>
+                              <p style={{cursor: "pointer"}} onClick={()=> {navigate(`/detail/${a.postId}/edit`)}}>수정</p>
+                              <p style={{cursor: "pointer"}} onClick={() => { setModal(!modal)}}>취소</p>
                             </ModalBox>
                           </ModalBackground>
                         </>) : null
                       }
                     </Title>
                     <div>
-                      <MainImg src={a.img} />
+                      <MainImg src={a.postimg}/>
                     </div>
                     <div style={{ padding:"10px"}}>
                       <Icon style={{ marginTop: "10px" }}><BsSuitHeart style={{ marginRight: "15px" }} /><FaRegComment /></Icon>
-                      <p style={{ margin: "5px 0px", paddingLeft: "5px" }}>좋아요 {a.postlikes}</p>
-                      <Setting> <h4 style={{ margin: "5px 0px", paddingLeft: "5px" }}>{a.nickname}</h4> <p style={{ margin: "5px 0px", paddingLeft: "5px" }}>{a.content}</p></Setting>
-                      <p onClick={() => { navigate(`/detail/${a.postId}`) }} style={{ margin: "5px 0px", paddingLeft: "5px" }}>댓글 {a.cntcomments}개 모두 보기</p>
-                      <Setting><h4 style={{ margin: "5px 0px", paddingLeft: "5px" }}>닉네임</h4> <p style={{ margin: "5px 0px", paddingLeft: "5px" }}>댓글임</p></Setting>
+                      <p style={{ margin: "5px 0px", paddingLeft: "5px" }}>좋아요 {a.postlikes}개</p>
+                      <h4 style={{ margin: "5px 0px", paddingLeft: "5px" }}>{a.nickname}</h4> <p style={{ margin: "5px 0px", paddingLeft: "5px" }}>{a.content}</p>
+                      <p onClick={() => { navigate(`/detail/${a.postId}`) }} style={{ margin: "5px 0px", paddingLeft: "5px" }}>댓글 {a.cntcomment}개 모두 보기</p>
+                      <Setting><h4 style={{ margin: "5px 0px", paddingLeft: "5px" }}>{a.createAt}</h4></Setting>
                     </div>
                   </Outbox>
                 </div>
@@ -101,24 +100,24 @@ function Main() {
         }
         </Section>
         <Twobox>
-          <Twobox_head>
-            <Twobox_img/>
-            <Twobox_text>
+          <TwoboxHead>
+            <TwoboxImg/>
+            <TwoboxText>
               <h2>닉네임임</h2>
-            </Twobox_text>
-          </Twobox_head>
-          <Text_box>
+            </TwoboxText>
+          </TwoboxHead>
+          <TextBox>
             <p>회원님을 위한 추천</p>
             <p>모두보기</p>
-          </Text_box>
+          </TextBox>
 
           {/* /*여기 맵돌릴거임 */}
-          <Twobox_last>
-            <Twobox_lastImg/>
-            <Twobox_lastText>
+          <TwoboxLast>
+            <TwoboxLastImg/>
+            <TwoboxLastText>
               <h2>추천 닉네임</h2>
-            </Twobox_lastText>
-          </Twobox_last>
+            </TwoboxLastText>
+          </TwoboxLast>
           {/* /*여기까지 맵돌릴거임 */}
 
 
@@ -133,6 +132,7 @@ export default Main;
 const All_box = styled.div`
   max-width: 2000px;
   min-width: 100px;
+  background-color: #fcfcfc6c;
 `
 
 const Bigbox = styled.div`
@@ -147,7 +147,7 @@ const Twobox = styled.div`
   margin-left: 20px;
 `
 
-const Twobox_head = styled.div`
+const TwoboxHead = styled.div`
   height: 80px;
   border: 1px solid red;
   width: 100%;
@@ -157,14 +157,14 @@ const Twobox_head = styled.div`
   
 `
 
-const Twobox_img = styled.img`
+const TwoboxImg = styled.img`
   height: 60px;
   width: 60px;
   border-radius: 50%;
   border: 1px solid red;
   background-color: black;
 `
-const Twobox_text =styled.div`
+const TwoboxText =styled.div`
     border: 1px solid red;
     height: 100%;
     width: 335px;
@@ -176,7 +176,7 @@ const Twobox_text =styled.div`
       padding-left: 10px;
     }
 `
-const Text_box =styled.div`
+const TextBox =styled.div`
   height: 30px;
   width: 100%;
   align-items: center;
@@ -190,7 +190,7 @@ const Text_box =styled.div`
     }
 `
 
-const Twobox_last =styled.div`
+const TwoboxLast =styled.div`
 margin-top: 10px;
 height: 60px;
   border: 1px solid red;
@@ -199,7 +199,7 @@ height: 60px;
   flex-direction: row;
   align-items: center;
 `
-const Twobox_lastImg = styled.img`
+const TwoboxLastImg = styled.img`
 height: 60px;
 width: 60px;
 border-radius: 50%;
@@ -207,7 +207,7 @@ border: 1px solid red;
 background-color: black;
 ` 
 
-const Twobox_lastText =styled.div`
+const TwoboxLastText =styled.div`
 border: 1px solid red;
 height: 100%;
 width: 335px;
@@ -227,7 +227,7 @@ flex-direction: column;
 
 const Outbox = styled.div`
   border-radius: 12px;
-  border: 1px solid red;
+  border: 2px solid #eee;
   width: 500px;
   height: 700px;
   display: flex;
@@ -242,7 +242,7 @@ const ModalBackground = styled.div`
     left: 0;
     bottom: 0;
     right: 0;
-    background: rgba(0, 0, 0, 0.5);
+    background: rgba(0, 0, 0, 0.2);
     display: flex;
     justify-content: center;
     align-items: center;
@@ -295,3 +295,4 @@ const Icon = styled.div`
   font-size: 30px;
   cursor: pointer;
 `
+
