@@ -23,9 +23,7 @@ function Main() {
   //모든 게시물 조회
   const getAxiosData = async () => {
     const axiosData = await axios.get('http://taesik.shop/api/post', {
-      // headers: {
-      //   Authorization: `Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwibmlja25hbWUiOiJyb290IiwiaWF0IjoxNjYxMTgyMTU4fQ.sUp3VUbLKjgo600eloYsRYCCUpUDI-IVmKxIWhhtIy8`,
-      // },
+
     })
 
     setList(axiosData.data)
