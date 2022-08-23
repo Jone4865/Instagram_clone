@@ -4,38 +4,51 @@ import { useState, useEffect } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import axios from "axios";
 import Header from "../components/Header";
+import { BiDotsHorizontalRounded } from 'react-icons/bi';
 
 function Detail() {
 
     const navigate = useNavigate();
     const { postId } = useParams();
+
+
+    //게시물 내용
     const [detailList, setDetailList] = useState({});
 
-    const [inputs ,setInputs] = useState({
-        postImg:"",
-        content:"",
-    });
+    //유저 정보
+    const [user, setUser] = useState({});
 
     //상세보기 모달
     const [detailModal, setDetailModal] = useState(true);
 
+    //상세보기 삭제,수정 모달
+    const [detailDeleteModal, setDetailDeleteModal] = useState(false);
+
     // 상세게시물 가져오기
     const getAxiosDetailData = async () => {
-        const axiosData = await axios.get(`http://localhost:3001/posts?postId=1`)
-        setDetailList(axiosData.data)
-        console.log(axiosData.data)
+        const token = localStorage.getItem("token");
+        const axiosData = await axios.get(process.env.REACT_APP_SURVER + `/api/post/${postId}`, {
+            headers: {
+                Authorization: `Bearer ${token}`,
+            },
+        })
+        setDetailList(axiosData.data.data)
+        setUser(axiosData.data.data.PostingUser)
+        console.log(axiosData.data.data)
     }
     useEffect(() => {
         getAxiosDetailData();
     }, [])
 
-
-
-
-    //삭제 핸들러
-    const deleteHandler = async (ev) => {
+    //게시물 삭제 성공함
+    const deleteListhandeler = async (ev) => {
         ev.preventDefault();
-        await axios.delete(`http://localhost:3001/posts/${postId}`)
+        const token = localStorage.getItem("token");
+        await axios.delete(`http://13.209.15.22/api/post/delete/${postId}`, {
+            headers: {
+                Authorization: `Bearer ${token}`,
+            },
+        })
     }
 
 
@@ -44,26 +57,41 @@ function Detail() {
             <Header />
             {
                 detailModal === true ? (<>
-                    <DatailModalBackground onClick={() => {navigate('/')}}>
-                        <DatailModalBox onClick={(event) => { event.stopPropagation()}}>
+                    <DatailModalBackground onClick={() => { navigate('/'); setDetailModal(!detailList) }}>
+                        <DatailModalBox onClick={(event) => { event.stopPropagation() }}>
                             <All_box>
-                                <Left src="https://clone-img-upload.s3.ap-northeast-2.amazonaws.com/아이유 메인 이밎.jpg">
+                                <Left src={detailList.postimage}>
                                 </Left>
                                 <Right>
                                     <Onebox>
-                                        <Onebox_img src="https://clone-img-upload.s3.ap-northeast-2.amazonaws.com/아이유3.jpg"/>
-                                        <h5 style={{marginTop:"15px"}}>닉네임임</h5>
+                                        <HeadBox>
+                                            <Onebox_img src={user.userimage} />
+                                            <h5 style={{ marginLeft: "10px" }}>{user.nickname}</h5>
+                                        </HeadBox>
+                                        <div>
+                                            <Icon><BiDotsHorizontalRounded onClick={() => { setDetailDeleteModal(!detailDeleteModal) }} /></Icon>
+                                        </div>
+
                                     </Onebox>
                                     <Twobox>
-                                        <Twobox_img src="https://clone-img-upload.s3.ap-northeast-2.amazonaws.com/아이유3.jpg"/>
-                                        <h5 style={{marginTop:"15px"}}>닉네임임</h5>
-                                        <p style={{margin:"12px"}}>asdadad </p>
+                                        <Twobox_img src={user.userimage} />
+                                        <h5 style={{ marginTop: "8px" }}>{user.nickname}</h5>
+                                        <p style={{ marginTop: "10px", marginLeft: "5px" }}>ㅁㄴㅇ</p>
                                     </Twobox>
-                                    <Comment_box>
-                                        <Comment_img src="https://clone-img-upload.s3.ap-northeast-2.amazonaws.com/댓글 이미지.png"/>
-                                        <h5 style={{marginTop:"15px"}}>댓글작성자 닉네임</h5>
-                                        <p>댓글 내용</p>
-                                    </Comment_box>
+                                    {
+                                        detailList.comments?.map((a) => {
+                                            return (
+                                                <div key={a.commentid}>
+                                                    <Comment_box>
+                                                        <Comment_img src={detailList.postimage} />
+                                                        <h5>{a.nickname}</h5>
+                                                        <p>{a.comment}</p>
+                                                    </Comment_box>
+                                                </div>
+                                            )
+                                        })
+                                    }
+
                                     <Lastbox>
 
                                     </Lastbox>
@@ -74,11 +102,33 @@ function Detail() {
                     </DatailModalBackground>
                 </>) : null
             }
+
+            {/* 모달창임 */}
+            {
+                detailDeleteModal === true ? (<>
+                    <ModalBackground onClick={() => {
+                        setDetailDeleteModal(!detailDeleteModal)
+
+                    }}>
+                        <ModalBox onClick={(event) => { event.stopPropagation() }}  >
+                            <p style={{ cursor: "pointer" }} onClick={(ev) => { deleteListhandeler(ev) }}>삭제</p>
+                            <p style={{ cursor: "pointer" }} onClick={() => { navigate(`/detail/${postId}/edit`) }}>수정</p>
+                            <p style={{ cursor: "pointer" }} onClick={() => { setDetailDeleteModal(!detailDeleteModal) }}>취소</p>
+                        </ModalBox>
+                    </ModalBackground>
+                </>) : null
+            }
         </All_box>
     )
 }
 
 export default Detail
+
+const HeadBox = styled.div`
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+`
 
 
 const All_box = styled.div`
@@ -95,7 +145,7 @@ const DatailModalBackground = styled.div`
     left: 0;
     bottom: 0;
     right: 0;
-    background: rgba(0, 0, 0, 0.5);
+    background: rgba(0, 0, 0, 0.4);
     display: flex;
     justify-content: center;
     align-items: center;
@@ -111,6 +161,36 @@ const DatailModalBox = styled.div`
     margin-top: 50px;
 `;
 /////
+
+
+// 수정 삭제 모달
+const ModalBackground = styled.div`
+    position: fixed;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    background: rgba(0, 0, 0, 0.6);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+`;
+
+
+const ModalBox = styled.div`
+    background-color: white;
+    border-radius: 10px;
+    width: 40%;
+    height: 20%;
+    max-width: 500px;
+    min-width: 200px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+`;
+
+/// 
 
 const Left = styled.img`
     width: 65%;
@@ -133,15 +213,16 @@ const Onebox = styled.div`
     height: 75px;
     display: flex;
     align-items: center;
-    float: left;
     margin-left: 10px;
     gap: 10px;
+    justify-content: space-between;
 `
 
 const Onebox_img = styled.img`
     height: 40px;
     width: 40px;
     border-radius: 50%;
+    border: 1px solid red;
 `
 const Twobox = styled.div`
     border: 1px solid red;
@@ -166,7 +247,7 @@ const Comment_box = styled.div`
     gap: 10px;
 
 `
-const Comment_img =styled.img`
+const Comment_img = styled.img`
     height: 40px;
     width: 40px;
     border-radius: 50%;
@@ -176,4 +257,9 @@ const Lastbox = styled.div`
     height: 200px;
     margin-left: 10px;
     display: flex;
+`
+const Icon = styled.div`
+  font-size: 30px;
+  cursor: pointer;
+  margin-right: 8px;
 `

@@ -19,7 +19,7 @@ export const __PutContent = createAsyncThunk(
         process.env.REACT_APP_SURVER + `/api/comment/${commentId}`, comment ,
         {
           headers: {
-            authorization: process.env.REACT_APP_TOKENNAME + `${token}`,
+            authorization: `Bearer ${token}`,
           },
         }
       );

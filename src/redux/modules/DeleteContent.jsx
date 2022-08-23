@@ -17,7 +17,7 @@ export const __DeleteContent = createAsyncThunk(
         process.env.REACT_APP_SURVER + `/api/comment/${payload}`, {} ,
         {
           headers: {
-            authorization: process.env.REACT_APP_TOKENNAME + `${token}`,
+            authorization: `Bearer ${token}`,
           },
         }
       );

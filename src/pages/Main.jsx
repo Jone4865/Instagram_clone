@@ -22,7 +22,7 @@ function Main() {
 
   //모든 게시물 조회
   const getAxiosData = async () => {
-    const axiosData = await axios.get('http://taesik.shop/api/post', {
+    const axiosData = await axios.get(process.env.REACT_APP_SURVER + '/api/post', {
 
     })
 

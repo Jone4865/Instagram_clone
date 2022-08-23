@@ -17,7 +17,7 @@ export const __PostContent = createAsyncThunk(
         process.env.REACT_APP_SURVER + "/api/post/create", payload,
         {
           headers: {
-            authorization: process.env.REACT_APP_TOKENNAME + `${token}`,
+            authorization: `Bearer ${token}`,
           },
         }
       );
