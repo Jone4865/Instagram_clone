@@ -56,7 +56,7 @@ function Mypage() {
                                                                     </div>
                                                                     <section className="_aa_l" style={{ "display": "flex", "margin": "auto" }}>
                                                                         <div className="_aa_m" style={{ "display": "flex", "flexDirection": "row" }}>
-                                                                            <img src={My.image} style={{ "width": "150px", "height": "150px", "borderRadius": "100%" }} />
+                                                                            <img src={My?.image} style={{ "width": "150px", "height": "150px", "borderRadius": "100%" }} />
                                                                             <h2 className="_aacl _aacs _aact _aacx _aada" tabIndex="-1" style={{ "fontSize": "23px", "marginLeft": "100px", "marginTop": "20px", "fontWeight": "unset" }}>
                                                                                 bel1__94</h2>
                                                                             <div className="_ab8w  _ab94 _ab99 _ab9f _ab9k _ab9q  _abb3 _abcm" >
@@ -114,7 +114,7 @@ function Mypage() {
                                                                                         <a className="qi72231t nu7423ey n3hqoq4p r86q59rh b3qcqh3k fq87ekyn bdao358l fsf7x5fv rse6dlih s5oniofx m8h3af8h l7ghb35v kjdc1dyq kmwttqpk srn514ro oxkhqvkx rl78xhln nch0832m cr00lzj9 rn8ck1ys s3jn8y49 icdlwmnq _a6hd" href="/p/CeXzwCor-K8/" role="link" tabIndex="0">
                                                                                             <div className="_aagu">
                                                                                                 <div className="_aagv">
-                                                                                                    <img crossOrigin="anonymous" className="_aagt" src={list.image} style={{ "objectFit": "cover" }} />
+                                                                                                    <img crossOrigin="anonymous" className="_aagt" src={list?.image} style={{ "objectFit": "cover" }} />
                                                                                                 </div>
                                                                                                 <div className="_aagw">
                                                                                                 </div>
