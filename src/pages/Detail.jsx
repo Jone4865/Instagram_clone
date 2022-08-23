@@ -22,12 +22,12 @@ function Detail() {
     const [detailModal, setDetailModal] = useState(true);
 
     //상세보기 삭제,수정 모달
-    const [detailDeleteModal, setDetailDeleteModal] =useState(false);
+    const [detailDeleteModal, setDetailDeleteModal] = useState(false);
 
     // 상세게시물 가져오기
     const getAxiosDetailData = async () => {
         const token = localStorage.getItem("token");
-        const axiosData = await axios.get(`http://13.209.15.22/api/post/${postId}`, {
+        const axiosData = await axios.get(process.env.REACT_APP_SURVER + `/api/post/${postId}`, {
             headers: {
                 Authorization: `Bearer ${token}`,
             },
@@ -40,16 +40,17 @@ function Detail() {
         getAxiosDetailData();
     }, [])
 
-      //게시물 삭제 성공함
+
+    //게시물 삭제 성공함
     const deleteListhandeler = async (ev) => {
-    ev.preventDefault();
-    const token = localStorage.getItem("token");
-    await axios.delete(`http://13.209.15.22/api/post/delete/${postId}`, {
-      headers: {
-        Authorization: `Bearer ${token}`,
-      },
-    })
-  }
+        ev.preventDefault();
+        const token = localStorage.getItem("token");
+        await axios.delete(process.env.REACT_APP_SURVER + `/api/post/delete/${postId}`, {
+            headers: {
+                Authorization: `Bearer ${token}`,
+            },
+        })
+    }
 
 
     return (
@@ -66,17 +67,17 @@ function Detail() {
                                     <Onebox>
                                         <HeadBox>
                                             <Onebox_img src={user.userimage} />
-                                        <h5 style={{marginLeft:"10px"}}>{user.nickname}</h5>
+                                            <h5 style={{ marginLeft: "10px" }}>{user.nickname}</h5>
                                         </HeadBox>
                                         <div>
-                                            <Icon><BiDotsHorizontalRounded onClick={()=>{setDetailDeleteModal(!detailDeleteModal)}}/></Icon>
+                                            <Icon><BiDotsHorizontalRounded onClick={() => { setDetailDeleteModal(!detailDeleteModal) }} /></Icon>
                                         </div>
-                                        
+
                                     </Onebox>
                                     <Twobox>
                                         <Twobox_img src={user.userimage} />
                                         <h5 style={{ marginTop: "8px" }}>{user.nickname}</h5>
-                                        <p style={{ marginTop: "10px", marginLeft:"5px" }}>ㅁㄴㅇ</p>
+                                        <p style={{ marginTop: "10px", marginLeft: "5px" }}>ㅁㄴㅇ</p>
                                     </Twobox>
                                     {
                                         detailList.comments?.map((a) => {
@@ -103,21 +104,21 @@ function Detail() {
                 </>) : null
             }
 
-                {/* 모달창임 */}
-                    {
-                        detailDeleteModal === true ? (<>
-                          <ModalBackground onClick={() => {
-                            setDetailDeleteModal(!detailDeleteModal)
+            {/* 모달창임 */}
+            {
+                detailDeleteModal === true ? (<>
+                    <ModalBackground onClick={() => {
+                        setDetailDeleteModal(!detailDeleteModal)
 
-                          }}>
-                            <ModalBox onClick={(event) => { event.stopPropagation() }}  >
-                              <p style={{cursor: "pointer"}}  onClick={(ev) => { deleteListhandeler(ev)}}>삭제</p>
-                              <p style={{cursor: "pointer"}} onClick={()=>{navigate(`/detail/${postId}/edit`)}}>수정</p>
-                              <p style={{cursor: "pointer"}} onClick={() => { setDetailDeleteModal(!detailDeleteModal)}}>취소</p>
-                            </ModalBox>
-                          </ModalBackground>
-                        </>) : null
-                      }
+                    }}>
+                        <ModalBox onClick={(event) => { event.stopPropagation() }}  >
+                            <p style={{ cursor: "pointer" }} onClick={(ev) => { deleteListhandeler(ev) }}>삭제</p>
+                            <p style={{ cursor: "pointer" }} onClick={() => { navigate(`/detail/${postId}/edit`) }}>수정</p>
+                            <p style={{ cursor: "pointer" }} onClick={() => { setDetailDeleteModal(!detailDeleteModal) }}>취소</p>
+                        </ModalBox>
+                    </ModalBackground>
+                </>) : null
+            }
         </All_box>
     )
 }

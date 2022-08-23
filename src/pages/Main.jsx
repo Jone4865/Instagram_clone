@@ -25,7 +25,7 @@ function Main() {
   //모든 게시물 조회
   const getAxiosData = async () => {
     const token = localStorage.getItem("token");
-    const axiosData = await axios.get('http://13.209.15.22/api/post', {
+    const axiosData = await axios.get(process.env.REACT_APP_SURVER +`/api/post`, {
       headers: {
         Authorization: `Bearer ${token}`,
       },
@@ -44,13 +44,12 @@ function Main() {
   const deleteListhandeler = async (ev) => {
     ev.preventDefault();
     const token = localStorage.getItem("token");
-    await axios.delete(`http://13.209.15.22//api/post/delete/${postId}`, {
+    await axios.delete(process.env.REACT_APP_SURVER + `/api/post/delete/${postId}`, {
       headers: {
         Authorization: `Bearer ${token}`,
       },
     })
   }
-
 
   return (
     <All_box>

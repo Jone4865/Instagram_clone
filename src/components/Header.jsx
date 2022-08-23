@@ -4,7 +4,6 @@ import { useState } from "react";
 import { FaRegHeart } from 'react-icons/fa';
 import { useNavigate } from "react-router-dom";
 import { MdOutlineArrowBack } from 'react-icons/md';
-import ImageUpload from "./ImageUpload";
 import axios from "axios";
 import "./header.css";
 
@@ -19,36 +18,7 @@ function Header() {
     const fileInput = useRef();
 
 
-    //게시물 작성에서 입력 받을 인풋 값들
-    const [inputs, setInputs] = useState({
-        content: ""
-    });
-
-    // const onChange = (e) => {
-    //     const { value, name } = e.target;
-    //     setInputs({
-    //         ...inputs,
-    //         [name]: value,
-    //     });
-    // };
-
-    // const { content} = inputs
-
-    // console.log(content)
-
-
-    //게시물 create
-    // const onClickPostButtonHandler = async (event) => {
-    //     event.preventDefault();
-
-    //     try {
-    //         await axios.post('http://taesik.shop/api/post/create', inputs)
-    //             .then(res => {
-    //             })
-    //     } catch (err) {
-    //         console.log(err);
-    //     }
-    // };
+ 
 
 
     //사진 이미지
@@ -60,27 +30,11 @@ function Header() {
 
         const formData = new FormData();
         formData.append('postImg', fileInput.current.files[0])
-        formData.append('content', new Blob([JSON.stringify(contents_ref.current.value)]), { type: "application/json" })
+        formData.append('content', contents_ref.current.value)
+
         console.log(contents_ref.current.value)
-        
-           
-        // for (let key of formData.keys()) {
-        //     console.log(key);
-        //      }
-        // // for (let value of formData.values()) {
-        // //         console.log(value);
-        // //   }
- 
-        //   for (var pair of formData.entries()) {
-        //     console.log(pair[0]+ ', ' + pair[1]);
-        // }
 
-        // console.log(fileInput.current.files[0])
-        const formUp = {formData, contents_ref}
-        console.log(formUp)
-
-        
-        await axios.post(`http://taesik.shop/api/post/create`,  {
+        await axios.post( process.env.REACT_APP_SURVER + `/api/post/create`, formData, {
             headers: {
                 Authorization: `Bearer ${token}`,
                 "Content-Type": `multipart/form-data`,
@@ -91,10 +45,7 @@ function Header() {
 
                 if (data.success) {
                     alert('이미지가 등록되었습니다.')
-                    setInputs({
-                        ...inputs,
-                        imageUrl: data.imageUrl,
-                    });
+                    
                     console.log(res)
 
                 } else {
@@ -235,7 +186,7 @@ function Header() {
                                     </Right_first>
                                     <Right_two>
                                         <form>
-                                            <textarea
+                                            <input
                                             name="content"
                                             maxLength={200}
                                             placeholder="문구 입력 (최대 200자)" 
