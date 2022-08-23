@@ -13,17 +13,15 @@ export const __PutContent = createAsyncThunk(
   "putcontent/putContent",
   async (payload, api) => {
     const commentId = +payload.contentId
-    const comment = payload.comment
     try {
       const data = await axios.put(
-        process.env.REACT_APP_SURVER + `/api/comment/${commentId}`, {comment} ,
+        process.env.REACT_APP_SURVER + `/api/comment/${commentId}`, {comment: payload.newcomment} ,
         {
           headers: {
             authorization: `Bearer ${token}`,
           },
         }
       );
-      
       return api.fulfillWithValue(data.data);
     } catch (e) {
       return api.rejectWithValue(e);

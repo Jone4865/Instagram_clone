@@ -8,15 +8,16 @@ import Header from "../components/Header";
 import { BiDotsHorizontalRounded } from 'react-icons/bi';
 import { __PostContent } from "../redux/modules/PostContent";
 import { __DeleteContent } from "../redux/modules/DeleteContent";
-
+import { __PutContent } from "../redux/modules/PutContent"
 
 function Detail() {
     const dispatch = useDispatch();
     const [comment, setComment] = useState("")
+    const [view, setView] = useState(true)
+    const [newcomment, setnewComment] = useState("")
 
     const navigate = useNavigate();
     const { postId } = useParams();
-
 
     //게시물 내용
     const [detailList, setDetailList] = useState({});
@@ -47,8 +48,11 @@ function Detail() {
 
     const onsubmit = (e) => {
         e.preventDefault();
-        dispatch(__PostContent({comment, postId}))
+        dispatch(__PostContent({ comment, postId }));
+        setComment("");
+        setTimeout(() => { }, "1000");
         getAxiosDetailData();
+        navigate(`/detail/${detailList.id}`, { replace: true })
     }
 
     //게시물 삭제 성공함
@@ -62,7 +66,23 @@ function Detail() {
         })
     }
 
+    const editHandle = (e) => {
+        setView(false)
+    }
 
+    const cancleHandle = (e) => {
+        setView(true)
+    }
+
+    const newonsubmit = (e) => {
+        e.preventDefault();
+        dispatch(__PutContent({ newcomment, commentId: e.target.value }));
+        setnewComment("");
+        setView(true)
+        setTimeout(() => { }, "1000");
+        getAxiosDetailData();
+        navigate(`/detail/${detailList.id}`, { replace: true })
+    }
 
     return (
         <All_box>
@@ -91,25 +111,34 @@ function Detail() {
                                         <p style={{ marginTop: "10px", marginLeft: "5px" }}>ㅁㄴㅇ</p>
                                     </Twobox>
                                     <Lastbox>
-                                    {
-                                        detailList.comments?.map((a) => {
-                                            return (
-                                                <div key={a.commentid}>
-                                                    <Comment_box>
-                                                        <Comment_img src={detailList.postimage} />
-                                                        <h5>{a.nickname}</h5>
-                                                        <p>{a.comment}</p>
-                                                        <button onClick={() => {
-                                                            dispatch(__DeleteContent(+a.commentid))
-                                                        }}>삭제</button>
-                                                    </Comment_box>
-                                                </div>
-                                            )
-                                        })
-                                    }
+                                        {
+                                            detailList.comments?.map((a) => {
+                                                return (
+                                                    <div key={a.commentid}>
+                                                        <Comment_box>
+                                                            <Comment_img src={detailList.postimage} />
+                                                            <h5>{a.nickname}</h5>
+                                                            <p>{a.comment}</p><button onClick={(e) => {
+                                                                e.preventDefault();
+                                                                dispatch(__DeleteContent(+a.commentid));
+                                                                setTimeout(() => { }, "1000");
+                                                                getAxiosDetailData();
+                                                                navigate(`/detail/${detailList.id}`, { replace: true });
+                                                            }}>삭제</button><button onClick={editHandle}>수정</button>
+                                                        </Comment_box>
+                                                        
+                                                        <Comment_box>
+                                                            <Comment_img src={detailList.postimage} />
+                                                            <h5>{a.nickname}</h5>
+                                                            <div><input onChange={(e) => setnewComment(e.target.value)}></input><button value={a.commentid} onClick={newonsubmit}>수정완료</button><button onClick={cancleHandle}>취소</button></div>
+                                                        </Comment_box>
+                                                    </div>
+                                                )
+                                            })
+                                        }
                                     </Lastbox>
-                                    <div style={{"margin":"170px auto auto 20px"}} >
-                                        <input onChange={(e)=> setComment(e.target.value)} placeholder="댓글 달기..." style={{"border":"2px solid #f3ebeb", "width":"400px", "padding":"5px", "borderRadius":"5px"}}></input><span><button onClick={onsubmit} style={{"marginLeft":"10px", "color":"#4891ff", "fontWeight":"bold", "backgroundColor":"white", "border":"0px"}} >작성</button></span>
+                                    <div style={{ "margin": "170px auto auto 20px" }} >
+                                        <input onChange={(e) => setComment(e.target.value)} placeholder="댓글 달기..." style={{ "border": "2px solid #f3ebeb", "width": "400px", "padding": "5px", "borderRadius": "5px" }}></input><span><button onClick={onsubmit} style={{ "marginLeft": "10px", "color": "#4891ff", "fontWeight": "bold", "backgroundColor": "white", "border": "0px" }} >작성</button></span>
                                     </div>
                                 </Right>
                             </All_box>
@@ -273,6 +302,7 @@ const Lastbox = styled.div`
     height: 200px;
     margin-left: 10px;
     display: flex;
+    flex-direction: column;
 `
 const Icon = styled.div`
   font-size: 30px;
