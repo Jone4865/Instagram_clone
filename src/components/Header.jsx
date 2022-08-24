@@ -15,14 +15,33 @@ function Header() {
 
     const [modal, setModal] = useState(false);
 
-    const fileInput = useRef();
+    const fileInput = useRef(null);
+
+    const [attachment, setAttachment] = useState("");
 
 
+    //사진 미리보기 기능
+    const selectImg = (e) => {
+        const reader = new FileReader();
+        const theFile = fileInput.current.files[0];
+        reader.readAsDataURL(theFile);
+        reader.onloadend = (finishiedEvent) => {
+          const {
+            currentTarget: { result },
+          } = finishiedEvent;
+          setAttachment(result);
+        };
+      };
+
+    // const Onreset = ()=> {
+    //     fileInput:null,
+    //     contents_ref:null
+    // }
  
 
 
-    //사진 이미지
-    const imageUploadButtonClickHandler = async (ev) => {
+    //게시물 생성 폼데이터로 보내기
+    const ListCreateButtonClickHandler = async (ev) => {
         ev.preventDefault();
         const token = localStorage.getItem("token");
 
@@ -142,7 +161,7 @@ function Header() {
                                         <div className="_aaav">
                                             <div className="_aaaw">
                                             </div>
-                                            <span className="_aa8h _aa8i" role="link" tabIndex="0" style={{ "width": "24px", "height": "24px" }}>
+                                            <span onClick={() => { navigate(`/mypage`) }} className="_aa8h _aa8i" role="link" tabIndex="0" style={{ "width": "24px", "height": "24px" }}>
                                                 <img alt="bel1__94님의 프로필 사진" className="_aa8j" crossOrigin="anonymous" draggable="false" src="https://tse1.mm.bing.net/th?id=OIP._ZMxhOqO1O0RuE9lotq0HgHaK9&pid=Api&P=0" />
                                             </span>
                                         </div>
@@ -165,17 +184,24 @@ function Header() {
                             <Head>
                                 <Icon ><MdOutlineArrowBack onClick={() => { setModal(!modal) }} /></Icon>
                                 <h4>새 게시물 생성하기</h4>
-                                <h4  onClick={(ev) => imageUploadButtonClickHandler(ev)} style={{ color: "skyblue", cursor: "pointer" }}>공유하기</h4>
+                                <h4  onClick={(ev) => ListCreateButtonClickHandler(ev)} style={{ color: "skyblue", cursor: "pointer" }}>공유하기</h4>
                             </Head>
                             <div style={{ display: "flex" }}>
 
                                 <Left>
+                                    <Miribogi src={
+                attachment
+                  ? attachment
+                  : "https://user-images.githubusercontent.com/75834421/124501682-fb25fd00-ddfc-11eb-93ec-c0330dff399b.jpg"
+              }
+              alt="업로드할 이미지"/>
                                     <form encType="multipart/form-data">
-                                        <input
+                                        <ImageUpce
                                             type="file"
                                             placeholder="게시물 이미지"
                                             name="postImg"
                                             ref={fileInput}
+                                            onChange={selectImg}
                                         />
                                         </form>
                                 </Left>
@@ -186,10 +212,10 @@ function Header() {
                                     </Right_first>
                                     <Right_two>
                                         <form>
-                                            <input
+                                            <ConInpu
                                             name="content"
-                                            maxLength={200}
-                                            placeholder="문구 입력 (최대 200자)" 
+                                            maxLength={2220}
+                                            placeholder="문구 입력" 
                                             ref={contents_ref}
                                             />
                                         </form>
@@ -208,6 +234,26 @@ function Header() {
         </>
     )
 }
+
+
+const ConInpu = styled.textarea`
+    border: none;
+`
+
+
+const ImageUpce = styled.input`
+    background-color: black;
+    border-radius: 20px;
+    background-color: black;
+    color: white;
+`
+
+
+const Miribogi =styled.img`
+    height: 95%;
+    width: 100%;
+
+`
 
 const ModalBackground = styled.div`
     position: fixed;
