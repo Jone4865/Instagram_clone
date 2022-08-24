@@ -9,9 +9,6 @@ import Mypage from "../pages/Mypage/Mypage";
 import DetailEdit from "../pages/DetailEdit";
 import MypageEdit from "../pages/MypageEdit";
 
-import Facebook from "../pages/Facebook";
-import New from "../pages/New";
-
 const Router = () => {
   return (
     <Routes>
@@ -22,9 +19,6 @@ const Router = () => {
       <Route path="/login" element={<Login />} />
       <Route path="/signup" element={<Signup />} />
       <Route path="/:nickname" element={<Mypage />} />
-
-      <Route path="/ex" element={<Facebook />} />
-      <Route path="/new" element={<New />} />
     </Routes>
   );
 };

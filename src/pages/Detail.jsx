@@ -16,7 +16,7 @@ function Detail() {
     const [view, setView] = useState(true)
     const [newcomment, setnewComment] = useState("")
     const [commentId, setCommentId] = useState(0)
-    console.log(commentId)
+    
     const navigate = useNavigate();
     const { postId } = useParams();
 
@@ -34,6 +34,7 @@ function Detail() {
 
     // 상세게시물 가져오기
     const getAxiosDetailData = async () => {
+
         const token = localStorage.getItem("token");
         const axiosData = await axios.get(process.env.REACT_APP_SURVER + `/api/post/${postId}`, {
             headers: {
