@@ -14,14 +14,13 @@ export const __DeleteContent = createAsyncThunk(
   async (payload, api) => {
     try {
       const data = await axios.delete(
-        process.env.REACT_APP_SURVER + `/api/comment/${payload}`, {} ,
+        process.env.REACT_APP_SURVER + `/api/comment/${payload}`,
         {
           headers: {
-            authorization: process.env.REACT_APP_TOKENNAME + `${token}`,
+            authorization: `Bearer ${token}`,
           },
         }
-      );
-      
+      )
       return api.fulfillWithValue(data.data);
     } catch (e) {
       return api.rejectWithValue(e);
