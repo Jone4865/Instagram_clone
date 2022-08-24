@@ -16,7 +16,7 @@ function Detail() {
     const [view, setView] = useState(true)
     const [newcomment, setnewComment] = useState("")
     const [commentId, setCommentId] = useState(0)
-
+    
     const navigate = useNavigate();
     const { postId } = useParams();
 
@@ -34,6 +34,7 @@ function Detail() {
 
     // 상세게시물 가져오기
     const getAxiosDetailData = async () => {
+
         const token = localStorage.getItem("token");
         const axiosData = await axios.get(process.env.REACT_APP_SURVER + `/api/post/${postId}`, {
             headers: {
@@ -68,6 +69,7 @@ function Detail() {
     }
 
     const editHandle = (e) => {
+        console.log(e.target)
         setView(false)
         setCommentId(+e.target.value)
     }
@@ -77,8 +79,8 @@ function Detail() {
     }
 
     const newonsubmit = (e) => {
-        setnewComment("");
         e.preventDefault();
+        e.target.value("");
         dispatch(__PutContent({ newcomment, commentId }));
         setView(true)
         setTimeout(() => { }, "1000");
@@ -110,7 +112,7 @@ function Detail() {
                                     <Twobox>
                                         <Twobox_img src={user.userimage} />
                                         <h5 style={{ marginTop: "8px" }}>{user.nickname}</h5>
-                                        <p style={{ marginTop: "8px", marginLeft: "5px" }}>{detailList.content}</p>
+                                        <p style={{ marginTop: "8px", marginLeft: "5px", wordBreak: "break-all", overflow: "hidden" }}>{detailList.content}</p>
                                     </Twobox>
                                     <Lastbox>
                                         {
@@ -121,18 +123,19 @@ function Detail() {
                                                             <Comment_img src={detailList.postimage} />
                                                             <h5>{a.nickname}</h5>
                                                             <p>{a.comment}</p>
-                                                            <button onClick={(e) => {
+                                                            <button style={{ "marginLeft": "10px", "color": "#4891ff", "fontWeight": "bold", "backgroundColor": "white", "border": "0px", "width":"50px" }} onClick={(e) => {
                                                                 e.preventDefault();
                                                                 dispatch(__DeleteContent(+a.commentid));
                                                                 setTimeout(() => { }, "1000");
                                                                 getAxiosDetailData();
                                                                 navigate(`/detail/${detailList.id}`, { replace: true });
-                                                            }}>삭제</button>{view === true ? 
-                                                            <button value={a.commentid} onClick={editHandle}>수정</button> : ''}
+                                                            }}>삭제</button>{view === true ?
+                                                                <button style={{ "marginLeft": "10px", "color": "#4891ff", "fontWeight": "bold", "backgroundColor": "white", "border": "0px", "width":"50px" }} value={a.commentid} onClick={editHandle}>수정</button> : ''}
                                                         </Comment_box>
                                                     </div>
                                                 )
                                             })
+
                                         }
                                     </Lastbox>
                                     {view === true ? <div style={{ "margin": "30px auto auto 20px" }} >
@@ -283,12 +286,20 @@ const Twobox_img = styled.img`
 const Comment_box = styled.div`
     display: flex;
     flex-direction: row;
-    border: 1px solid red;
-    width: 400px;
-    margin-left: 10px;
-    height: 60px;
+    border: 1px solid gray;
+    border-radius:7px;
+    width: 440px;
+    min-height: 60px;
     align-items: center;
+    margin: 5px;
+    padding: 5px;
     gap: 10px;
+    p {
+        display: flex;
+        margin: auto;
+        width: 200px;
+        word-break:break-all;
+    }
 `
 const Comment_img = styled.img`
     height: 40px;
