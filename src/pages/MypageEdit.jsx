@@ -1,21 +1,17 @@
 import React, { useRef } from "react";
 import styled from "styled-components";
 import { useState } from "react";
-import { useParams } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
-import { useEffect } from "react";
 import Header from "../components/Header";
 
 function MypageEdit() {
 
-    const { postId } = useParams();
-
-    const [editlist, setEditlist] = useState();
+    const navigator = useNavigate();
 
 
     //셀렉트 값 받아오기
-    const [Selected, setSelected] = useState("");
+    const [selected, setSelected] = useState("");
 
     const [attachment, setAttachment] = useState("");
 
@@ -25,7 +21,7 @@ function MypageEdit() {
     const introduce_Ref = useRef();
     const email_Ref = useRef();
     const phone_Ref = useRef();
-    const gender_Ref = useRef(Selected);
+    const gender_Ref = useRef(selected);
 
 
     //사진 미리보기 기능
@@ -47,14 +43,10 @@ function MypageEdit() {
         setSelected(e.target.value);
       };
 
-
-    console.log(Selected)
     //내 정보 수정 핸들러
     const editMyprofieHadler = async (ev) => {
         ev.preventDefault();
         const token = localStorage.getItem("token");
-
-        console.log(fileInput.current.files[0])
 
         const formData = new FormData();
         formData.append('profile', fileInput.current.files[0])
@@ -63,9 +55,7 @@ function MypageEdit() {
         formData.append('introduce', introduce_Ref.current.value)
         formData.append('email', email_Ref.current.value)
         formData.append('phone', phone_Ref.current.value)
-        formData.append('gender', gender_Ref)
-
-        console.log(name_Ref.current.value)
+        formData.append('gender', selected)
 
         await axios.put(process.env.REACT_APP_SURVER + `/api/auth/profile`, formData, {
             headers: {
@@ -74,15 +64,16 @@ function MypageEdit() {
             },
         })
             .then(res => {
-                const data = res.data;
+                const data = res.status === 200
+                console.log(formData)
 
-                if (data.success) {
-                    alert('이미지가 등록되었습니다.')
-
+                if (data) {
+                    alert('정보가 수정되었습니다')
+                    navigator(`/mypage`)
                     console.log(res)
-
                 } else {
-                    alert('이미지가 등록에 실패하였습니다.')
+                    alert('정보 수정에 실패하였습니다')
+                    console.log(res)
                 }
             }).catch(err => {
                 console.log(err)
@@ -169,12 +160,14 @@ function MypageEdit() {
                                 <select
                                     ref={gender_Ref}
                                     onChange={handleSelect}
-                                     value={Selected}
+                                     value={selected}
                                      name="gender"
+                                     placeholder="qwe"
                                      >
-                                    <option>밝히고 싶지 않음</option>
+                                    <option>알리고 싶지 않음</option>
                                     <option>남자</option>
                                     <option>여자</option>
+                                    
                                 </select>
                             </TwoBox>
                         </form>

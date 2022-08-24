@@ -5,8 +5,8 @@ import { useNavigate, useParams } from "react-router-dom";
 import axios from "axios";
 import Header from "../components/Header";
 import { BiDotsHorizontalRounded } from 'react-icons/bi';
-import {BsSuitHeart} from 'react-icons/bs';
-import {FaRegComment} from 'react-icons/fa';
+import { BsSuitHeart } from 'react-icons/bs';
+import { FaRegComment } from 'react-icons/fa';
 import { __getMycontent } from "../redux/modules/GetMypage";
 import { useSelector } from "react-redux/es/exports";
 import { useDispatch } from "react-redux/es/exports";
@@ -21,24 +21,31 @@ function Main() {
 
   useEffect(() => {
     dispatch(__getMycontent())
-}, [])
-
-  console.log(myprofile)
+  }, [])
 
 
   const navigate = useNavigate();
+
+  //각각의 포스트 아이디값 넣어놓기
+  const [postIds, setPostIds] = useState(0);
+
+  //좋아요 값 저장하기
+  const [onLike, setOnLike] = useState(false);
+
+
+  const [likeNum, setLikeNum] = useState();
 
   //삭제 및 수정 모달
   const [modal, setModal] = useState(false);
 
   //데이터들 저장
   const [list, setList] = useState([]);
-  const [user, setUser] =useState({});
+  const [user, setUser] = useState({});
 
   //모든 게시물 조회
   const getAxiosData = async () => {
     const token = localStorage.getItem("token");
-    const axiosData = await axios.get(process.env.REACT_APP_SURVER +`/api/post`, {
+    const axiosData = await axios.get(process.env.REACT_APP_SURVER + `/api/post`, {
       headers: {
         Authorization: `Bearer ${token}`,
       },
@@ -53,31 +60,83 @@ function Main() {
   }, [])
 
 
+
+  //좋아요 핸들러
+  // const LikeonClick = (postIds)=> {
+  //   const token = localStorage.getItem("token");
+  //     axios.post(process.env.REACT_APP_SURVER + `/api/post/like/${postIds}`, onLike, {
+        // headers: {
+        //   Authorization: `Bearer ${token}`,
+        // },
+  //     })
+  // }
+
+
+
+  const likeButtonClickHandler = (postIds) => {
+ 
+    const token = localStorage.getItem("token");
+
+    const postAxiosData = async () => {
+      try {
+        await axios.post(process.env.REACT_APP_SURVER + `/api/post/like/${postIds}`, {
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
+            }
+          )
+          .then((res) => {
+            if (res.data.msg === "좋아요!") {
+              alert("좋아요를 눌렀습니다!");
+              setLikeNum(likeNum + 1);
+            } else {
+              alert("좋아요를 취소했습니다.");
+              setLikeNum(likeNum - 1);
+            }
+          });
+      } catch (err) {
+        console.log(err);
+      }
+    };
+    postAxiosData();
+  };
+
+
+
   //게시물 삭제
-  const deleteListhandeler = async (ev, postId) => {
-    ev.preventDefault();
+  const deleteListhandeler = async (postId) => {
+    console.log(postId)
     const token = localStorage.getItem("token");
     await axios.delete(process.env.REACT_APP_SURVER + `/api/post/delete/${postId}`, {
       headers: {
         Authorization: `Bearer ${token}`,
       },
     })
-  }
+      .then(res => {
+        const data = res.status === 200
+        if (data) {
+          alert('게시물이 삭제되었습니다 !')
+          navigate(`/`)
+          console.log(res)
+        } else {
+          alert('실패했습니다')
+          console.log(res)
+        }
+      }).catch(err => {
+        console.log(err)
+      }
 
-//게시물 수정가기 핸들러
-// const Ceload = (postId)=> {
-//   console.log(postId)
-//   navigate(`/detail/${postId}/edit`)
-// }
+      )
+  }
 
   return (
     <All_box>
-      <Header/>
+      <Header />
       <Bigbox>
         <Section>
-        {
-          list?.map((a) => {
-            return (
+          {
+            list?.map((a) => {
+              return (
                 <div key={a.postId}>
                   <Outbox className="test">
                     <Title>
@@ -85,46 +144,45 @@ function Main() {
                         <Pro src={a.User.userimage} />
                         <h4>{a.User.nickname}</h4>
                       </Setting>
-                      <Icon><BiDotsHorizontalRounded style={{ marginTop: "15px", float: "right" }} onClick={() => { setModal(!modal)}} /></Icon>
-                      { 
-                      //   modal === true ? (<>
-                      //     <ModalBackground onClick={() => {
-                      //       setModal(!modal)
-                      
-                      //     }}>
-                      //       <ModalBox onClick={(event) => { event.stopPropagation() }}>
-                      //         <p style={{cursor: "pointer"}} onClick={(ev)=>{deleteListhandeler(ev,a.postId); alert('삭제 되었습니다!'); setModal(!modal)}}>삭제</p>
-                      //         <p style={{cursor: "pointer"}} onClick={()=> {navigate(`/detail/${a.postId}/edit`)}}>수정</p>
-                      //         <p style={{cursor: "pointer"}} onClick={() => { setModal(!modal)}}>취소</p>
-                      //       </ModalBox>
-                      //     </ModalBackground>
-                      //   </>) : null
-
-                        console.log(a.postId)
-                       }
+                      <Icon><BiDotsHorizontalRounded style={{ marginTop: "15px", float: "right" }} onClick={() => { setModal(!modal); setPostIds(a.postId)}} /></Icon>
                     </Title>
                     <div>
-                      <MainImg src={a.postimg}/>
+                      <MainImg src={a.postimg} />
                     </div>
-                    <div style={{ padding:"10px"}}>
-                      <Icon style={{ marginTop: "10px" }}><BsSuitHeart style={{ marginRight: "15px" }} /><FaRegComment /></Icon>
-                      <p style={{ margin: "5px 0px", paddingLeft: "5px" }}>좋아요 {a.likepost}개</p>
+                    <div style={{ padding: "10px" }}>
+                      <Icon style={{ marginTop: "10px" }}><BsSuitHeart style={{ marginRight: "15px" }}  onClick={(event) => { likeButtonClickHandler(event); setPostIds(a.postId)}} /><FaRegComment /></Icon>
+                      <p style={{ margin: "5px 0px", paddingLeft: "5px" }}>좋아요 {a.cntlike}개</p>
                       <Jungror>
                         <h4>{a.User.nickname}</h4><p >{a.content}</p>
                       </Jungror>
-                      <p onClick={() => { navigate(`/detail/${a.postId}`) }} style={{ margin: "5px 0px", paddingLeft: "5px", cursor:"pointer" }}>댓글 {a.cntcomment}개 모두 보기</p>
+                      <p onClick={() => { navigate(`/detail/${a.postId}`) }} style={{ margin: "5px 0px", paddingLeft: "5px", cursor: "pointer" }}>댓글 {a.cntcomment}개 모두 보기</p>
                       <Setting><h4 style={{ margin: "5px 0px", paddingLeft: "5px" }}>{a.createAt}</h4></Setting>
                     </div>
                   </Outbox>
                 </div>
-        
-            )
-          })
-        }
+
+              )
+            })
+          }
+
+          {
+            modal === true ? (<>
+              <ModalBackground onClick={() => {
+                setModal(!modal)
+              }}>
+                <ModalBox onClick={(event) => { event.stopPropagation() }}>
+                  <p style={{ cursor: "pointer" }} onClick={() => { deleteListhandeler(postIds) }}>삭제</p>
+                  <p style={{ cursor: "pointer" }} onClick={() => { navigate(`/detail/${postIds}/edit`) }}>수정</p>
+                  <p style={{ cursor: "pointer" }} onClick={() => { setModal(!modal) }}>취소</p>
+                </ModalBox>
+              </ModalBackground>
+            </>) : null
+          }
+
         </Section>
         <Twobox>
           <TwoboxHead>
-            <TwoboxImg src={myprofile?.image}/>
+            <TwoboxImg src={myprofile?.image} />
             <TwoboxText>
               <h2>{myprofile?.nickname}</h2>
             </TwoboxText>
@@ -136,7 +194,7 @@ function Main() {
 
           {/* /*여기 맵돌릴거임 */}
           <TwoboxLast>
-            <TwoboxLastImg/>
+            <TwoboxLastImg />
             <TwoboxLastText>
               <h2>추천 닉네임</h2>
             </TwoboxLastText>
@@ -146,6 +204,9 @@ function Main() {
 
         </Twobox>
       </Bigbox>
+
+
+
     </All_box>
   );
 }
@@ -178,7 +239,6 @@ const All_box = styled.div`
 const Bigbox = styled.div`
   display: flex;
   justify-content: center;
-  border: 1px solid red;
 `
 const Twobox = styled.div`
   height: 300px;
@@ -204,7 +264,7 @@ const TwoboxImg = styled.img`
   border-radius: 50%;
   border: 1px solid red;
 `
-const TwoboxText =styled.div`
+const TwoboxText = styled.div`
     border: 1px solid red;
     height: 100%;
     width: 335px;
@@ -216,7 +276,7 @@ const TwoboxText =styled.div`
       padding-left: 10px;
     }
 `
-const TextBox =styled.div`
+const TextBox = styled.div`
   height: 30px;
   width: 100%;
   align-items: center;
@@ -230,7 +290,7 @@ const TextBox =styled.div`
     }
 `
 
-const TwoboxLast =styled.div`
+const TwoboxLast = styled.div`
 margin-top: 10px;
 height: 60px;
   border: 1px solid red;
@@ -245,9 +305,9 @@ width: 60px;
 border-radius: 50%;
 border: 1px solid red;
 background-color: black;
-` 
+`
 
-const TwoboxLastText =styled.div`
+const TwoboxLastText = styled.div`
 border: 1px solid red;
 height: 100%;
 width: 335px;
@@ -258,7 +318,7 @@ h2 {
   margin: 5px;
   padding-left: 10px;
 }
-` 
+`
 
 const Section = styled.div`
 display: flex;

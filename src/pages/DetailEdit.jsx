@@ -104,16 +104,19 @@ function DetailEdit() {
                     </Left>
                     <Right>
                         <form>
-                            <textarea
+                            <TextA
                                 name="content"
                                 maxLength={2200}
                                 placeholder={editList.content}
                                 ref={contents_ref}
                             />
                         </form>
-                        <div>asd</div>
+                        <Ddiv>
+                            <Edited onClick={(ev)=>{EditListHandler(ev)}}>수정하기</Edited>
+                        </Ddiv>
+                        
                     </Right>
-                    <button onClick={(ev)=>{EditListHandler(ev)}}>수정하기</button>
+                    
                 </Bigbox>
             </Allbox>
         </>
@@ -163,6 +166,32 @@ const LeftImg = styled.img`
 const Right = styled.div`
    border: 2px solid #eee;
    width: 35%;
+   flex-direction: column;
+   justify-content: space-between;
+   display: flex;
+`
+const TextA = styled.textarea`
+    height: 300px;
+    width: 90%;
+    padding: 10px;
 `
 
+const Edited = styled.button`
+    height: 40px;
+    width: 100px;
+    border-radius: 30px;
+    border: none;
+
+
+    cursor: pointer;
+    :hover {
+        border: 2px solid black;
+    }
+`
+const Ddiv =styled.div`
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 200px;
+`
 export default DetailEdit;

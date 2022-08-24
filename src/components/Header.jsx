@@ -44,6 +44,10 @@ function Header() {
     const ListCreateButtonClickHandler = async (ev) => {
         ev.preventDefault();
         const token = localStorage.getItem("token");
+        // if(fileInput.current.files[0] === null) {
+        //     alert('사진을 넣어주세요')
+        //     return;
+        // }
 
       console.log( fileInput.current.files[0])
 
@@ -60,19 +64,19 @@ function Header() {
             },
         })
             .then(res => {
-                const data = res.data;
-
-                if (data.success) {
-                    alert('이미지가 등록되었습니다.')
-                    
+                const data = res.sucess === true
+                if (data) {
+                    alert('게시물이 생성되었습니다 !')
+                    navigate(`/`)
                     console.log(res)
-
                 } else {
-                    alert('이미지가 등록에 실패하였습니다.')
+                    alert('실패하였습니다')
+                    console.log(res)
                 }
             }).catch(err => {
                 console.log(err)
             }
+          
             )
 
     }
