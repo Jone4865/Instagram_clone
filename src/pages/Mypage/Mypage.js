@@ -15,6 +15,7 @@ function Mypage() {
 
     const My = useSelector((state) => state.getmylist.data.user);
     const MyList = useSelector((state) => state.getmylist.data.posts);
+
     return (
         <div className="_a3wf system-fonts--body segoe">
             <div id="mount_0_0_sy">
@@ -63,7 +64,7 @@ function Mypage() {
                                                                                 bel1__94</h2>
                                                                             <div className="_ab8w  _ab94 _ab99 _ab9f _ab9k _ab9q  _abb3 _abcm" >
                                                                                 <div className="_ab8w  _ab94 _ab99 _ab9f _ab9m _ab9o _abcm" style={{ "marginTop": "20px", "marginLeft": "20px", "borderRadius": "5px", "border": "1px solid gray", "height": "30px", "minWidth": "100px" }}>
-                                                                                    <a onClick={()=> {navigate(`/mypage/1/edit`)}} className="qi72231t nu7423ey n3hqoq4p r86q59rh b3qcqh3k fq87ekyn bdao358l fsf7x5fv rse6dlih s5oniofx m8h3af8h l7ghb35v kjdc1dyq kmwttqpk srn514ro oxkhqvkx rl78xhln nch0832m cr00lzj9 rn8ck1ys s3jn8y49 icdlwmnq _acan _acap _acat _acaw _a6hd" tabIndex="0">
+                                                                                    <a onClick={() => { navigate(`/mypage/1/edit`) }} className="qi72231t nu7423ey n3hqoq4p r86q59rh b3qcqh3k fq87ekyn bdao358l fsf7x5fv rse6dlih s5oniofx m8h3af8h l7ghb35v kjdc1dyq kmwttqpk srn514ro oxkhqvkx rl78xhln nch0832m cr00lzj9 rn8ck1ys s3jn8y49 icdlwmnq _acan _acap _acat _acaw _a6hd" tabIndex="0">
                                                                                         프로필 편집</a>
                                                                                 </div>
                                                                             </div>
@@ -113,24 +114,24 @@ function Mypage() {
                                                                                     {/* //포스팅구역 */}
                                                                                     {MyList?.map((list) => (
                                                                                         <div key={list.id} className="_aabd _aa8k _aanf" style={{ "maxWidth": "30%", "minWidth": "25%", "margin": "10px" }}>
-                                                                                        <a className="qi72231t nu7423ey n3hqoq4p r86q59rh b3qcqh3k fq87ekyn bdao358l fsf7x5fv rse6dlih s5oniofx m8h3af8h l7ghb35v kjdc1dyq kmwttqpk srn514ro oxkhqvkx rl78xhln nch0832m cr00lzj9 rn8ck1ys s3jn8y49 icdlwmnq _a6hd" href="/p/CeXzwCor-K8/" role="link" tabIndex="0">
-                                                                                            <div className="_aagu">
-                                                                                                <div className="_aagv">
-                                                                                                    <img crossOrigin="anonymous" className="_aagt" src={list?.image} style={{ "objectFit": "cover" }} />
+                                                                                            <a className="qi72231t nu7423ey n3hqoq4p r86q59rh b3qcqh3k fq87ekyn bdao358l fsf7x5fv rse6dlih s5oniofx m8h3af8h l7ghb35v kjdc1dyq kmwttqpk srn514ro oxkhqvkx rl78xhln nch0832m cr00lzj9 rn8ck1ys s3jn8y49 icdlwmnq _a6hd" href="/p/CeXzwCor-K8/" role="link" tabIndex="0">
+                                                                                                <div className="_aagu">
+                                                                                                    <div className="_aagv">
+                                                                                                    </div>
+                                                                                                    <div className="_aagw">
+                                                                                                    <img className="_aagt" src={list?.image} style={{ "objectFit": "cover" }} />
+                                                                                                    </div>
                                                                                                 </div>
-                                                                                                <div className="_aagw">
+                                                                                                <div className="_aatp">
+                                                                                                    <div className="_ab8w  _ab94 _ab99 _ab9f _ab9m _ab9p  _abak _abb0 _abbi _abb- _abcm">
+                                                                                                        <svg aria-label="슬라이드" className="_ab6-" color="#ffffff" fill="#ffffff" height="22" role="img" viewBox="0 0 48 48" width="22">
+                                                                                                            <path d="M34.8 29.7V11c0-2.9-2.3-5.2-5.2-5.2H11c-2.9 0-5.2 2.3-5.2 5.2v18.7c0 2.9 2.3 5.2 5.2 5.2h18.7c2.8-.1 5.1-2.4 5.1-5.2zM39.2 15v16.1c0 4.5-3.7 8.2-8.2 8.2H14.9c-.6 0-.9.7-.5 1.1 1 1.1 2.4 1.8 4.1 1.8h13.4c5.7 0 10.3-4.6 10.3-10.3V18.5c0-1.6-.7-3.1-1.8-4.1-.5-.4-1.2 0-1.2.6z">
+                                                                                                            </path>
+                                                                                                        </svg>
+                                                                                                    </div>
                                                                                                 </div>
-                                                                                            </div>
-                                                                                            <div className="_aatp">
-                                                                                                <div className="_ab8w  _ab94 _ab99 _ab9f _ab9m _ab9p  _abak _abb0 _abbi _abb- _abcm">
-                                                                                                    <svg aria-label="슬라이드" className="_ab6-" color="#ffffff" fill="#ffffff" height="22" role="img" viewBox="0 0 48 48" width="22">
-                                                                                                        <path d="M34.8 29.7V11c0-2.9-2.3-5.2-5.2-5.2H11c-2.9 0-5.2 2.3-5.2 5.2v18.7c0 2.9 2.3 5.2 5.2 5.2h18.7c2.8-.1 5.1-2.4 5.1-5.2zM39.2 15v16.1c0 4.5-3.7 8.2-8.2 8.2H14.9c-.6 0-.9.7-.5 1.1 1 1.1 2.4 1.8 4.1 1.8h13.4c5.7 0 10.3-4.6 10.3-10.3V18.5c0-1.6-.7-3.1-1.8-4.1-.5-.4-1.2 0-1.2.6z">
-                                                                                                        </path>
-                                                                                                    </svg>
-                                                                                                </div>
-                                                                                            </div>
-                                                                                        </a>
-                                                                                    </div>
+                                                                                            </a>
+                                                                                        </div>
 
                                                                                     ))}
 

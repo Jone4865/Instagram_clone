@@ -9,7 +9,6 @@ import Mypage from "../pages/Mypage/Mypage";
 import DetailEdit from "../pages/DetailEdit";
 import MypageEdit from "../pages/MypageEdit";
 
-
 const Router = () => {
   return (
     <Routes>
