@@ -32,7 +32,6 @@ function Main() {
     })
     setUser(axiosData.data.data.User)
     setList(axiosData.data.data)
-    console.log(axiosData.data.data)
 
   }
   useEffect(() => {
@@ -71,7 +70,6 @@ function Main() {
                         modal === true ? (<>
                           <ModalBackground onClick={() => {
                             setModal(!modal)
-
                           }}>
                             <ModalBox onClick={(event) => { event.stopPropagation() }}  >
                               <p style={{cursor: "pointer"}} onClick={(ev)=>{deleteListhandeler(ev)}}>삭제</p>

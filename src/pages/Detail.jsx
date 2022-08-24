@@ -1,16 +1,24 @@
 import React from "react";
 import styled from "styled-components";
 import { useState, useEffect } from "react";
+import { useDispatch } from "react-redux";
 import { useNavigate, useParams } from "react-router-dom";
 import axios from "axios";
 import Header from "../components/Header";
 import { BiDotsHorizontalRounded } from 'react-icons/bi';
+import { __PostContent } from "../redux/modules/PostContent";
+import { __DeleteContent } from "../redux/modules/DeleteContent";
+import { __PutContent } from "../redux/modules/PutContent"
 
 function Detail() {
+    const dispatch = useDispatch();
+    const [comment, setComment] = useState("")
+    const [view, setView] = useState(true)
+    const [newcomment, setnewComment] = useState("")
+    const [commentId, setCommentId] = useState(0)
 
     const navigate = useNavigate();
     const { postId } = useParams();
-
 
     //게시물 내용
     const [detailList, setDetailList] = useState({});
@@ -34,12 +42,19 @@ function Detail() {
         })
         setDetailList(axiosData.data.data)
         setUser(axiosData.data.data.PostingUser)
-        console.log(axiosData.data.data)
     }
     useEffect(() => {
         getAxiosDetailData();
     }, [])
 
+    const onsubmit = (e) => {
+        e.preventDefault();
+        dispatch(__PostContent({ comment, postId }));
+        setComment("");
+        setTimeout(() => { }, "1000");
+        getAxiosDetailData();
+        navigate(`/detail/${detailList.id}`, { replace: true })
+    }
 
     //게시물 삭제 성공함
     const deleteListhandeler = async (ev) => {
@@ -52,6 +67,24 @@ function Detail() {
         })
     }
 
+    const editHandle = (e) => {
+        setView(false)
+        setCommentId(+e.target.value)
+    }
+
+    const cancleHandle = (e) => {
+        setView(true)
+    }
+
+    const newonsubmit = (e) => {
+        setnewComment("");
+        e.preventDefault();
+        dispatch(__PutContent({ newcomment, commentId }));
+        setView(true)
+        setTimeout(() => { }, "1000");
+        getAxiosDetailData();
+        navigate(`/detail/${detailList.id}`, { replace: true })
+    }
 
     return (
         <All_box>
@@ -79,23 +112,36 @@ function Detail() {
                                         <h5 style={{ marginTop: "8px" }}>{user.nickname}</h5>
                                         <p style={{ marginTop: "10px", marginLeft: "5px" }}>ㅁㄴㅇ</p>
                                     </Twobox>
-                                    {
-                                        detailList.comments?.map((a) => {
-                                            return (
-                                                <div key={a.commentid}>
-                                                    <Comment_box>
-                                                        <Comment_img src={detailList.postimage} />
-                                                        <h5>{a.nickname}</h5>
-                                                        <p>{a.comment}</p>
-                                                    </Comment_box>
-                                                </div>
-                                            )
-                                        })
-                                    }
-
                                     <Lastbox>
-
+                                        {
+                                            detailList.comments?.map((a) => {
+                                                return (
+                                                    <div key={a.commentid}>
+                                                        <Comment_box>
+                                                            <Comment_img src={detailList.postimage} />
+                                                            <h5>{a.nickname}</h5>
+                                                            <p>{a.comment}</p>
+                                                            <button onClick={(e) => {
+                                                                e.preventDefault();
+                                                                dispatch(__DeleteContent(+a.commentid));
+                                                                setTimeout(() => { }, "1000");
+                                                                getAxiosDetailData();
+                                                                navigate(`/detail/${detailList.id}`, { replace: true });
+                                                            }}>삭제</button>{view === true ? 
+                                                            <button value={a.commentid} onClick={editHandle}>수정</button> : ''}
+                                                        </Comment_box>
+                                                    </div>
+                                                )
+                                            })
+                                        }
                                     </Lastbox>
+                                    {view === true ? <div style={{ "margin": "30px auto auto 20px" }} >
+                                        <input onChange={(e) => setComment(e.target.value)} placeholder="댓글 달기..." style={{ "border": "2px solid #f3ebeb", "width": "380px", "padding": "5px", "borderRadius": "5px" }}></input><span><button onClick={onsubmit} style={{ "marginLeft": "10px", "color": "#4891ff", "fontWeight": "bold", "backgroundColor": "white", "border": "0px" }} >작성</button></span>
+                                    </div>
+                                        :
+                                        <div style={{ "margin": "30px auto auto 20px" }}>
+                                            <input onChange={(e) => setnewComment(e.target.value)} placeholder="댓글 수정하기..." style={{ "border": "2px solid #f3ebeb", "width": "300px", "padding": "5px", "borderRadius": "5px" }}></input><button style={{ "marginLeft": "10px", "color": "#4891ff", "fontWeight": "bold", "backgroundColor": "white", "border": "0px" }} onClick={newonsubmit}>수정완료</button><button style={{ "marginLeft": "10px", "color": "#4891ff", "fontWeight": "bold", "backgroundColor": "white", "border": "0px" }} onClick={cancleHandle}>취소</button>
+                                        </div>}
                                 </Right>
                             </All_box>
 
@@ -109,7 +155,6 @@ function Detail() {
                 detailDeleteModal === true ? (<>
                     <ModalBackground onClick={() => {
                         setDetailDeleteModal(!detailDeleteModal)
-
                     }}>
                         <ModalBox onClick={(event) => { event.stopPropagation() }}  >
                             <p style={{ cursor: "pointer" }} onClick={(ev) => { deleteListhandeler(ev) }}>삭제</p>
@@ -210,7 +255,6 @@ const Right = styled.div`
     flex-direction: column;
 `
 const Onebox = styled.div`
-    border: 1px solid red;
     height: 75px;
     display: flex;
     align-items: center;
@@ -223,10 +267,8 @@ const Onebox_img = styled.img`
     height: 40px;
     width: 40px;
     border-radius: 50%;
-    border: 1px solid red;
 `
 const Twobox = styled.div`
-    border: 1px solid red;
     height: 250px;
     margin-left: 10px;
     flex-direction: row;
@@ -242,11 +284,11 @@ const Comment_box = styled.div`
     display: flex;
     flex-direction: row;
     border: 1px solid red;
+    width: 400px;
     margin-left: 10px;
     height: 60px;
     align-items: center;
     gap: 10px;
-
 `
 const Comment_img = styled.img`
     height: 40px;
@@ -254,10 +296,11 @@ const Comment_img = styled.img`
     border-radius: 50%;
 `
 const Lastbox = styled.div`
-    border: 1px solid red;
-    height: 200px;
+    height: 330px;
     margin-left: 10px;
     display: flex;
+    flex-direction: column;
+    overflow-y: scroll;
 `
 const Icon = styled.div`
   font-size: 30px;

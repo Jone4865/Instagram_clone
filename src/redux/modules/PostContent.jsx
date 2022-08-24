@@ -12,12 +12,13 @@ const token = localStorage.getItem("token");
 export const __PostContent = createAsyncThunk(
   "postcontent/postContent",
   async (payload, api) => {
+    const postId = +payload.postId
     try {
       const data = await axios.post(
-        process.env.REACT_APP_SURVER + "/api/post/create", payload,
+        process.env.REACT_APP_SURVER + `/api/comment/create/${postId}`, {comment: payload.comment},
         {
           headers: {
-            authorization: process.env.REACT_APP_TOKENNAME + `${token}`,
+            authorization: `Bearer ${token}`,
           },
         }
       );

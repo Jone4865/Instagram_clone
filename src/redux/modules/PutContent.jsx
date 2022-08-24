@@ -12,18 +12,16 @@ const token = localStorage.getItem("token");
 export const __PutContent = createAsyncThunk(
   "putcontent/putContent",
   async (payload, api) => {
-    const commentId = payload.contentId
-    const comment = payload.comment
+    const commentId = +payload.commentId
     try {
       const data = await axios.put(
-        process.env.REACT_APP_SURVER + `/api/comment/${commentId}`, comment ,
+        process.env.REACT_APP_SURVER + `/api/comment/${commentId}`, {comment: payload.newcomment} ,
         {
           headers: {
-            authorization: process.env.REACT_APP_TOKENNAME + `${token}`,
+            authorization: `Bearer ${token}`,
           },
         }
-      );
-      
+      )
       return api.fulfillWithValue(data.data);
     } catch (e) {
       return api.rejectWithValue(e);
