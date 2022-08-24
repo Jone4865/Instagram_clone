@@ -77,8 +77,9 @@ function Detail() {
                                     <Twobox>
                                         <Twobox_img src={user.userimage} />
                                         <h5 style={{ marginTop: "8px" }}>{user.nickname}</h5>
-                                        <p style={{ marginTop: "10px", marginLeft: "5px" }}>ㅁㄴㅇ</p>
+                                        <p style={{ marginTop: "8px", marginLeft: "5px" }}>{detailList.content}</p>
                                     </Twobox>
+                                    <Lastbox>
                                     {
                                         detailList.comments?.map((a) => {
                                             return (
@@ -92,9 +93,6 @@ function Detail() {
                                             )
                                         })
                                     }
-
-                                    <Lastbox>
-
                                     </Lastbox>
                                 </Right>
                             </All_box>

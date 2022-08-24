@@ -7,11 +7,24 @@ import Header from "../components/Header";
 import { BiDotsHorizontalRounded } from 'react-icons/bi';
 import {BsSuitHeart} from 'react-icons/bs';
 import {FaRegComment} from 'react-icons/fa';
+import { __getMycontent } from "../redux/modules/GetMypage";
+import { useSelector } from "react-redux/es/exports";
+import { useDispatch } from "react-redux/es/exports";
+
 
 function Main() {
 
+  const dispatch = useDispatch();
 
-  const { postId } = useParams();
+
+  const myprofile = useSelector((state) => state.getmylist.data.user);
+
+  useEffect(() => {
+    dispatch(__getMycontent())
+}, [])
+
+  console.log(myprofile)
+
 
   const navigate = useNavigate();
 
@@ -41,7 +54,7 @@ function Main() {
 
 
   //게시물 삭제
-  const deleteListhandeler = async (ev) => {
+  const deleteListhandeler = async (ev, postId) => {
     ev.preventDefault();
     const token = localStorage.getItem("token");
     await axios.delete(process.env.REACT_APP_SURVER + `/api/post/delete/${postId}`, {
@@ -50,6 +63,12 @@ function Main() {
       },
     })
   }
+
+//게시물 수정가기 핸들러
+// const Ceload = (postId)=> {
+//   console.log(postId)
+//   navigate(`/detail/${postId}/edit`)
+// }
 
   return (
     <All_box>
@@ -66,30 +85,34 @@ function Main() {
                         <Pro src={a.User.userimage} />
                         <h4>{a.User.nickname}</h4>
                       </Setting>
-                      <Icon><BiDotsHorizontalRounded style={{ marginTop: "15px", float: "right" }} onClick={() => { setModal(!modal) }} /></Icon>
-                      {
-                        modal === true ? (<>
-                          <ModalBackground onClick={() => {
-                            setModal(!modal)
+                      <Icon><BiDotsHorizontalRounded style={{ marginTop: "15px", float: "right" }} onClick={() => { setModal(!modal)}} /></Icon>
+                      { 
+                      //   modal === true ? (<>
+                      //     <ModalBackground onClick={() => {
+                      //       setModal(!modal)
+                      
+                      //     }}>
+                      //       <ModalBox onClick={(event) => { event.stopPropagation() }}>
+                      //         <p style={{cursor: "pointer"}} onClick={(ev)=>{deleteListhandeler(ev,a.postId); alert('삭제 되었습니다!'); setModal(!modal)}}>삭제</p>
+                      //         <p style={{cursor: "pointer"}} onClick={()=> {navigate(`/detail/${a.postId}/edit`)}}>수정</p>
+                      //         <p style={{cursor: "pointer"}} onClick={() => { setModal(!modal)}}>취소</p>
+                      //       </ModalBox>
+                      //     </ModalBackground>
+                      //   </>) : null
 
-                          }}>
-                            <ModalBox onClick={(event) => { event.stopPropagation() }}  >
-                              <p style={{cursor: "pointer"}} onClick={(ev)=>{deleteListhandeler(ev)}}>삭제</p>
-                              <p style={{cursor: "pointer"}} onClick={()=> {navigate(`/detail/${a.postId}/edit`)}}>수정</p>
-                              <p style={{cursor: "pointer"}} onClick={() => { setModal(!modal)}}>취소</p>
-                            </ModalBox>
-                          </ModalBackground>
-                        </>) : null
-                      }
+                        console.log(a.postId)
+                       }
                     </Title>
                     <div>
                       <MainImg src={a.postimg}/>
                     </div>
                     <div style={{ padding:"10px"}}>
                       <Icon style={{ marginTop: "10px" }}><BsSuitHeart style={{ marginRight: "15px" }} /><FaRegComment /></Icon>
-                      <p style={{ margin: "5px 0px", paddingLeft: "5px" }}>좋아요 {a.postlikes}개</p>
-                      <h4 style={{ margin: "5px 0px", paddingLeft: "5px" }}>{a.nickname}</h4> <p style={{ margin: "5px 0px", paddingLeft: "5px" }}>{a.content}</p>
-                      <p onClick={() => { navigate(`/detail/${a.postId}`) }} style={{ margin: "5px 0px", paddingLeft: "5px" }}>댓글 {a.cntcomment}개 모두 보기</p>
+                      <p style={{ margin: "5px 0px", paddingLeft: "5px" }}>좋아요 {a.likepost}개</p>
+                      <Jungror>
+                        <h4>{a.User.nickname}</h4><p >{a.content}</p>
+                      </Jungror>
+                      <p onClick={() => { navigate(`/detail/${a.postId}`) }} style={{ margin: "5px 0px", paddingLeft: "5px", cursor:"pointer" }}>댓글 {a.cntcomment}개 모두 보기</p>
                       <Setting><h4 style={{ margin: "5px 0px", paddingLeft: "5px" }}>{a.createAt}</h4></Setting>
                     </div>
                   </Outbox>
@@ -101,9 +124,9 @@ function Main() {
         </Section>
         <Twobox>
           <TwoboxHead>
-            <TwoboxImg/>
+            <TwoboxImg src={myprofile?.image}/>
             <TwoboxText>
-              <h2>닉네임임</h2>
+              <h2>{myprofile?.nickname}</h2>
             </TwoboxText>
           </TwoboxHead>
           <TextBox>
@@ -129,15 +152,33 @@ function Main() {
 
 export default Main;
 
+
+const Jungror = styled.div`
+  display: flex;
+  flex-direction: row;
+
+  h4{
+    margin:5px 0px; 
+    padding-left: 5px;
+    font-size: 15px;
+  }
+
+  p{
+    margin: 5px 0px;
+     padding-left: 5px;
+  }
+`
+
 const All_box = styled.div`
   max-width: 2000px;
   min-width: 100px;
-  background-color: #fcfcfc6c;
+  background-color: #eeeeee65;
 `
 
 const Bigbox = styled.div`
   display: flex;
   justify-content: center;
+  border: 1px solid red;
 `
 const Twobox = styled.div`
   height: 300px;
@@ -162,7 +203,6 @@ const TwoboxImg = styled.img`
   width: 60px;
   border-radius: 50%;
   border: 1px solid red;
-  background-color: black;
 `
 const TwoboxText =styled.div`
     border: 1px solid red;
@@ -233,6 +273,7 @@ const Outbox = styled.div`
   display: flex;
   flex-direction: column;
   margin-top: 40px;
+  background-color: white;
 `
 
 // 수정 삭제 모달
@@ -242,7 +283,7 @@ const ModalBackground = styled.div`
     left: 0;
     bottom: 0;
     right: 0;
-    background: rgba(0, 0, 0, 0.2);
+    background: rgba(0, 0, 0, 0.1);
     display: flex;
     justify-content: center;
     align-items: center;
@@ -280,9 +321,9 @@ const Pro = styled.img`
 
 const MainImg = styled.img`
   
-  width: 100%;
+  width:100%;
   height: 400px;
-  margin-top: 15px;
+  margin-top: auto;
 `
 
 const Setting = styled.div`
