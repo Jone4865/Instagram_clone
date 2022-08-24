@@ -20,8 +20,7 @@ export const __DeleteContent = createAsyncThunk(
             authorization: `Bearer ${token}`,
           },
         }
-      );
-      
+      )
       return api.fulfillWithValue(data.data);
     } catch (e) {
       return api.rejectWithValue(e);

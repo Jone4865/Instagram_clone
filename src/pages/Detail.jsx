@@ -120,13 +120,15 @@ function Detail() {
                                                         <Comment_box>
                                                             <Comment_img src={detailList.postimage} />
                                                             <h5>{a.nickname}</h5>
-                                                            <p>{a.comment}</p><button onClick={(e) => {
+                                                            <p>{a.comment}</p>
+                                                            <button onClick={(e) => {
                                                                 e.preventDefault();
                                                                 dispatch(__DeleteContent(+a.commentid));
                                                                 setTimeout(() => { }, "1000");
                                                                 getAxiosDetailData();
                                                                 navigate(`/detail/${detailList.id}`, { replace: true });
-                                                            }}>삭제</button>{view === true ? <button value={a.commentid} onClick={editHandle}>수정</button> : ''}
+                                                            }}>삭제</button>{view === true ? 
+                                                            <button value={a.commentid} onClick={editHandle}>수정</button> : ''}
                                                         </Comment_box>
                                                     </div>
                                                 )
@@ -153,7 +155,6 @@ function Detail() {
                 detailDeleteModal === true ? (<>
                     <ModalBackground onClick={() => {
                         setDetailDeleteModal(!detailDeleteModal)
-
                     }}>
                         <ModalBox onClick={(event) => { event.stopPropagation() }}  >
                             <p style={{ cursor: "pointer" }} onClick={(ev) => { deleteListhandeler(ev) }}>삭제</p>
@@ -254,7 +255,6 @@ const Right = styled.div`
     flex-direction: column;
 `
 const Onebox = styled.div`
-    border: 1px solid red;
     height: 75px;
     display: flex;
     align-items: center;
@@ -267,10 +267,8 @@ const Onebox_img = styled.img`
     height: 40px;
     width: 40px;
     border-radius: 50%;
-    border: 1px solid red;
 `
 const Twobox = styled.div`
-    border: 1px solid red;
     height: 250px;
     margin-left: 10px;
     flex-direction: row;
@@ -286,11 +284,11 @@ const Comment_box = styled.div`
     display: flex;
     flex-direction: row;
     border: 1px solid red;
+    width: 400px;
     margin-left: 10px;
     height: 60px;
     align-items: center;
     gap: 10px;
-
 `
 const Comment_img = styled.img`
     height: 40px;
@@ -298,7 +296,6 @@ const Comment_img = styled.img`
     border-radius: 50%;
 `
 const Lastbox = styled.div`
-    border: 1px solid red;
     height: 330px;
     margin-left: 10px;
     display: flex;

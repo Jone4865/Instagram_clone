@@ -12,7 +12,7 @@ function Mypage() {
 
     const My = useSelector((state) => state.getmylist.data.user);
     const MyList = useSelector((state) => state.getmylist.data.posts);
-
+    console.log(My)
     return (
         <div className="_a3wf system-fonts--body segoe">
             <div id="mount_0_0_sy">

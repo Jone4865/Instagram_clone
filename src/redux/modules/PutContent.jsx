@@ -21,7 +21,7 @@ export const __PutContent = createAsyncThunk(
             authorization: `Bearer ${token}`,
           },
         }
-      );
+      )
       return api.fulfillWithValue(data.data);
     } catch (e) {
       return api.rejectWithValue(e);
