@@ -15,6 +15,7 @@ function Detail() {
     const [comment, setComment] = useState("")
     const [view, setView] = useState(true)
     const [newcomment, setnewComment] = useState("")
+    const [commentId, setCommentId] = useState(0)
 
     const navigate = useNavigate();
     const { postId } = useParams();
@@ -68,6 +69,7 @@ function Detail() {
 
     const editHandle = (e) => {
         setView(false)
+        setCommentId(+e.target.value)
     }
 
     const cancleHandle = (e) => {
@@ -75,9 +77,9 @@ function Detail() {
     }
 
     const newonsubmit = (e) => {
-        e.preventDefault();
-        dispatch(__PutContent({ newcomment, commentId: e.target.value }));
         setnewComment("");
+        e.preventDefault();
+        dispatch(__PutContent({ newcomment, commentId }));
         setView(true)
         setTimeout(() => { }, "1000");
         getAxiosDetailData();
@@ -124,22 +126,20 @@ function Detail() {
                                                                 setTimeout(() => { }, "1000");
                                                                 getAxiosDetailData();
                                                                 navigate(`/detail/${detailList.id}`, { replace: true });
-                                                            }}>삭제</button><button onClick={editHandle}>수정</button>
-                                                        </Comment_box>
-                                                        
-                                                        <Comment_box>
-                                                            <Comment_img src={detailList.postimage} />
-                                                            <h5>{a.nickname}</h5>
-                                                            <div><input onChange={(e) => setnewComment(e.target.value)}></input><button value={a.commentid} onClick={newonsubmit}>수정완료</button><button onClick={cancleHandle}>취소</button></div>
+                                                            }}>삭제</button>{view === true ? <button value={a.commentid} onClick={editHandle}>수정</button> : ''}
                                                         </Comment_box>
                                                     </div>
                                                 )
                                             })
                                         }
                                     </Lastbox>
-                                    <div style={{ "margin": "170px auto auto 20px" }} >
-                                        <input onChange={(e) => setComment(e.target.value)} placeholder="댓글 달기..." style={{ "border": "2px solid #f3ebeb", "width": "400px", "padding": "5px", "borderRadius": "5px" }}></input><span><button onClick={onsubmit} style={{ "marginLeft": "10px", "color": "#4891ff", "fontWeight": "bold", "backgroundColor": "white", "border": "0px" }} >작성</button></span>
+                                    {view === true ? <div style={{ "margin": "30px auto auto 20px" }} >
+                                        <input onChange={(e) => setComment(e.target.value)} placeholder="댓글 달기..." style={{ "border": "2px solid #f3ebeb", "width": "380px", "padding": "5px", "borderRadius": "5px" }}></input><span><button onClick={onsubmit} style={{ "marginLeft": "10px", "color": "#4891ff", "fontWeight": "bold", "backgroundColor": "white", "border": "0px" }} >작성</button></span>
                                     </div>
+                                        :
+                                        <div style={{ "margin": "30px auto auto 20px" }}>
+                                            <input onChange={(e) => setnewComment(e.target.value)} placeholder="댓글 수정하기..." style={{ "border": "2px solid #f3ebeb", "width": "300px", "padding": "5px", "borderRadius": "5px" }}></input><button style={{ "marginLeft": "10px", "color": "#4891ff", "fontWeight": "bold", "backgroundColor": "white", "border": "0px" }} onClick={newonsubmit}>수정완료</button><button style={{ "marginLeft": "10px", "color": "#4891ff", "fontWeight": "bold", "backgroundColor": "white", "border": "0px" }} onClick={cancleHandle}>취소</button>
+                                        </div>}
                                 </Right>
                             </All_box>
 
@@ -299,10 +299,11 @@ const Comment_img = styled.img`
 `
 const Lastbox = styled.div`
     border: 1px solid red;
-    height: 200px;
+    height: 330px;
     margin-left: 10px;
     display: flex;
     flex-direction: column;
+    overflow-y: scroll;
 `
 const Icon = styled.div`
   font-size: 30px;
