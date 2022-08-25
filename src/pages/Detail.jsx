@@ -141,7 +141,7 @@ function Detail() {
                                                             <p>{a.comment}</p>
                                                             <button style={{ "marginLeft": "10px", "color": "#4891ff", "fontWeight": "bold", "backgroundColor": "white", "border": "0px", "width":"50px" }} onClick={(e) => {
                                                                 e.preventDefault();
-                                                                dispatch(__DeleteContent(+a.commentid));
+                                                                dispatch(__DeleteContent(+a.commentid)) ;
                                                                 setTimeout(() => { }, "1000");
                                                                 getAxiosDetailData();
                                                                 navigate(`/detail/${detailList.id}`, { replace: true });
