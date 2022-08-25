@@ -10,10 +10,10 @@ function Login() {
   const dispatch = useDispatch();
 
   const onsubmit = (e) => {
-    if (nickname?.length >=2 && nickname?.length <=9) {
-      if(regPass.test(password) === true) {
+    if (nickname?.length >= 2 && nickname?.length <= 9) {
+      if (regPass.test(password) === true) {
         e.preventDefault();
-        dispatch(__PostLogin({nickname, password}))
+        dispatch(__PostLogin({ nickname, password }))
       } else {
         alert("비밀번호를 확인해주세요")
         e.preventDefault();
@@ -66,7 +66,7 @@ function Login() {
                     style={{ cursor: "pointer" }}
                   >
                     <img
-                      style={{ margin: "34px" }}
+                      style={{ margin: "40px", marginLeft: "93px" }}
                       alt="Instagram"
                       className="s4Iyt"
                       src="https://www.instagram.com/static/images/web/logged_out_wordmark.png/7a252de00b20.png"
@@ -108,27 +108,17 @@ function Login() {
                           <div className="i24fI"></div>
                         </div>
                       </div>
-                      <div style={{ margin: "auto" }} className="             qF0y9          Igw0E     IwRSH      eGOV_       acqo5   _4EzTm    bkEs3                          CovQj                  jKUp7          DhRcB                                                    ">
+                      <div style={{ margin: "auto", textAlign: "center", display: "flex", marginTop: "30px" }} className="             qF0y9          Igw0E     IwRSH      eGOV_       acqo5   _4EzTm    bkEs3                          CovQj                  jKUp7          DhRcB                                                    ">
                         <button
-                          style={{ margin: "10px", width: "150px", border: "1px solid white", borderRadius: "7px", height: "30px", backgroundColor: "#00AFFF", color: "white" }}
-                          className="sqdOP  L3NKy   y3zKF     "
-                          disabled=""
-                        >
-                          <div className="             qF0y9          Igw0E     IwRSH      eGOV_       acqo5   _4EzTm                                                                                                              ">
-                            로그인
-                          </div>
+                          style={{ textAlign: "center", display: "flex", margin: "auto", width: "150px", border: "1px solid white", borderRadius: "7px", height: "30px", backgroundColor: "#00AFFF", color: "white" }}
+                        ><div style={{ "marginLeft": "45px", "marginTop": "4px" }}>로그인</div>
                         </button>
                       </div>
-                      <div className="K-1uj Z7p_S">
-                        <div className="s311c t7mNY "></div>
+                      <div style={{ "marginLeft": "144px", "display": "flex" }} className="K-1uj Z7p_S">
                         <div className="_0tv-g">또는</div>
-                        <div className="s311c t7mNY "></div>
                       </div>
-                      <div style={{ "margin": "auto" }} className="             qF0y9          Igw0E     IwRSH      eGOV_       acqo5   _4EzTm    bkEs3                          CovQj                  jKUp7          DhRcB                                                    ">
-                        <button style={{ margin: "10px", width: "180px", border: "1px solid white", borderRadius: "7px", height: "30px" }} className="sqdOP yWX7d    y3zKF     " type="button">
-                          <span className=" coreSpriteFacebookIcon AeB99"></span>
-                          <span className="KPnG0">Facebook으로 로그인</span>
-                        </button>
+                      <div style={{ "marginLeft": "73px", "display": "flex" }} className="             qF0y9          Igw0E     IwRSH      eGOV_       acqo5   _4EzTm    bkEs3                          CovQj                  jKUp7          DhRcB                                                    ">
+                        <a href={process.env.REACT_APP_SURVER + "/api/facebook"} style={{ margin: "10px", width: "180px", border: "1px solid white", borderRadius: "7px", height: "30px", marginLeft: "30px" }} className="sqdOP yWX7d    y3zKF     " >Facebook으로 로그인</a>
                       </div>
                     </div>
                   </form>
@@ -150,9 +140,9 @@ function Login() {
                   </p>
                 </div>
               </div>
-              <div className="APQi1">
+              <div className="APQi1" >
                 <p className="b_nGN">앱을 다운로드하세요.</p>
-                <div className="iNy2T">
+                <div className="iNy2T" style={{ "marginLeft": "20px", "width": "340px" }}>
                   <a
                     aria-label="App Store에서 다운로드"
                     className="z1VUo"
@@ -232,7 +222,7 @@ function Login() {
           </article>
         </main>
 
-        <footer className="Zx5PI  burfB vfoLd " role="contentinfo" style={{ "margin": "50px", "display": "flex", "justifyContent": "center", "alignItems": "center", "fontSize": "12px" }}>
+        <footer className="Zx5PI  burfB vfoLd " role="contentinfo" style={{ "margin": "50px", "display": "flex", "justifyContent": "center", "alignItems": "center", "fontSize": "12px", "backgroundColor": "white" }}>
           <div className="             qF0y9          Igw0E     IwRSH      eGOV_       acqo5   _4EzTm               KokQV                                                                                               ">
             <div style={{ "margin": "auto", "color": "gray", "display": "flex", "flexDirection": "row", "justifyContent": "center", "alignItems": "center" }} className="             qF0y9          Igw0E     IwRSH      eGOV_       acqo5   _4EzTm                                                              kEKum                                                ">
               <div style={{ "margin": "auto", "color": "gray", "display": "flex", "flexDirection": "row", "justifyContent": "center", "alignItems": "center" }} className="             qF0y9          Igw0E     IwRSH        YBx95   ybXk5     _4EzTm  YlhBV                                                                                                            ">
@@ -396,9 +386,8 @@ function Login() {
             </div>
             <div style={{ "margin": "auto", "display": "flex", "flexDirection": "row", "justifyContent": "center", "alignItems": "center" }} className="             qF0y9          Igw0E     IwRSH        YBx95   ybXk5     _4EzTm     _22l1                                                      _49XvD                                                   ">
               <div style={{ "margin": "auto", "display": "flex", "flexDirection": "row", "justifyContent": "center", "alignItems": "center" }} className="_7UhW9  PIoXz       MMzan   KV-D4           uL8Hv         ">
-                <span style={{ "margin": "auto", "display": "flex", "flexDirection": "row", "justifyContent": "center", "alignItems": "center" }} className="_3G4x7   RFk-t bwz9f ">
+                <span style={{ "margin": "auto", "display": "flex", "flexDirection": "row" }} className="_3G4x7   RFk-t bwz9f ">
                   <div className="TQUPK">
-                    <span style={{ "marginRight": "20px" }}>한국어</span>
                     <div className="             qF0y9          Igw0E     IwRSH      eGOV_       acqo5   _4EzTm                     WKY0a                                                                                         ">
                       <span
                         style={{
@@ -462,10 +451,8 @@ function Login() {
                   </select>
                 </span>
               </div>
-              <div className="             qF0y9          Igw0E     IwRSH      eGOV_       acqo5   _4EzTm                        _5VUwz                                                                                      ">
-                <div style={{ "marginLeft": "10px" }} className="_7UhW9  PIoXz       MMzan    _0PwGv          uL8Hv         ">
-                  © 2022 Instagram from Meta
-                </div>
+              <div style={{ "marginRight": "30%" }} className="_7UhW9  PIoXz       MMzan    _0PwGv          uL8Hv         ">
+                © 2022 Instagram from Meta
               </div>
             </div>
           </div>

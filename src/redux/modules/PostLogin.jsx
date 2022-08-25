@@ -11,9 +11,8 @@ const initialState = {
 export const __PostLogin = createAsyncThunk(
   "login/Login",
   async (payload, api) => {
-    console.log(payload)
     try {
-      const data = await axios.post("http://taesik.shop/api/auth/signin", payload, {
+      const data = await axios.post(process.env.REACT_APP_SURVER + "/api/auth/signin", payload, {
       }).then((res) => {
         if (res.data.token) {
           localStorage.setItem("token", res.data.token);
@@ -21,7 +20,6 @@ export const __PostLogin = createAsyncThunk(
           window.location.replace("/");
         } else alert("아이디가 존재하지 않습니다.");
       })
-      return api.fulfillWithValue(data.data.result);
     } catch (e) {
     //   if (e.response.data === "BAD_REQUEST") {
     //     alert("입력값을 확인해주세요.");

@@ -1,8 +1,25 @@
-import React from "react";
-import "./Mypage.css";
+import React, { useEffect } from "react";
+import { useSelector, useDispatch } from "react-redux";
+import { useNavigate } from "react-router-dom";
+import { __getMycontent } from "../../redux/modules/GetMypage";
 
 function Mypage() {
 
+    const navigate = useNavigate();
+
+    const dispatch = useDispatch();
+
+
+    const My = useSelector((state) => state.getmylist.data.user);
+    const MyList = useSelector((state) => state.getmylist.data.posts);
+
+    const myprofile = useSelector((state) => state.getmylist.data.user);
+
+    useEffect(() => {
+        dispatch(__getMycontent())
+    }, [])
+
+    console.log(myprofile)
 
     return (
         <div className="_a3wf system-fonts--body segoe">
@@ -36,9 +53,7 @@ function Mypage() {
                                                                     <div className="_aa_j">
                                                                         <div className="_aa_k">
                                                                             <div className="_aadm">
-                                                                                <button className="_aadn" title="프로필 사진 바꾸기">
-                                                                                    <img alt="프로필 사진 바꾸기" className="_aadp" src="https://tse1.mm.bing.net/th?id=OIP._ZMxhOqO1O0RuE9lotq0HgHaK9&pid=Api&P=0" />
-                                                                                </button>
+
                                                                                 <div>
                                                                                     <form encType="multipart/form-data" method="POST" role="presentation">
                                                                                         <input accept="image/jpeg,image/png" className="_ac69" type="file" />
@@ -49,12 +64,14 @@ function Mypage() {
                                                                     </div>
                                                                     <section className="_aa_l" style={{ "display": "flex", "margin": "auto" }}>
                                                                         <div className="_aa_m" style={{ "display": "flex", "flexDirection": "row" }}>
-                                                                            <img src="https://tse1.mm.bing.net/th?id=OIP._ZMxhOqO1O0RuE9lotq0HgHaK9&pid=Api&P=0" style={{ "width": "150px", "height": "150px", "borderRadius": "100%" }} />
+                                                                            <img src={My?.image} style={{ "width": "150px", "height": "150px", "borderRadius": "100%" }} />
                                                                             <h2 className="_aacl _aacs _aact _aacx _aada" tabIndex="-1" style={{ "fontSize": "23px", "marginLeft": "100px", "marginTop": "20px", "fontWeight": "unset" }}>
-                                                                                bel1__94</h2>
+
+                                                                                {My?.nickname}</h2>
+
                                                                             <div className="_ab8w  _ab94 _ab99 _ab9f _ab9k _ab9q  _abb3 _abcm" >
-                                                                                <div className="_ab8w  _ab94 _ab99 _ab9f _ab9m _ab9o _abcm" style={{ "marginTop": "20px", "marginLeft": "20px", "borderRadius": "5px", "border": "1px solid gray", "height": "30px", "minWidth":"100px"  }}>
-                                                                                    <a className="qi72231t nu7423ey n3hqoq4p r86q59rh b3qcqh3k fq87ekyn bdao358l fsf7x5fv rse6dlih s5oniofx m8h3af8h l7ghb35v kjdc1dyq kmwttqpk srn514ro oxkhqvkx rl78xhln nch0832m cr00lzj9 rn8ck1ys s3jn8y49 icdlwmnq _acan _acap _acat _acaw _a6hd" href="/accounts/edit/" role="link" tabIndex="0">
+                                                                                <div className="_ab8w  _ab94 _ab99 _ab9f _ab9m _ab9o _abcm" style={{ "marginTop": "20px", "marginLeft": "20px", "borderRadius": "5px", "border": "1px solid gray", "height": "30px", "minWidth": "100px" }}>
+                                                                                    <a onClick={() => { navigate(`/mypage/${myprofile?.id}/edit`) }} className="qi72231t nu7423ey n3hqoq4p r86q59rh b3qcqh3k fq87ekyn bdao358l fsf7x5fv rse6dlih s5oniofx m8h3af8h l7ghb35v kjdc1dyq kmwttqpk srn514ro oxkhqvkx rl78xhln nch0832m cr00lzj9 rn8ck1ys s3jn8y49 icdlwmnq _acan _acap _acat _acaw _a6hd" tabIndex="0">
                                                                                         프로필 편집</a>
                                                                                 </div>
                                                                             </div>
@@ -75,8 +92,8 @@ function Mypage() {
                                                                     </section>
                                                                 </header>
 
-                                                                <div className="_aa-g _ac_s" role="tablist" style={{ "display": "flex", "margin": "auto" }}>
-                                                                    <a aria-selected="true" className="qi72231t nu7423ey n3hqoq4p r86q59rh b3qcqh3k fq87ekyn bdao358l fsf7x5fv rse6dlih s5oniofx m8h3af8h l7ghb35v kjdc1dyq kmwttqpk srn514ro oxkhqvkx rl78xhln nch0832m cr00lzj9 rn8ck1ys s3jn8y49 icdlwmnq _aa-z _aa-- _ac_u _a6hd" href="/bel1__94/" role="link" tabIndex="0">
+                                                                <div className="_aa-g _ac_s" role="tablist" style={{ "display": "flex", "margin": "30px 0px 30px 48%" }}>
+                                                                    <a aria-selected="true" className="qi72231t nu7423ey n3hqoq4p r86q59rh b3qcqh3k fq87ekyn bdao358l fsf7x5fv rse6dlih s5oniofx m8h3af8h l7ghb35v kjdc1dyq kmwttqpk srn514ro oxkhqvkx rl78xhln nch0832m cr00lzj9 rn8ck1ys s3jn8y49 icdlwmnq _aa-z _aa-- _ac_u _a6hd" role="link" tabIndex="0">
                                                                         <div className="_ab8w  _ab94 _ab97 _ab9f _ab9k _ab9p _abcm">
                                                                             <svg aria-label="" className="_ab6-" color="#262626" fill="#262626" height="12" role="img" viewBox="0 0 24 24" width="12">
                                                                                 <rect fill="none" height="18" stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" width="18" x="3" y="3">
@@ -99,86 +116,32 @@ function Mypage() {
                                                                 <div className="_ab8w  _ab94 _ab99 _ab9f _ab9m _ab9o _abcm">
                                                                     <article className="_aayp">
                                                                         <div>
-                                                                            <div style={{ "position": "relative", "display": "flex", "paddingBottom": "0px", "paddingTop": "0px"}}>
-                                                                                <div className="_ac7v _aang" style={{ "display": "flex", "width": "70%", "margin": "auto", "flexWrap":"wrap", "flexDirection": "row" }}>
+                                                                            <div style={{ "position": "relative", "display": "flex", "paddingBottom": "0px", "paddingTop": "0px" }}>
+                                                                                <div className="_ac7v _aang" style={{ "display": "flex", "width": "70%", "margin": "auto", "flexWrap": "wrap", "flexDirection": "row" }}>
                                                                                     {/* //포스팅구역 */}
-                                                                                    <div className="_aabd _aa8k _aanf" style={{ "maxWidth": "30%", "minWidth":"25%", "margin":"10px" }}>
-                                                                                        <a className="qi72231t nu7423ey n3hqoq4p r86q59rh b3qcqh3k fq87ekyn bdao358l fsf7x5fv rse6dlih s5oniofx m8h3af8h l7ghb35v kjdc1dyq kmwttqpk srn514ro oxkhqvkx rl78xhln nch0832m cr00lzj9 rn8ck1ys s3jn8y49 icdlwmnq _a6hd" href="/p/CeXzwCor-K8/" role="link" tabIndex="0">
-                                                                                            <div className="_aagu">
-                                                                                                <div className="_aagv">
-                                                                                                    <img alt="Photo by 채종원 on June 03, 2022. May be an image of 3 people." crossOrigin="anonymous" className="_aagt" src="https://tse1.mm.bing.net/th?id=OIP._ZMxhOqO1O0RuE9lotq0HgHaK9&pid=Api&P=0" style={{ "objectFit": "cover" }} />
+                                                                                    {MyList?.map((list) => (
+                                                                                        <div key={list.id} className="_aabd _aa8k _aanf" style={{ "maxWidth": "30%", "minWidth": "25%", "margin": "10px" }}>
+                                                                                            <a className="qi72231t nu7423ey n3hqoq4p r86q59rh b3qcqh3k fq87ekyn bdao358l fsf7x5fv rse6dlih s5oniofx m8h3af8h l7ghb35v kjdc1dyq kmwttqpk srn514ro oxkhqvkx rl78xhln nch0832m cr00lzj9 rn8ck1ys s3jn8y49 icdlwmnq _a6hd" href="/p/CeXzwCor-K8/" role="link" tabIndex="0">
+                                                                                                <div className="_aagu">
+                                                                                                    <div className="_aagv">
+                                                                                                    </div>
+                                                                                                    <div className="_aagw">
+                                                                                                    <img className="_aagt" src={list?.image} style={{ "objectFit": "cover" }} />
+                                                                                                    </div>
                                                                                                 </div>
-                                                                                                <div className="_aagw">
+                                                                                                <div className="_aatp">
+                                                                                                    <div className="_ab8w  _ab94 _ab99 _ab9f _ab9m _ab9p  _abak _abb0 _abbi _abb- _abcm">
+                                                                                                        <svg aria-label="슬라이드" className="_ab6-" color="#ffffff" fill="#ffffff" height="22" role="img" viewBox="0 0 48 48" width="22">
+                                                                                                            <path d="M34.8 29.7V11c0-2.9-2.3-5.2-5.2-5.2H11c-2.9 0-5.2 2.3-5.2 5.2v18.7c0 2.9 2.3 5.2 5.2 5.2h18.7c2.8-.1 5.1-2.4 5.1-5.2zM39.2 15v16.1c0 4.5-3.7 8.2-8.2 8.2H14.9c-.6 0-.9.7-.5 1.1 1 1.1 2.4 1.8 4.1 1.8h13.4c5.7 0 10.3-4.6 10.3-10.3V18.5c0-1.6-.7-3.1-1.8-4.1-.5-.4-1.2 0-1.2.6z">
+                                                                                                            </path>
+                                                                                                        </svg>
+                                                                                                    </div>
                                                                                                 </div>
-                                                                                            </div>
-                                                                                            <div className="_aatp">
-                                                                                                <div className="_ab8w  _ab94 _ab99 _ab9f _ab9m _ab9p  _abak _abb0 _abbi _abb- _abcm">
-                                                                                                    <svg aria-label="슬라이드" className="_ab6-" color="#ffffff" fill="#ffffff" height="22" role="img" viewBox="0 0 48 48" width="22">
-                                                                                                        <path d="M34.8 29.7V11c0-2.9-2.3-5.2-5.2-5.2H11c-2.9 0-5.2 2.3-5.2 5.2v18.7c0 2.9 2.3 5.2 5.2 5.2h18.7c2.8-.1 5.1-2.4 5.1-5.2zM39.2 15v16.1c0 4.5-3.7 8.2-8.2 8.2H14.9c-.6 0-.9.7-.5 1.1 1 1.1 2.4 1.8 4.1 1.8h13.4c5.7 0 10.3-4.6 10.3-10.3V18.5c0-1.6-.7-3.1-1.8-4.1-.5-.4-1.2 0-1.2.6z">
-                                                                                                        </path>
-                                                                                                    </svg>
-                                                                                                </div>
-                                                                                            </div>
-                                                                                        </a>
-                                                                                    </div>
-                                                                                    
-                                                                                    <div className="_aabd _aa8k _aanf" style={{ "maxWidth": "30%", "minWidth":"25%", "margin":"10px" }}>
-                                                                                        <a className="qi72231t nu7423ey n3hqoq4p r86q59rh b3qcqh3k fq87ekyn bdao358l fsf7x5fv rse6dlih s5oniofx m8h3af8h l7ghb35v kjdc1dyq kmwttqpk srn514ro oxkhqvkx rl78xhln nch0832m cr00lzj9 rn8ck1ys s3jn8y49 icdlwmnq _a6hd" href="/p/CeXzwCor-K8/" role="link" tabIndex="0">
-                                                                                            <div className="_aagu">
-                                                                                                <div className="_aagv">
-                                                                                                    <img alt="Photo by 채종원 on June 03, 2022. May be an image of 3 people." crossOrigin="anonymous" className="_aagt" src="https://tse1.mm.bing.net/th?id=OIP._ZMxhOqO1O0RuE9lotq0HgHaK9&pid=Api&P=0" style={{ "objectFit": "cover" }} />
-                                                                                                </div>
-                                                                                                <div className="_aagw">
-                                                                                                </div>
-                                                                                            </div>
-                                                                                            <div className="_aatp">
-                                                                                                <div className="_ab8w  _ab94 _ab99 _ab9f _ab9m _ab9p  _abak _abb0 _abbi _abb- _abcm">
-                                                                                                    <svg aria-label="슬라이드" className="_ab6-" color="#ffffff" fill="#ffffff" height="22" role="img" viewBox="0 0 48 48" width="22">
-                                                                                                        <path d="M34.8 29.7V11c0-2.9-2.3-5.2-5.2-5.2H11c-2.9 0-5.2 2.3-5.2 5.2v18.7c0 2.9 2.3 5.2 5.2 5.2h18.7c2.8-.1 5.1-2.4 5.1-5.2zM39.2 15v16.1c0 4.5-3.7 8.2-8.2 8.2H14.9c-.6 0-.9.7-.5 1.1 1 1.1 2.4 1.8 4.1 1.8h13.4c5.7 0 10.3-4.6 10.3-10.3V18.5c0-1.6-.7-3.1-1.8-4.1-.5-.4-1.2 0-1.2.6z">
-                                                                                                        </path>
-                                                                                                    </svg>
-                                                                                                </div>
-                                                                                            </div>
-                                                                                        </a>
-                                                                                    </div>
-                                                                                    <div className="_aabd _aa8k _aanf" style={{ "maxWidth": "30%", "minWidth":"25%", "margin":"10px" }}>
-                                                                                        <a className="qi72231t nu7423ey n3hqoq4p r86q59rh b3qcqh3k fq87ekyn bdao358l fsf7x5fv rse6dlih s5oniofx m8h3af8h l7ghb35v kjdc1dyq kmwttqpk srn514ro oxkhqvkx rl78xhln nch0832m cr00lzj9 rn8ck1ys s3jn8y49 icdlwmnq _a6hd" href="/p/CeXzwCor-K8/" role="link" tabIndex="0">
-                                                                                            <div className="_aagu">
-                                                                                                <div className="_aagv">
-                                                                                                    <img alt="Photo by 채종원 on June 03, 2022. May be an image of 3 people." crossOrigin="anonymous" className="_aagt" src="https://tse1.mm.bing.net/th?id=OIP._ZMxhOqO1O0RuE9lotq0HgHaK9&pid=Api&P=0" style={{ "objectFit": "cover" }} />
-                                                                                                </div>
-                                                                                                <div className="_aagw">
-                                                                                                </div>
-                                                                                            </div>
-                                                                                            <div className="_aatp">
-                                                                                                <div className="_ab8w  _ab94 _ab99 _ab9f _ab9m _ab9p  _abak _abb0 _abbi _abb- _abcm">
-                                                                                                    <svg aria-label="슬라이드" className="_ab6-" color="#ffffff" fill="#ffffff" height="22" role="img" viewBox="0 0 48 48" width="22">
-                                                                                                        <path d="M34.8 29.7V11c0-2.9-2.3-5.2-5.2-5.2H11c-2.9 0-5.2 2.3-5.2 5.2v18.7c0 2.9 2.3 5.2 5.2 5.2h18.7c2.8-.1 5.1-2.4 5.1-5.2zM39.2 15v16.1c0 4.5-3.7 8.2-8.2 8.2H14.9c-.6 0-.9.7-.5 1.1 1 1.1 2.4 1.8 4.1 1.8h13.4c5.7 0 10.3-4.6 10.3-10.3V18.5c0-1.6-.7-3.1-1.8-4.1-.5-.4-1.2 0-1.2.6z">
-                                                                                                        </path>
-                                                                                                    </svg>
-                                                                                                </div>
-                                                                                            </div>
-                                                                                        </a>
-                                                                                    </div>
-                                                                                    <div className="_aabd _aa8k _aanf" style={{ "maxWidth": "30%", "minWidth":"25%", "margin":"10px" }}>
-                                                                                        <a className="qi72231t nu7423ey n3hqoq4p r86q59rh b3qcqh3k fq87ekyn bdao358l fsf7x5fv rse6dlih s5oniofx m8h3af8h l7ghb35v kjdc1dyq kmwttqpk srn514ro oxkhqvkx rl78xhln nch0832m cr00lzj9 rn8ck1ys s3jn8y49 icdlwmnq _a6hd" href="/p/CeXzwCor-K8/" role="link" tabIndex="0">
-                                                                                            <div className="_aagu">
-                                                                                                <div className="_aagv">
-                                                                                                    <img alt="Photo by 채종원 on June 03, 2022. May be an image of 3 people." crossOrigin="anonymous" className="_aagt" src="https://tse1.mm.bing.net/th?id=OIP._ZMxhOqO1O0RuE9lotq0HgHaK9&pid=Api&P=0" style={{ "objectFit": "cover" }} />
-                                                                                                </div>
-                                                                                                <div className="_aagw">
-                                                                                                </div>
-                                                                                            </div>
-                                                                                            <div className="_aatp">
-                                                                                                <div className="_ab8w  _ab94 _ab99 _ab9f _ab9m _ab9p  _abak _abb0 _abbi _abb- _abcm">
-                                                                                                    <svg aria-label="슬라이드" className="_ab6-" color="#ffffff" fill="#ffffff" height="22" role="img" viewBox="0 0 48 48" width="22">
-                                                                                                        <path d="M34.8 29.7V11c0-2.9-2.3-5.2-5.2-5.2H11c-2.9 0-5.2 2.3-5.2 5.2v18.7c0 2.9 2.3 5.2 5.2 5.2h18.7c2.8-.1 5.1-2.4 5.1-5.2zM39.2 15v16.1c0 4.5-3.7 8.2-8.2 8.2H14.9c-.6 0-.9.7-.5 1.1 1 1.1 2.4 1.8 4.1 1.8h13.4c5.7 0 10.3-4.6 10.3-10.3V18.5c0-1.6-.7-3.1-1.8-4.1-.5-.4-1.2 0-1.2.6z">
-                                                                                                        </path>
-                                                                                                    </svg>
-                                                                                                </div>
-                                                                                            </div>
-                                                                                        </a>
-                                                                                    </div>
+                                                                                            </a>
+                                                                                        </div>
+
+                                                                                    ))}
+
                                                                                 </div>
                                                                             </div>
                                                                         </div>
@@ -268,7 +231,7 @@ function Mypage() {
                                                                                         <div className="_aaaw">
                                                                                         </div>
                                                                                         <span className="_aa8h _aa8i" role="link" tabIndex="0" style={{ "width": "24px", "height": "24px" }}>
-                                                                                            <img alt="bel1__94님의 프로필 사진" className="_aa8j" crossOrigin="anonymous" draggable="false" src="https://tse1.mm.bing.net/th?id=OIP._ZMxhOqO1O0RuE9lotq0HgHaK9&pid=Api&P=0" />
+                                                                                            <img className="_aa8j" crossOrigin="anonymous" draggable="false" src="https://tse1.mm.bing.net/th?id=OIP._ZMxhOqO1O0RuE9lotq0HgHaK9&pid=Api&P=0" />
                                                                                         </span>
                                                                                     </div>
                                                                                     <div className="_aa1s" style={{ "marginLeft": "-180px" }}>
@@ -488,9 +451,8 @@ function Mypage() {
                     </div>
                     <div style={{ "margin": "auto", "display": "flex", "flexDirection": "row", "justifyContent": "center", "alignItems": "center" }} className="             qF0y9          Igw0E     IwRSH        YBx95   ybXk5     _4EzTm     _22l1                                                      _49XvD                                                   ">
                         <div style={{ "margin": "auto", "display": "flex", "flexDirection": "row", "justifyContent": "center", "alignItems": "center" }} className="_7UhW9  PIoXz       MMzan   KV-D4           uL8Hv         ">
-                            <span style={{ "margin": "auto", "display": "flex", "flexDirection": "row", "justifyContent": "center", "alignItems": "center" }} className="_3G4x7   RFk-t bwz9f ">
+                            <span style={{ "margin": "auto", "display": "flex", "flexDirection": "row" }} className="_3G4x7   RFk-t bwz9f ">
                                 <div className="TQUPK">
-                                    <span style={{ "marginRight": "20px" }}>한국어</span>
                                     <div className="             qF0y9          Igw0E     IwRSH      eGOV_       acqo5   _4EzTm                     WKY0a                                                                                         ">
                                         <span
                                             style={{
@@ -554,10 +516,8 @@ function Mypage() {
                                 </select>
                             </span>
                         </div>
-                        <div className="             qF0y9          Igw0E     IwRSH      eGOV_       acqo5   _4EzTm                        _5VUwz                                                                                      ">
-                            <div style={{ "marginLeft": "10px" }} className="_7UhW9  PIoXz       MMzan    _0PwGv          uL8Hv         ">
-                                © 2022 Instagram from Meta
-                            </div>
+                        <div style={{ "marginRight": "30%" }} className="_7UhW9  PIoXz       MMzan    _0PwGv          uL8Hv         ">
+                            © 2022 Instagram from Meta
                         </div>
                     </div>
                 </div>

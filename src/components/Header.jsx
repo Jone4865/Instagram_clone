@@ -4,78 +4,100 @@ import { useState } from "react";
 import { FaRegHeart } from 'react-icons/fa';
 import { useNavigate } from "react-router-dom";
 import { MdOutlineArrowBack } from 'react-icons/md';
-import ImageUpload from "./ImageUpload";
 import axios from "axios";
 import "./header.css";
+import { useDispatch } from "react-redux/es/hooks/useDispatch";
+import { useSelector } from "react-redux/es/hooks/useSelector";
+import { useEffect } from "react";
+import { __getMycontent } from "../redux/modules/GetMypage";
 
 function Header() {
+
+    const contents_ref = useRef(null);
     const navigate = useNavigate();
-    
+
+    //모달창
     const [modal, setModal] = useState(false);
+
+    //이미지 저장하는곳
+    const fileInput = useRef(null);
+    //이미지 미리보기
+    const [attachment, setAttachment] = useState("");
+
+    const dispatch = useDispatch();
+
+    const myprofile = useSelector((state) => state.getmylist.data.user);
+
+
+
     
-    const fileInput = useRef();
-    //게시물 작성에서 입력 받을 인풋 값들
-    const [inputs, setInputs] = useState({
-        postimage: "",
-        contents: ""
-    });
+//   모든 게시물 조회
+  const getAxiosData = async () => {
+    const token = localStorage.getItem("token");
+    const axiosData = await axios.get(process.env.REACT_APP_SURVER + `/api/post`, {
+      headers: {
+        Authorization: `Bearer ${token}`,
+      },
+    })
+  }
+  useEffect(() => {
+    getAxiosData();
+  }, [])
 
-    const { postimg, contents} = inputs;
 
-    const onChange = (e) => {
-        const { value, name } = e.target;
-        setInputs({
-          ...inputs,
-          [name]: value,
-        });
+    //사진 미리보기 기능
+    const selectImg = (e) => {
+        const reader = new FileReader();
+        const theFile = fileInput.current.files[0];
+        reader.readAsDataURL(theFile);
+        reader.onloadend = (finishiedEvent) => {
+          const {
+            currentTarget: { result },
+          } = finishiedEvent;
+          setAttachment(result);
+        };
       };
 
-
-    //게시물 create
-    const onClickPostButtonHandler = async (event) => {
-    event.preventDefault();
-
-    try{
-        await axios.post('http://localhost:3001/posts', inputs)
-        .then(res => {
-      })
-      } catch(err) {
-        console.log(err);
-      }
-    };
-
-    
-  //사진 이미지
-  const imageUploadButtonClickHandler = async (ev) => {
-    ev.preventDefault();
-
-    const formData = new FormData();
-    formData.append('userfile', fileInput.current.files[0])
-    console.log(fileInput.current.files[0])
-    
-    await axios.post(`http://localhost:3001/posts`, formData)
-    .then(res => {
-      const data = res.data;
-      
-      if(data.success){
-        alert('이미지가 등록되었습니다.')
-        console.log(fileInput)
-        console.log(postimg)
+    //게시물 생성 폼데이터로 보내기
+    const ListCreateButtonClickHandler = async (ev) => {
         
-        setInputs({
-          ...inputs,
-          imageUrl: data.imageUrl,
-        });
-        
-      } else {
-        alert('이미지가 등록에 실패하였습니다.')
-      }
-    }).catch(err => {
-        console.log(err)
-      }
-    )
+        const token = localStorage.getItem("token");
+        // if(fileInput.current.files[0] === null) {
+        //     alert('사진을 넣어주세요')
+        //     return;
+        // }
 
-  }
+      console.log( fileInput.current.files[0])
+
+        const formData = new FormData();
+        formData.append('postImg', fileInput.current.files[0])
+        formData.append('content', contents_ref.current.value)
+
+        console.log(contents_ref.current.value)
+
+        await axios.post( process.env.REACT_APP_SURVER + `/api/post/create`, formData, {
+            headers: {
+                Authorization: `Bearer ${token}`,
+                "Content-Type": `multipart/form-data`,
+            },
+        })
+            .then(res => {
+                const data = res.data.sucess === true
+                const msg = res.data.message
+                if (data) {
+                    alert(msg)
+                    setModal(!modal)
+                    console.log(res)
+                    window.location.reload();
+                } else {
+                    alert(msg)
+                    console.log(res)
+                }
+            }).catch(err => {
+                console.log(err)
+            })
+            getAxiosData();
+        }
 
     return (
         <>
@@ -128,8 +150,8 @@ function Header() {
                                         <div className="_acub">
                                             <button className="_abl- _abm2" type="button">
                                                 <div className="_abm0">
-                                                    <svg onClick={() => { setModal(!modal) }} 
-                                                    aria-label="새로운 게시물" className="_ab6-" color="#262626" fill="#262626" height="24" role="img" viewBox="0 0 24 24" width="24">
+                                                    <svg onClick={() => { setModal(!modal) }}
+                                                        aria-label="새로운 게시물" className="_ab6-" color="#262626" fill="#262626" height="24" role="img" viewBox="0 0 24 24" width="24">
                                                         <path d="M2 12v3.45c0 2.849.698 4.005 1.606 4.944.94.909 2.098 1.608 4.946 1.608h6.896c2.848 0 4.006-.7 4.946-1.608C21.302 19.455 22 18.3 22 15.45V8.552c0-2.849-.698-4.006-1.606-4.945C19.454 2.7 18.296 2 15.448 2H8.552c-2.848 0-4.006.699-4.946 1.607C2.698 4.547 2 5.703 2 8.552z" fill="none" stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2">
                                                         </path>
                                                         <line fill="none" stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" x1="6.545" x2="17.455" y1="12.001" y2="12.001">
@@ -161,7 +183,7 @@ function Header() {
                                         <div className="_aaav">
                                             <div className="_aaaw">
                                             </div>
-                                            <span className="_aa8h _aa8i" role="link" tabIndex="0" style={{ "width": "24px", "height": "24px" }}>
+                                            <span onClick={() => { navigate(`/mypage`) }} className="_aa8h _aa8i" role="link" tabIndex="0" style={{ "width": "24px", "height": "24px" }}>
                                                 <img alt="bel1__94님의 프로필 사진" className="_aa8j" crossOrigin="anonymous" draggable="false" src="https://tse1.mm.bing.net/th?id=OIP._ZMxhOqO1O0RuE9lotq0HgHaK9&pid=Api&P=0" />
                                             </span>
                                         </div>
@@ -176,51 +198,84 @@ function Header() {
                 </div>
             </nav>
 
-       
-                {
-                    modal === true ? (<>
-                        <ModalBackground onClick={() => { setModal(!modal) }}>
-                            <ModalBox onClick={(event) => { event.stopPropagation() }}>
-                                <Head>
-                                    <Icon ><MdOutlineArrowBack onClick={() => { setModal(!modal) }} /></Icon>
-                                    <h4>새 게시물 생성하기</h4>
-                                    <h4 style={{ color: "blue" }}>공유하기</h4>
-                                </Head>
-                                <div style={{ display: "flex" }}>
-                                    <Left>
-                                           <form 
-                                           encType="multipart/form-data">
-                                            <input
+
+            {
+                modal === true ? (<>
+                    <ModalBackground onClick={() => { setModal(!modal) }}>
+                        <ModalBox onClick={(event) => { event.stopPropagation() }}>
+                            <Head>
+                                <Icon ><MdOutlineArrowBack onClick={() => { setModal(!modal) }} /></Icon>
+                                <h4>새 게시물 생성하기</h4>
+                                <h4  onClick={(ev) => ListCreateButtonClickHandler(ev)} style={{ color: "skyblue", cursor: "pointer" }}>공유하기</h4>
+                            </Head>
+                            <div style={{ display: "flex" }}>
+
+                                <Left>
+                                    <Miribogi src={
+                attachment
+                  ? attachment
+                  : "https://user-images.githubusercontent.com/75834421/124501682-fb25fd00-ddfc-11eb-93ec-c0330dff399b.jpg"
+              }
+              alt="업로드할 이미지"/>
+                                    <form encType="multipart/form-data">
+                                        <ImageUpce
                                             type="file"
                                             placeholder="게시물 이미지"
-                                            name="userfile"
+                                            name="postImg"
                                             ref={fileInput}
+                                            onChange={selectImg}
+                                        />
+                                        </form>
+                                </Left>
+                                <Right>
+                                    <Right_first>
+                                        <Right_firstImg src={null} />
+                                        <h3>asd</h3>
+                                    </Right_first>
+                                    <Right_two>
+                                        <form>
+                                            <ConInpu
+                                            name="content"
+                                            maxLength={2220}
+                                            placeholder="문구 입력" 
+                                            ref={contents_ref}
                                             />
-                                            <button onClick={(ev) => imageUploadButtonClickHandler(ev)}></button>
-                                           </form>
-                                    </Left>
-                                    <Right>
-                                        <Right_first>
-                                            <Right_firstImg src={null} />
-                                            <h3>asd</h3>
-                                        </Right_first>
-                                        <Right_two>
-                                           <textarea maxLength={200} placeholder="문구 입력 (최대 200자)"/>
-                                        </Right_two>
-                                        <Right_thr>
-                                            <div><p>위치 추가</p></div>
-                                            <div><p>접근성</p></div>
-                                            <div><p>고급 설정</p></div>
-                                        </Right_thr>
-                                    </Right>
-                                </div>
-                            </ModalBox>
-                        </ModalBackground>
-                    </>) : null
-                }
+                                        </form>
+                                    </Right_two> 
+                                    <Right_thr>
+                                        <div><p>위치 추가</p></div>
+                                        <div><p>접근성</p></div>
+                                        <div><p>고급 설정</p></div>
+                                    </Right_thr>
+                                </Right>
+                            </div>
+                        </ModalBox>
+                    </ModalBackground>
+                </>) : null
+            }
         </>
     )
 }
+
+
+const ConInpu = styled.textarea`
+    border: none;
+`
+
+
+const ImageUpce = styled.input`
+    background-color: black;
+    border-radius: 20px;
+    background-color: black;
+    color: white;
+`
+
+
+const Miribogi =styled.img`
+    height: 95%;
+    width: 100%;
+
+`
 
 const ModalBackground = styled.div`
     position: fixed;
@@ -241,6 +296,7 @@ const ModalBox = styled.div`
     height: 80%;
     max-width: 1500px;
     min-width: 800px;
+    z-index: 99999;
 `;
 
 const Icon = styled.div`
@@ -248,8 +304,8 @@ const Icon = styled.div`
 `
 
 const Head = styled.div`
+    border-bottom:1px solid #ccc;
     height: 55px;
-    border-bottom: 1px solid red;
     display: flex;
     align-items: center;
     justify-content: space-between;
@@ -264,13 +320,11 @@ const Head = styled.div`
 const Left = styled.div`
     width: 60%;
     height: 691px;
-    border: 1px solid red;
 `
 
 const Right = styled.div`
     width: 40%;
     height: 100%;
-    border: 1px solid red;
 `
 
 const Right_first = styled.div`
@@ -280,7 +334,6 @@ flex-direction: row;
 align-items: center;
 gap:10px;
 padding-left:10px;
-border:1px solid red;
 `
 
 const Right_firstImg = styled.img`
@@ -290,9 +343,9 @@ const Right_firstImg = styled.img`
     background-color: black;
 `
 const Right_two = styled.div`
-    border: 1px solid red;
     height: 250px;
     padding: 10px 15px 15px 10px;
+    border: 1px solid #ccc;
 
     textarea {
         width: 100%;
@@ -300,14 +353,13 @@ const Right_two = styled.div`
     }
 `
 const Right_thr = styled.div`
-    border: 1px solid red;
     height: 355px;
     width: 100%;
 
     div {
-        border: 1px solid blue;
         height: 50px;
         display: flex;
+        border: 1px solid #ccc;
     }
 
     div > p {
