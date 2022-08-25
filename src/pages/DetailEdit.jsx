@@ -6,8 +6,11 @@ import axios from "axios";
 import styled from "styled-components";
 import Header from "../components/Header";
 import { useRef } from "react";
+import { useNavigate } from "react-router-dom";
 
 function DetailEdit() {
+
+    const navigate = useNavigate();
 
     const { postId } = useParams();
 
@@ -16,7 +19,7 @@ function DetailEdit() {
     const fileInput = useRef();
     const contents_ref = useRef(null);
 
-    const [attachment, setAttachment] = useState("");
+    const [attachment, setAttachment] = useState();
 
     //해당 게시물 가져오기
     const getAxiosDetaileditData = async () => {
@@ -48,8 +51,6 @@ function DetailEdit() {
         };
       };
 
-
-
     //게시물 수정 핸들러
     const EditListHandler = async (ev) => {
         ev.preventDefault();
@@ -61,8 +62,6 @@ function DetailEdit() {
         formData.append('postImg', fileInput.current.files[0])
         formData.append('content', contents_ref.current.value)
 
-        console.log(contents_ref.current.value)
-
         await axios.put(process.env.REACT_APP_SURVER + `/api/post/update/${postId}`, formData, {
             headers: {
                 Authorization: `Bearer ${token}`,
@@ -70,13 +69,16 @@ function DetailEdit() {
             },
         })
             .then(res => {
-                const data = res.data.success;
+                const data = res
+                const msg = res.data.message
                 if (data) {
-                    alert('이미지가 등록되었습니다.')
+                    alert(msg)
                     console.log(data)
-
+                    navigate('/')
                 } else{
-                    alert('이미지에 실패했습니다')
+                    alert(msg)
+                    console.log(data)
+                    
                 }
             }).catch(err => {
                 console.log(err)
@@ -90,7 +92,13 @@ function DetailEdit() {
             <Allbox>
                 <Bigbox>
                     <Left>
-                        <LeftImg src={editList.postimage} />
+                        <LeftImg  src={
+                            attachment
+                                ? attachment
+                                : editList.postimage
+                        }
+                            alt="업로드할 이미지" />
+
                         <form encType="multipart/form-data">
                             <input
                                 type="file"
@@ -100,20 +108,22 @@ function DetailEdit() {
                                 onChange={selectImg}
                             />
                         </form>
-                        
                     </Left>
                     <Right>
                         <form>
-                            <textarea
+                            <TextA
                                 name="content"
                                 maxLength={2200}
                                 placeholder={editList.content}
                                 ref={contents_ref}
                             />
                         </form>
-                        <div>asd</div>
+                        <Ddiv>
+                            <Edited onClick={(ev)=>{EditListHandler(ev)}}>수정하기</Edited>
+                        </Ddiv>
+                        
                     </Right>
-                    <button onClick={(ev)=>{EditListHandler(ev)}}>수정하기</button>
+                    
                 </Bigbox>
             </Allbox>
         </>
@@ -126,7 +136,7 @@ const Allbox = styled.div`
     min-width: 100px;
     width : 100%;
     height: 882px;
-    background-color: #f5eeeed5;
+    background-color: #eeeeee65;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -163,6 +173,32 @@ const LeftImg = styled.img`
 const Right = styled.div`
    border: 2px solid #eee;
    width: 35%;
+   flex-direction: column;
+   justify-content: space-between;
+   display: flex;
+`
+const TextA = styled.textarea`
+    height: 300px;
+    width: 90%;
+    padding: 10px;
 `
 
+const Edited = styled.button`
+    height: 40px;
+    width: 100px;
+    border-radius: 30px;
+    border: none;
+
+
+    cursor: pointer;
+    :hover {
+        border: 2px solid black;
+    }
+`
+const Ddiv =styled.div`
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 200px;
+`
 export default DetailEdit;
