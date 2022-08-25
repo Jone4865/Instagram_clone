@@ -19,6 +19,8 @@ function Main() {
   const dispatch = useDispatch();
 
 
+  const token = localStorage.getItem("token");
+
   const myprofile = useSelector((state) => state.getmylist.data.user);
 
   useEffect(() => {
@@ -101,43 +103,6 @@ function Main() {
     };
     postAxiosData();
   };
-
-
-
-
-
-  //좋아요 취소하기
-
-  // const UnlikeButtonClickHandler = (postIds) => {
-  //   console.log(postIds)
-  //   const token = localStorage.getItem("token");
-  //   const postAxiosData = async () => {
-  //     try {
-  //       await axios.post(process.env.REACT_APP_SURVER + `/api/post/unlike/${postIds}`, {}, {
-  //         headers: {
-  //           Authorization: `Bearer ${token}`,
-  //         },
-  //           }
-  //         )
-  //         .then((res) => {
-  //           if (res.msg === "좋아요 완료.") {
-  //             alert(res.msg);
-  //             console.log(res)
-  //           }
-  //            else {
-  //             alert("좋아요를 취소했습니다.");
-  //             console.log(res);
-  //           }
-  //         });
-  //     } catch (err) {
-  //       console.log(err);
-  //     }
-  //   };
-  //   postAxiosData();
-  // };
-
-
-
 
   //게시물 삭제
   const deleteListhandeler = async (postId) => {

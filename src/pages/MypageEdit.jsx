@@ -75,7 +75,7 @@ function MypageEdit() {
         console.log(introduce_Ref.current.value)
         console.log(email_Ref.current.value)
         console.log(phone_Ref.current.value)
-        console.log(selected)
+        console.log(selected) 
 
         await axios.put(process.env.REACT_APP_SURVER + `/api/auth/profile`, formData, {
             headers: {

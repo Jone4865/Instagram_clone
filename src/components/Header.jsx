@@ -88,6 +88,7 @@ function Header() {
                     alert(msg)
                     setModal(!modal)
                     console.log(res)
+                    window.location.reload();
                 } else {
                     alert(msg)
                     console.log(res)
