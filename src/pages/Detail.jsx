@@ -68,6 +68,22 @@ function Detail() {
                 Authorization: `Bearer ${token}`,
             },
         })
+        .then(res => {
+            const data = res.data.sucess === true
+            const msg = res.data.message
+            if (data) {
+                alert(msg)
+                navigate(`/`)
+                console.log(res)
+            } else {
+                alert(msg)
+                console.log(res)
+            }
+        }).catch(err => {
+            console.log(err)
+        }
+      
+        )
     }
 
     const editHandle = (e) => {
@@ -108,7 +124,6 @@ function Detail() {
                                         <div>
                                             <Icon><BiDotsHorizontalRounded onClick={() => { setDetailDeleteModal(!detailDeleteModal) }} /></Icon>
                                         </div>
-
                                     </Onebox>
                                     <Twobox>
                                         <Twobox_img src={user.userimage} />
@@ -162,7 +177,7 @@ function Detail() {
                     }}>
                         <ModalBox onClick={(event) => { event.stopPropagation() }}  >
                             <p style={{ cursor: "pointer" }} onClick={(ev) => { deleteListhandeler(ev) }}>삭제</p>
-                            <p style={{ cursor: "pointer" }} onClick={() => { navigate(`/detail/${postId}/edit`) }}>수정</p>
+                            <p style={{ cursor: "pointer" }} onClick={() => { navigate(`/detail/${postId}/edit`)}}>수정</p>
                             <p style={{ cursor: "pointer" }} onClick={() => { setDetailDeleteModal(!detailDeleteModal) }}>취소</p>
                         </ModalBox>
                     </ModalBackground>
@@ -248,6 +263,9 @@ const Left = styled.img`
     padding-top: 10px;
     padding-left: 10px;
     height: 780px;
+    background-color: black;
+    padding-right: 10px;
+    padding-bottom: 10px;
 `
 const Right = styled.div`
     width: 505px;

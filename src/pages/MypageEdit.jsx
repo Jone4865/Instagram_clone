@@ -1,21 +1,29 @@
 import React, { useRef } from "react";
 import styled from "styled-components";
 import { useState } from "react";
-import { useParams } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
-import { useEffect } from "react";
 import Header from "../components/Header";
+import { __getMycontent } from "../redux/modules/GetMypage";
+import { useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
+import { useEffect } from "react";
 
 function MypageEdit() {
 
-    const { postId } = useParams();
+    const navigate = useNavigate();
+    const dispatch = useDispatch();
 
-    const [editlist, setEditlist] = useState();
 
+    const myprofile = useSelector((state) => state.getmylist.data.user);
+    console.log(myprofile)
+
+    useEffect(() => {
+        dispatch(__getMycontent())
+    }, [])
 
     //셀렉트 값 받아오기
-    const [Selected, setSelected] = useState("");
+    const [selected, setSelected] = useState("");
 
     const [attachment, setAttachment] = useState("");
 
@@ -25,7 +33,7 @@ function MypageEdit() {
     const introduce_Ref = useRef();
     const email_Ref = useRef();
     const phone_Ref = useRef();
-    const gender_Ref = useRef(Selected);
+    const gender_Ref = useRef(selected);
 
 
     //사진 미리보기 기능
@@ -47,14 +55,10 @@ function MypageEdit() {
         setSelected(e.target.value);
       };
 
-
-    console.log(Selected)
     //내 정보 수정 핸들러
     const editMyprofieHadler = async (ev) => {
         ev.preventDefault();
         const token = localStorage.getItem("token");
-
-        console.log(fileInput.current.files[0])
 
         const formData = new FormData();
         formData.append('profile', fileInput.current.files[0])
@@ -63,9 +67,9 @@ function MypageEdit() {
         formData.append('introduce', introduce_Ref.current.value)
         formData.append('email', email_Ref.current.value)
         formData.append('phone', phone_Ref.current.value)
-        formData.append('gender', gender_Ref)
+        formData.append('gender', selected)
 
-        console.log(name_Ref.current.value)
+        console.log(introduce_Ref)
 
         await axios.put(process.env.REACT_APP_SURVER + `/api/auth/profile`, formData, {
             headers: {
@@ -73,20 +77,23 @@ function MypageEdit() {
                 "Content-Type": `multipart/form-data`,
             },
         })
-            .then(res => {
-                const data = res.data;
+        .then(res => {
+            const data = res.data.massge == true  
+            const msg = res.data.message
 
-                if (data.success) {
-                    alert('이미지가 등록되었습니다.')
-
-                    console.log(res)
-
-                } else {
-                    alert('이미지가 등록에 실패하였습니다.')
-                }
-            }).catch(err => {
-                console.log(err)
+            if (data) {
+                alert('정보 수정 완료했습니다')
+                navigate(`/`)
+                console.log(res)
+            } else {
+                alert('수정 실패했습니다')
+                navigate(`/mypage`)
+                console.log(res)
             }
+        }).catch(err => {
+            console.log(err)
+        }
+      
         )
 
     }
@@ -104,7 +111,7 @@ function MypageEdit() {
                         }
                             alt="업로드할 이미지" />
                         <div>
-                            <p>닉네임임</p>
+                            <p>{myprofile.nickname}</p>
                             <form encType="multipart/form-data">
                                 <input
                                     type="file"
@@ -169,12 +176,12 @@ function MypageEdit() {
                                 <select
                                     ref={gender_Ref}
                                     onChange={handleSelect}
-                                     value={Selected}
+                                     value={selected}
                                      name="gender"
                                      >
-                                    <option>밝히고 싶지 않음</option>
                                     <option>남자</option>
                                     <option>여자</option>
+                                    
                                 </select>
                             </TwoBox>
                         </form>
