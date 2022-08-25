@@ -48,13 +48,9 @@ function Signup() {
                                     <div className="P8adC">
                                         <form className="XFYOY" onSubmit={onsubmit}>
                                             <h2 className="vvzhL ">친구들의 사진과 동영상을 보려면 가입하세요.</h2>
-                                            <div className="             qF0y9          Igw0E     IwRSH      eGOV_       acqo5   _4EzTm    bkEs3                          CovQj                  jKUp7          DhRcB                                                    ">
-                                                <button style={{ margin: "auto", width: "300px", border: "1px solid white", borderRadius: "7px", height: "30px", backgroundColor: "#00AFFF", color: "white", marginLeft: "25px" }} className="sqdOP  L3NKy   y3zKF     " type="button">
-                                                    <span className="coreSpriteFacebookIconInverted cneKx">
-                                                    </span>Facebook으로 로그인</button>
-                                            </div>
+                                           
                                             <div className="K-1uj hKTMS">
-                                                <div className="_0tv-g" style={{ "marginLeft": "120px" }}>또는</div>
+                                               
                                                 <div className="s311c t7mNY ">
                                                 </div>
                                             </div>

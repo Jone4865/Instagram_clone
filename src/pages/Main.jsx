@@ -23,9 +23,6 @@ function Main() {
     dispatch(__getMycontent())
 }, [])
 
-  console.log(myprofile)
-
-
   const navigate = useNavigate();
 
   //삭제 및 수정 모달
@@ -45,7 +42,6 @@ function Main() {
     })
     setUser(axiosData.data.data.User)
     setList(axiosData.data.data)
-    console.log(axiosData.data.data)
 
   }
   useEffect(() => {
@@ -99,8 +95,6 @@ function Main() {
                       //       </ModalBox>
                       //     </ModalBackground>
                       //   </>) : null
-
-                        console.log(a.postId)
                        }
                     </Title>
                     <div>
