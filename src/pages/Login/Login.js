@@ -118,10 +118,7 @@ function Login() {
                         <div className="_0tv-g">또는</div>
                       </div>
                       <div style={{ "marginLeft": "73px", "display": "flex" }} className="             qF0y9          Igw0E     IwRSH      eGOV_       acqo5   _4EzTm    bkEs3                          CovQj                  jKUp7          DhRcB                                                    ">
-                        <button style={{ margin: "10px", width: "180px", border: "1px solid white", borderRadius: "7px", height: "30px" }} className="sqdOP yWX7d    y3zKF     " type="button">
-                          <span className=" coreSpriteFacebookIcon AeB99"></span>
-                          <span className="KPnG0">Facebook으로 로그인</span>
-                        </button>
+                        <a href={process.env.REACT_APP_SURVER + "/api/facebook"} style={{ margin: "10px", width: "180px", border: "1px solid white", borderRadius: "7px", height: "30px", marginLeft: "30px" }} className="sqdOP yWX7d    y3zKF     " >Facebook으로 로그인</a>
                       </div>
                     </div>
                   </form>

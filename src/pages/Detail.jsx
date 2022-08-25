@@ -6,9 +6,11 @@ import { useNavigate, useParams } from "react-router-dom";
 import axios from "axios";
 import Header from "../components/Header";
 import { BiDotsHorizontalRounded } from 'react-icons/bi';
+import {BsSuitHeart} from 'react-icons/bs';
+import {FaRegComment} from 'react-icons/fa';
 import { __PostContent } from "../redux/modules/PostContent";
 import { __DeleteContent } from "../redux/modules/DeleteContent";
-import { __PutContent } from "../redux/modules/PutContent"
+import { __PutContent } from "../redux/modules/PutContent";
 
 function Detail() {
     const dispatch = useDispatch();
@@ -52,8 +54,8 @@ function Detail() {
         e.preventDefault();
         dispatch(__PostContent({ comment, postId }));
         setComment("");
-        setTimeout(() => { }, "1000");
         getAxiosDetailData();
+        setTimeout(() => { }, "1000");
         navigate(`/detail/${detailList.id}`, { replace: true })
     }
 
@@ -85,7 +87,6 @@ function Detail() {
     }
 
     const editHandle = (e) => {
-        console.log(e.target)
         setView(false)
         setCommentId(+e.target.value)
     }
@@ -94,14 +95,14 @@ function Detail() {
         setView(true)
     }
 
+
     const newonsubmit = (e) => {
         e.preventDefault();
-        e.target.value("");
         dispatch(__PutContent({ newcomment, commentId }));
+        setnewComment("")
         setView(true)
-        setTimeout(() => { }, "1000");
         getAxiosDetailData();
-        navigate(`/detail/${detailList.id}`, { replace: true })
+        setTimeout(() => { }, "1000");
     }
 
     return (
@@ -145,7 +146,7 @@ function Detail() {
                                                                 getAxiosDetailData();
                                                                 navigate(`/detail/${detailList.id}`, { replace: true });
                                                             }}>삭제</button>{view === true ?
-                                                                <button style={{ "marginLeft": "10px", "color": "#4891ff", "fontWeight": "bold", "backgroundColor": "white", "border": "0px", "width":"50px" }} value={a.commentid} onClick={editHandle}>수정</button> : ''}
+                                                               <> <button style={{ "marginLeft": "10px", "color": "#4891ff", "fontWeight": "bold", "backgroundColor": "white", "border": "0px", "width":"50px" }} value={a.commentid} onClick={editHandle}>수정</button><Icon><BsSuitHeart style={{"width":"15px"}} /></Icon>♥</> : ''}
                                                         </Comment_box>
                                                     </div>
                                                 )

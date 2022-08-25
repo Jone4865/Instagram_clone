@@ -21,8 +21,8 @@ function Main() {
 
   useEffect(() => {
     dispatch(__getMycontent())
-  }, [])
 
+  }, [])
 
   const navigate = useNavigate();
 
@@ -48,7 +48,6 @@ function Main() {
       },
     })
     setList(axiosData.data.data)
-    console.log(axiosData.data.data)
   }
   useEffect(() => {
     getAxiosData();
@@ -160,7 +159,9 @@ function Main() {
                         <Pro src={a.User.userimage} />
                         <h4>{a.User.nickname}</h4>
                       </Setting>
+
                       <Icon><BiDotsHorizontalRounded style={{ marginTop: "15px", float: "right" }} onClick={() => { setModal(!modal); setPostIds(a.postId)}} /></Icon>
+
                     </Title>
                     <div>
                       <MainImg src={a.postimg} />

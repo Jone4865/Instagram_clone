@@ -66,7 +66,9 @@ function Mypage() {
                                                                         <div className="_aa_m" style={{ "display": "flex", "flexDirection": "row" }}>
                                                                             <img src={My?.image} style={{ "width": "150px", "height": "150px", "borderRadius": "100%" }} />
                                                                             <h2 className="_aacl _aacs _aact _aacx _aada" tabIndex="-1" style={{ "fontSize": "23px", "marginLeft": "100px", "marginTop": "20px", "fontWeight": "unset" }}>
-                                                                                {myprofile?.nickname}</h2>
+
+                                                                                {My?.nickname}</h2>
+
                                                                             <div className="_ab8w  _ab94 _ab99 _ab9f _ab9k _ab9q  _abb3 _abcm" >
                                                                                 <div className="_ab8w  _ab94 _ab99 _ab9f _ab9m _ab9o _abcm" style={{ "marginTop": "20px", "marginLeft": "20px", "borderRadius": "5px", "border": "1px solid gray", "height": "30px", "minWidth": "100px" }}>
                                                                                     <a onClick={() => { navigate(`/mypage/${myprofile?.id}/edit`) }} className="qi72231t nu7423ey n3hqoq4p r86q59rh b3qcqh3k fq87ekyn bdao358l fsf7x5fv rse6dlih s5oniofx m8h3af8h l7ghb35v kjdc1dyq kmwttqpk srn514ro oxkhqvkx rl78xhln nch0832m cr00lzj9 rn8ck1ys s3jn8y49 icdlwmnq _acan _acap _acat _acaw _a6hd" tabIndex="0">
@@ -91,7 +93,7 @@ function Mypage() {
                                                                 </header>
 
                                                                 <div className="_aa-g _ac_s" role="tablist" style={{ "display": "flex", "margin": "30px 0px 30px 48%" }}>
-                                                                    <a aria-selected="true" className="qi72231t nu7423ey n3hqoq4p r86q59rh b3qcqh3k fq87ekyn bdao358l fsf7x5fv rse6dlih s5oniofx m8h3af8h l7ghb35v kjdc1dyq kmwttqpk srn514ro oxkhqvkx rl78xhln nch0832m cr00lzj9 rn8ck1ys s3jn8y49 icdlwmnq _aa-z _aa-- _ac_u _a6hd" href="/bel1__94/" role="link" tabIndex="0">
+                                                                    <a aria-selected="true" className="qi72231t nu7423ey n3hqoq4p r86q59rh b3qcqh3k fq87ekyn bdao358l fsf7x5fv rse6dlih s5oniofx m8h3af8h l7ghb35v kjdc1dyq kmwttqpk srn514ro oxkhqvkx rl78xhln nch0832m cr00lzj9 rn8ck1ys s3jn8y49 icdlwmnq _aa-z _aa-- _ac_u _a6hd" role="link" tabIndex="0">
                                                                         <div className="_ab8w  _ab94 _ab97 _ab9f _ab9k _ab9p _abcm">
                                                                             <svg aria-label="" className="_ab6-" color="#262626" fill="#262626" height="12" role="img" viewBox="0 0 24 24" width="12">
                                                                                 <rect fill="none" height="18" stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" width="18" x="3" y="3">
@@ -229,7 +231,7 @@ function Mypage() {
                                                                                         <div className="_aaaw">
                                                                                         </div>
                                                                                         <span className="_aa8h _aa8i" role="link" tabIndex="0" style={{ "width": "24px", "height": "24px" }}>
-                                                                                            <img alt="bel1__94님의 프로필 사진" className="_aa8j" crossOrigin="anonymous" draggable="false" src="https://tse1.mm.bing.net/th?id=OIP._ZMxhOqO1O0RuE9lotq0HgHaK9&pid=Api&P=0" />
+                                                                                            <img className="_aa8j" crossOrigin="anonymous" draggable="false" src="https://tse1.mm.bing.net/th?id=OIP._ZMxhOqO1O0RuE9lotq0HgHaK9&pid=Api&P=0" />
                                                                                         </span>
                                                                                     </div>
                                                                                     <div className="_aa1s" style={{ "marginLeft": "-180px" }}>
