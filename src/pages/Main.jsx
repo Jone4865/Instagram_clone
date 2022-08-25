@@ -10,6 +10,8 @@ import { FaRegComment } from 'react-icons/fa';
 import { __getMycontent } from "../redux/modules/GetMypage";
 import { useSelector } from "react-redux/es/exports";
 import { useDispatch } from "react-redux/es/exports";
+import { BsFillSuitHeartFill } from 'react-icons/bs';
+
 
 
 function Main() {
@@ -48,71 +50,91 @@ function Main() {
       },
     })
     setList(axiosData.data.data)
+    console.log(axiosData.data.data)
   }
   useEffect(() => {
     getAxiosData();
   }, [])
 
 
-  //좋아요 추가 하기
-  const likeButtonClickHandler = (postIds) => {
-    console.log(postIds)
+  //좋아요 기능
+  const likeButtonClickHandler = (postIds, status) => {
+
     const token = localStorage.getItem("token");
     const postAxiosData = async () => {
-      try {
-        await axios.post(process.env.REACT_APP_SURVER + `/api/post/like/${postIds}`, {}, {
-          headers: {
-            Authorization: `Bearer ${token}`,
-          },
-            }
+      console.log(postIds);
+      console.log(status); 
+      if (status === false) {
+        try {
+          await axios.post(process.env.REACT_APP_SURVER + `/api/post/like/${postIds}`, {}, {
+            headers: {
+              Authorization: `Bearer ${token}`,
+            },
+          }
           )
-          .then((res) => {
-            console.log(res.data.sucess == true)
-            if (res.data.sucess === true) {
+            .then((res) => {
+                alert(res.data.message);
+                console.log(res)
+                window.location.reload()
+            });
+        } catch (err) {
+          console.log(err);
+        }
+      } else if (status === true) {
+        try {
+          await axios.post(process.env.REACT_APP_SURVER + `/api/post/unlike/${postIds}`, {}, {
+            headers: {
+              Authorization: `Bearer ${token}`,
+            },
+          }
+          )
+            .then((res) => {
               alert(res.data.message);
-              console.log(res)
-            }else if (res.data.sucess !== true) {
-              alert(res.data.message);
-              console.log(res);
-            }
-          });
-      } catch (err) {
-        console.log(err);
+                console.log(res)
+                window.location.reload()
+            });
+        } catch (err) {
+          console.log(err);
+        }
       }
+      return;
     };
     postAxiosData();
   };
+
+
+
 
 
   //좋아요 취소하기
 
-  const UnlikeButtonClickHandler = (postIds) => {
-    console.log(postIds)
-    const token = localStorage.getItem("token");
-    const postAxiosData = async () => {
-      try {
-        await axios.post(process.env.REACT_APP_SURVER + `/api/post/unlike/${postIds}`, {}, {
-          headers: {
-            Authorization: `Bearer ${token}`,
-          },
-            }
-          )
-          .then((res) => {
-            if (res.msg === "좋아요 완료.") {
-              alert(res.msg);
-              console.log(res)
-            }
-             else {
-              alert("좋아요를 취소했습니다.");
-              console.log(res);
-            }
-          });
-      } catch (err) {
-        console.log(err);
-      }
-    };
-    postAxiosData();
-  };
+  // const UnlikeButtonClickHandler = (postIds) => {
+  //   console.log(postIds)
+  //   const token = localStorage.getItem("token");
+  //   const postAxiosData = async () => {
+  //     try {
+  //       await axios.post(process.env.REACT_APP_SURVER + `/api/post/unlike/${postIds}`, {}, {
+  //         headers: {
+  //           Authorization: `Bearer ${token}`,
+  //         },
+  //           }
+  //         )
+  //         .then((res) => {
+  //           if (res.msg === "좋아요 완료.") {
+  //             alert(res.msg);
+  //             console.log(res)
+  //           }
+  //            else {
+  //             alert("좋아요를 취소했습니다.");
+  //             console.log(res);
+  //           }
+  //         });
+  //     } catch (err) {
+  //       console.log(err);
+  //     }
+  //   };
+  //   postAxiosData();
+  // };
 
 
 
@@ -120,8 +142,9 @@ function Main() {
   //게시물 삭제
   const deleteListhandeler = async (postId) => {
     console.log(postId)
+
     const token = localStorage.getItem("token");
-    await axios.delete(process.env.REACT_APP_SURVER + `/api/post/delete/${postId}`,{
+    await axios.delete(process.env.REACT_APP_SURVER + `/api/post/delete/${postId}`, {
       headers: {
         Authorization: `Bearer ${token}`,
       },
@@ -141,7 +164,7 @@ function Main() {
       }).catch(err => {
         console.log(err)
       })
-      getAxiosData();
+    getAxiosData();
   }
 
   return (
@@ -159,21 +182,23 @@ function Main() {
                         <Pro src={a.User.userimage} />
                         <h4>{a.User.nickname}</h4>
                       </Setting>
-
-                      <Icon><BiDotsHorizontalRounded style={{ marginTop: "15px", float: "right" }} onClick={() => { setModal(!modal); setPostIds(a.postId)}} /></Icon>
-
+                      <Icon><BiDotsHorizontalRounded style={{ marginTop: "15px", float: "right" }} onClick={() => { setModal(!modal); setPostIds(a.postId) }} /></Icon>
                     </Title>
+                   
                     <div>
                       <MainImg src={a.postimg} />
                     </div>
                     <div style={{ padding: "10px" }}>
-                      <Icon style={{ marginTop: "10px" }}><BsSuitHeart style={{ marginRight: "15px" }}  onClick={() => { likeButtonClickHandler(a.postId)}} /><FaRegComment /></Icon>
-                      <button onClick={()=>{UnlikeButtonClickHandler(a.postId)}}>좋아요 취소하기임</button>
+                      {
+                         a.statuslike === false ? <><Icon style={{ marginTop: "10px" }}><BsSuitHeart style={{ marginRight: "15px" }} onClick={() => { likeButtonClickHandler( a.postId ,a.statuslike) }} /><FaRegComment /></Icon></> :
+                         <Icon style={{ marginTop: "10px" }}><BsFillSuitHeartFill style={{ marginRight: "15px", color:"red" }} onClick={() => { likeButtonClickHandler( a.postId ,a.statuslike) }} /><FaRegComment /></Icon>
+                      }
+                     
                       <p style={{ margin: "5px 0px", paddingLeft: "5px" }}>좋아요 {a.cntlike}개</p>
                       <Jungror>
                         <h4>{a.User.nickname}</h4><p >{a.content}</p>
                       </Jungror>
-                      <p onClick={() => { navigate(`/detail/${a.postId}`) }} style={{ margin: "5px 0px", paddingLeft: "5px", cursor: "pointer",opacity: "0.7", zIndex:"0" }}>댓글 {a.cntcomment}개 모두 보기</p>
+                      <p onClick={() => { navigate(`/detail/${a.postId}`) }} style={{ margin: "5px 0px", paddingLeft: "5px", cursor: "pointer", color: "gray", zIndex: "0" }}>댓글 {a.cntcomment}개 모두 보기</p>
                       <Setting><h4 style={{ margin: "5px 0px", paddingLeft: "5px" }}>{a.createAt}</h4></Setting>
                     </div>
                   </Outbox>
@@ -218,7 +243,7 @@ function Main() {
             </TwoboxLastText>
           </TwoboxLast>
           <TwoboxLast>
-            <TwoboxLastImg/>
+            <TwoboxLastImg />
             <TwoboxLastText>
               <h2>추천 닉네임</h2>
             </TwoboxLastText>
@@ -311,8 +336,7 @@ const TextBox = styled.div`
   p {
       margin: 3px;
       padding-left: 3px;
-      opacity: 0.7;
-      
+      color: gray;
     }
 `
 

@@ -68,8 +68,14 @@ function MypageEdit() {
         formData.append('email', email_Ref.current.value)
         formData.append('phone', phone_Ref.current.value)
         formData.append('gender', selected)
-
-        console.log(introduce_Ref)
+        
+        
+        console.log(name_Ref.current.value)
+        console.log(nickname_Ref.current.value)
+        console.log(introduce_Ref.current.value)
+        console.log(email_Ref.current.value)
+        console.log(phone_Ref.current.value)
+        console.log(selected)
 
         await axios.put(process.env.REACT_APP_SURVER + `/api/auth/profile`, formData, {
             headers: {
