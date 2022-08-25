@@ -30,9 +30,6 @@ function Main() {
   const [postIds, setPostIds] = useState(0);
 
   //좋아요 값 저장하기
-  const [onLike, setOnLike] = useState(false);
-
-
   const [likeNum, setLikeNum] = useState();
 
   //삭제 및 수정 모달
@@ -40,7 +37,7 @@ function Main() {
 
   //데이터들 저장
   const [list, setList] = useState([]);
-  const [user, setUser] = useState({});
+
 
   //모든 게시물 조회
   const getAxiosData = async () => {
@@ -50,48 +47,65 @@ function Main() {
         Authorization: `Bearer ${token}`,
       },
     })
-    setUser(axiosData.data.data.User)
     setList(axiosData.data.data)
     console.log(axiosData.data.data)
-
   }
   useEffect(() => {
     getAxiosData();
   }, [])
 
 
-
-  //좋아요 핸들러
-  // const LikeonClick = (postIds)=> {
-  //   const token = localStorage.getItem("token");
-  //     axios.post(process.env.REACT_APP_SURVER + `/api/post/like/${postIds}`, onLike, {
-        // headers: {
-        //   Authorization: `Bearer ${token}`,
-        // },
-  //     })
-  // }
-
-
-
+  //좋아요 추가 하기
   const likeButtonClickHandler = (postIds) => {
- 
+    console.log(postIds)
     const token = localStorage.getItem("token");
-
     const postAxiosData = async () => {
       try {
-        await axios.post(process.env.REACT_APP_SURVER + `/api/post/like/${postIds}`, {
+        await axios.post(process.env.REACT_APP_SURVER + `/api/post/like/${postIds}`, {}, {
           headers: {
             Authorization: `Bearer ${token}`,
           },
             }
           )
           .then((res) => {
-            if (res.data.msg === "좋아요!") {
-              alert("좋아요를 눌렀습니다!");
-              setLikeNum(likeNum + 1);
-            } else {
+            console.log(res.data.sucess == true)
+            if (res.data.sucess === true) {
+              alert(res.data.message);
+              console.log(res)
+            }else if (res.data.sucess !== true) {
+              alert(res.data.message);
+              console.log(res);
+            }
+          });
+      } catch (err) {
+        console.log(err);
+      }
+    };
+    postAxiosData();
+  };
+
+
+  //좋아요 취소하기
+
+  const UnlikeButtonClickHandler = (postIds) => {
+    console.log(postIds)
+    const token = localStorage.getItem("token");
+    const postAxiosData = async () => {
+      try {
+        await axios.post(process.env.REACT_APP_SURVER + `/api/post/unlike/${postIds}`, {}, {
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
+            }
+          )
+          .then((res) => {
+            if (res.msg === "좋아요 완료.") {
+              alert(res.msg);
+              console.log(res)
+            }
+             else {
               alert("좋아요를 취소했습니다.");
-              setLikeNum(likeNum - 1);
+              console.log(res);
             }
           });
       } catch (err) {
@@ -103,30 +117,32 @@ function Main() {
 
 
 
+
   //게시물 삭제
   const deleteListhandeler = async (postId) => {
     console.log(postId)
     const token = localStorage.getItem("token");
-    await axios.delete(process.env.REACT_APP_SURVER + `/api/post/delete/${postId}`, {
+    await axios.delete(process.env.REACT_APP_SURVER + `/api/post/delete/${postId}`,{
       headers: {
         Authorization: `Bearer ${token}`,
       },
     })
       .then(res => {
-        const data = res.status === 200
+        const data = res.data.sucess === true
+        const msg = res.data.message
         if (data) {
-          alert('게시물이 삭제되었습니다 !')
+          alert(msg)
           navigate(`/`)
           console.log(res)
+          setModal(!modal)
         } else {
-          alert('실패했습니다')
+          alert(msg)
           console.log(res)
         }
       }).catch(err => {
         console.log(err)
-      }
-
-      )
+      })
+      getAxiosData();
   }
 
   return (
@@ -150,12 +166,13 @@ function Main() {
                       <MainImg src={a.postimg} />
                     </div>
                     <div style={{ padding: "10px" }}>
-                      <Icon style={{ marginTop: "10px" }}><BsSuitHeart style={{ marginRight: "15px" }}  onClick={(event) => { likeButtonClickHandler(event); setPostIds(a.postId)}} /><FaRegComment /></Icon>
+                      <Icon style={{ marginTop: "10px" }}><BsSuitHeart style={{ marginRight: "15px" }}  onClick={() => { likeButtonClickHandler(a.postId)}} /><FaRegComment /></Icon>
+                      <button onClick={()=>{UnlikeButtonClickHandler(a.postId)}}>좋아요 취소하기임</button>
                       <p style={{ margin: "5px 0px", paddingLeft: "5px" }}>좋아요 {a.cntlike}개</p>
                       <Jungror>
                         <h4>{a.User.nickname}</h4><p >{a.content}</p>
                       </Jungror>
-                      <p onClick={() => { navigate(`/detail/${a.postId}`) }} style={{ margin: "5px 0px", paddingLeft: "5px", cursor: "pointer" }}>댓글 {a.cntcomment}개 모두 보기</p>
+                      <p onClick={() => { navigate(`/detail/${a.postId}`) }} style={{ margin: "5px 0px", paddingLeft: "5px", cursor: "pointer",opacity: "0.7", zIndex:"0" }}>댓글 {a.cntcomment}개 모두 보기</p>
                       <Setting><h4 style={{ margin: "5px 0px", paddingLeft: "5px" }}>{a.createAt}</h4></Setting>
                     </div>
                   </Outbox>
@@ -185,6 +202,7 @@ function Main() {
             <TwoboxImg src={myprofile?.image} />
             <TwoboxText>
               <h2>{myprofile?.nickname}</h2>
+              <h2>{myprofile?.name}</h2>
             </TwoboxText>
           </TwoboxHead>
           <TextBox>
@@ -192,16 +210,24 @@ function Main() {
             <p>모두보기</p>
           </TextBox>
 
-          {/* /*여기 맵돌릴거임 */}
           <TwoboxLast>
             <TwoboxLastImg />
             <TwoboxLastText>
               <h2>추천 닉네임</h2>
             </TwoboxLastText>
           </TwoboxLast>
-          {/* /*여기까지 맵돌릴거임 */}
-
-
+          <TwoboxLast>
+            <TwoboxLastImg/>
+            <TwoboxLastText>
+              <h2>추천 닉네임</h2>
+            </TwoboxLastText>
+          </TwoboxLast>
+          <TwoboxLast>
+            <TwoboxLastImg />
+            <TwoboxLastText>
+              <h2>추천 닉네임</h2>
+            </TwoboxLastText>
+          </TwoboxLast>
         </Twobox>
       </Bigbox>
 
@@ -241,16 +267,14 @@ const Bigbox = styled.div`
   justify-content: center;
 `
 const Twobox = styled.div`
-  height: 300px;
+  height: 325px;
   width: 400px;
-  border: 1px solid red;
   margin-top: 40px;
   margin-left: 20px;
 `
 
 const TwoboxHead = styled.div`
   height: 80px;
-  border: 1px solid red;
   width: 100%;
   display: flex;
   flex-direction: row;
@@ -262,18 +286,17 @@ const TwoboxImg = styled.img`
   height: 60px;
   width: 60px;
   border-radius: 50%;
-  border: 1px solid red;
+  background-color: aliceblue;
 `
 const TwoboxText = styled.div`
-    border: 1px solid red;
     height: 100%;
     width: 335px;
     display: flex;
     flex-direction: column;
     justify-content: center;
     h2 {
-      margin: 5px;
-      padding-left: 10px;
+      
+      padding-left: 8px;
     }
 `
 const TextBox = styled.div`
@@ -281,34 +304,35 @@ const TextBox = styled.div`
   width: 100%;
   align-items: center;
   display: flex;
-  border: 1px solid red;
+  border-bottom: 1px solid #ccc;
   justify-content: space-between;
 
-  h2 {
+  p {
       margin: 3px;
       padding-left: 3px;
+      opacity: 0.7;
+      
     }
 `
 
 const TwoboxLast = styled.div`
-margin-top: 10px;
-height: 60px;
-  border: 1px solid red;
+  margin-top: 10px;
+  height: 60px;
+  border: 1px solid #ccc;
   width: 100%;
   display: flex;
   flex-direction: row;
   align-items: center;
 `
 const TwoboxLastImg = styled.img`
-height: 60px;
-width: 60px;
+height: 50px;
+width: 50px;
 border-radius: 50%;
-border: 1px solid red;
-background-color: black;
+background-color: skyblue;
+margin-left: 5px;
 `
 
 const TwoboxLastText = styled.div`
-border: 1px solid red;
 height: 100%;
 width: 335px;
 display: flex;
@@ -327,7 +351,7 @@ flex-direction: column;
 
 const Outbox = styled.div`
   border-radius: 12px;
-  border: 2px solid #eee;
+  border: 1px solid #ccc;
   width: 500px;
   height: 700px;
   display: flex;
@@ -343,7 +367,7 @@ const ModalBackground = styled.div`
     left: 0;
     bottom: 0;
     right: 0;
-    background: rgba(0, 0, 0, 0.1);
+    background: rgba(0, 0, 0, 0.4);
     display: flex;
     justify-content: center;
     align-items: center;

@@ -9,12 +9,17 @@ function Mypage() {
 
     const dispatch = useDispatch();
 
+
+    const My = useSelector((state) => state.getmylist.data.user);
+    const MyList = useSelector((state) => state.getmylist.data.posts);
+
+    const myprofile = useSelector((state) => state.getmylist.data.user);
+
     useEffect(() => {
         dispatch(__getMycontent())
     }, [])
 
-    const My = useSelector((state) => state.getmylist.data.user);
-    const MyList = useSelector((state) => state.getmylist.data.posts);
+    console.log(myprofile)
 
     return (
         <div className="_a3wf system-fonts--body segoe">
@@ -61,10 +66,10 @@ function Mypage() {
                                                                         <div className="_aa_m" style={{ "display": "flex", "flexDirection": "row" }}>
                                                                             <img src={My?.image} style={{ "width": "150px", "height": "150px", "borderRadius": "100%" }} />
                                                                             <h2 className="_aacl _aacs _aact _aacx _aada" tabIndex="-1" style={{ "fontSize": "23px", "marginLeft": "100px", "marginTop": "20px", "fontWeight": "unset" }}>
-                                                                                bel1__94</h2>
+                                                                                {myprofile?.nickname}</h2>
                                                                             <div className="_ab8w  _ab94 _ab99 _ab9f _ab9k _ab9q  _abb3 _abcm" >
                                                                                 <div className="_ab8w  _ab94 _ab99 _ab9f _ab9m _ab9o _abcm" style={{ "marginTop": "20px", "marginLeft": "20px", "borderRadius": "5px", "border": "1px solid gray", "height": "30px", "minWidth": "100px" }}>
-                                                                                    <a onClick={() => { navigate(`/mypage/1/edit`) }} className="qi72231t nu7423ey n3hqoq4p r86q59rh b3qcqh3k fq87ekyn bdao358l fsf7x5fv rse6dlih s5oniofx m8h3af8h l7ghb35v kjdc1dyq kmwttqpk srn514ro oxkhqvkx rl78xhln nch0832m cr00lzj9 rn8ck1ys s3jn8y49 icdlwmnq _acan _acap _acat _acaw _a6hd" tabIndex="0">
+                                                                                    <a onClick={() => { navigate(`/mypage/${myprofile?.id}/edit`) }} className="qi72231t nu7423ey n3hqoq4p r86q59rh b3qcqh3k fq87ekyn bdao358l fsf7x5fv rse6dlih s5oniofx m8h3af8h l7ghb35v kjdc1dyq kmwttqpk srn514ro oxkhqvkx rl78xhln nch0832m cr00lzj9 rn8ck1ys s3jn8y49 icdlwmnq _acan _acap _acat _acaw _a6hd" tabIndex="0">
                                                                                         프로필 편집</a>
                                                                                 </div>
                                                                             </div>

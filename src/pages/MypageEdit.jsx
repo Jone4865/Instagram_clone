@@ -4,11 +4,23 @@ import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
 import Header from "../components/Header";
+import { __getMycontent } from "../redux/modules/GetMypage";
+import { useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
+import { useEffect } from "react";
 
 function MypageEdit() {
 
-    const navigator = useNavigate();
+    const navigate = useNavigate();
+    const dispatch = useDispatch();
 
+
+    const myprofile = useSelector((state) => state.getmylist.data.user);
+    console.log(myprofile)
+
+    useEffect(() => {
+        dispatch(__getMycontent())
+    }, [])
 
     //셀렉트 값 받아오기
     const [selected, setSelected] = useState("");
@@ -57,27 +69,31 @@ function MypageEdit() {
         formData.append('phone', phone_Ref.current.value)
         formData.append('gender', selected)
 
+        console.log(introduce_Ref)
+
         await axios.put(process.env.REACT_APP_SURVER + `/api/auth/profile`, formData, {
             headers: {
                 Authorization: `Bearer ${token}`,
                 "Content-Type": `multipart/form-data`,
             },
         })
-            .then(res => {
-                const data = res.status === 200
-                console.log(formData)
+        .then(res => {
+            const data = res.data.massge == true  
+            const msg = res.data.message
 
-                if (data) {
-                    alert('정보가 수정되었습니다')
-                    navigator(`/mypage`)
-                    console.log(res)
-                } else {
-                    alert('정보 수정에 실패하였습니다')
-                    console.log(res)
-                }
-            }).catch(err => {
-                console.log(err)
+            if (data) {
+                alert('정보 수정 완료했습니다')
+                navigate(`/`)
+                console.log(res)
+            } else {
+                alert('수정 실패했습니다')
+                navigate(`/mypage`)
+                console.log(res)
             }
+        }).catch(err => {
+            console.log(err)
+        }
+      
         )
 
     }
@@ -95,7 +111,7 @@ function MypageEdit() {
                         }
                             alt="업로드할 이미지" />
                         <div>
-                            <p>닉네임임</p>
+                            <p>{myprofile.nickname}</p>
                             <form encType="multipart/form-data">
                                 <input
                                     type="file"
@@ -162,9 +178,7 @@ function MypageEdit() {
                                     onChange={handleSelect}
                                      value={selected}
                                      name="gender"
-                                     placeholder="qwe"
                                      >
-                                    <option>알리고 싶지 않음</option>
                                     <option>남자</option>
                                     <option>여자</option>
                                     

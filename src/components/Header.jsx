@@ -6,18 +6,43 @@ import { useNavigate } from "react-router-dom";
 import { MdOutlineArrowBack } from 'react-icons/md';
 import axios from "axios";
 import "./header.css";
+import { useDispatch } from "react-redux/es/hooks/useDispatch";
+import { useSelector } from "react-redux/es/hooks/useSelector";
+import { useEffect } from "react";
+import { __getMycontent } from "../redux/modules/GetMypage";
 
 function Header() {
 
     const contents_ref = useRef(null);
-
     const navigate = useNavigate();
 
+    //모달창
     const [modal, setModal] = useState(false);
 
+    //이미지 저장하는곳
     const fileInput = useRef(null);
-
+    //이미지 미리보기
     const [attachment, setAttachment] = useState("");
+
+    const dispatch = useDispatch();
+
+    const myprofile = useSelector((state) => state.getmylist.data.user);
+
+
+
+    
+//   모든 게시물 조회
+  const getAxiosData = async () => {
+    const token = localStorage.getItem("token");
+    const axiosData = await axios.get(process.env.REACT_APP_SURVER + `/api/post`, {
+      headers: {
+        Authorization: `Bearer ${token}`,
+      },
+    })
+  }
+  useEffect(() => {
+    getAxiosData();
+  }, [])
 
 
     //사진 미리보기 기능
@@ -33,16 +58,9 @@ function Header() {
         };
       };
 
-    // const Onreset = ()=> {
-    //     fileInput:null,
-    //     contents_ref:null
-    // }
- 
-
-
     //게시물 생성 폼데이터로 보내기
     const ListCreateButtonClickHandler = async (ev) => {
-        ev.preventDefault();
+        
         const token = localStorage.getItem("token");
         // if(fileInput.current.files[0] === null) {
         //     alert('사진을 넣어주세요')
@@ -64,22 +82,21 @@ function Header() {
             },
         })
             .then(res => {
-                const data = res.sucess === true
+                const data = res.data.sucess === true
+                const msg = res.data.message
                 if (data) {
-                    alert('게시물이 생성되었습니다 !')
-                    navigate(`/`)
+                    alert(msg)
+                    setModal(!modal)
                     console.log(res)
                 } else {
-                    alert('실패하였습니다')
+                    alert(msg)
                     console.log(res)
                 }
             }).catch(err => {
                 console.log(err)
-            }
-          
-            )
-
-    }
+            })
+            getAxiosData();
+        }
 
     return (
         <>
@@ -278,6 +295,7 @@ const ModalBox = styled.div`
     height: 80%;
     max-width: 1500px;
     min-width: 800px;
+    z-index: 99999;
 `;
 
 const Icon = styled.div`
@@ -285,8 +303,8 @@ const Icon = styled.div`
 `
 
 const Head = styled.div`
+    border-bottom:1px solid #ccc;
     height: 55px;
-    border-bottom: 1px solid red;
     display: flex;
     align-items: center;
     justify-content: space-between;
@@ -301,13 +319,11 @@ const Head = styled.div`
 const Left = styled.div`
     width: 60%;
     height: 691px;
-    border: 1px solid red;
 `
 
 const Right = styled.div`
     width: 40%;
     height: 100%;
-    border: 1px solid red;
 `
 
 const Right_first = styled.div`
@@ -317,7 +333,6 @@ flex-direction: row;
 align-items: center;
 gap:10px;
 padding-left:10px;
-border:1px solid red;
 `
 
 const Right_firstImg = styled.img`
@@ -327,9 +342,9 @@ const Right_firstImg = styled.img`
     background-color: black;
 `
 const Right_two = styled.div`
-    border: 1px solid red;
     height: 250px;
     padding: 10px 15px 15px 10px;
+    border: 1px solid #ccc;
 
     textarea {
         width: 100%;
@@ -337,14 +352,13 @@ const Right_two = styled.div`
     }
 `
 const Right_thr = styled.div`
-    border: 1px solid red;
     height: 355px;
     width: 100%;
 
     div {
-        border: 1px solid blue;
         height: 50px;
         display: flex;
+        border: 1px solid #ccc;
     }
 
     div > p {
